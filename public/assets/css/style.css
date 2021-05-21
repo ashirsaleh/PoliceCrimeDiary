@@ -6,8 +6,31 @@ background: linear-gradient(to bottom, #2948ff, #396afc);
 
 .top-bar{
      height: 200px;
-     background-color: rgb(80, 66, 206);
-};
+     background-color: #663b95;
+}
+.sidebar{
+	background-color: #fff;
+	height: 100%;
+	width: 160px;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	overflow-x: hidden;
+	padding-top: 16px;
+	margin-top: 60px;
+}
+.sidebar a {
+	padding: 6px 8px 6px 16px;
+	text-decoration: none;
+	font-size: 20px;
+	color: #818181;
+	display: block;
+}
+.sidebar a:hover {
+	color: #f1f1f1;
+    background-color: rgb(80, 66, 206);
+}
 body{
   background:#fff;
   padding:0px;
