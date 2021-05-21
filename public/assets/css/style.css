@@ -5,19 +5,28 @@ background: linear-gradient(to bottom, #2948ff, #396afc);
 }; */
 
 .top-bar{
-     height: 200px;
+     height: 150px;
      background-color: #663b95;
+}
+.log{
+	height:auto;
+	width:140%;
+	margin:0 auto;
+	margin-top:0;
+	padding:30px;
+	margin-bottom:40px;
+	
+	 -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .sidebar{
 	background-color: #fff;
-	height: 100%;
-	width: 160px;
 	position: fixed;
 	z-index: 1;
 	top: 0;
 	left: 0;
 	overflow-x: hidden;
-	padding-top: 16px;
 	margin-top: 60px;
 }
 .sidebar a {
@@ -26,6 +35,9 @@ background: linear-gradient(to bottom, #2948ff, #396afc);
 	font-size: 20px;
 	color: #818181;
 	display: block;
+	border-radius:5px;
+	padding:15px;
+
 }
 .sidebar a:hover {
 	color: #f1f1f1;
@@ -59,8 +71,7 @@ input ,button{
 	background: #fff;
 	padding:10px;
 	outline:none;
-	width:120%;
-  height:12px;
+	width:130%;
 	margin-bottom: 20px;
     
 }
@@ -73,7 +84,7 @@ input ,button{
 	border-radius:5px;
 	padding:15px;
 	display:block;
-	width:120%;
+	width:130%;
 	transition: 0.3s;
 	-webkit-transition:0.3s;
 	-moz-transition:0.3s;
