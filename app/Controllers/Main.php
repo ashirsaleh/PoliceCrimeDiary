@@ -10,7 +10,7 @@ class Main extends BaseController
 		
 		echo view('templates/header', $data);
 		echo view('dashboard', $data);
-		// echo view('login', $data);
+		//echo view('login',$data);
 		echo view('templates/footer', $data);
 	}
 }

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="stylesheet" href="assets/css/style.css"/>
     <link rel="stylesheet" href="assets/css/style1.css"/>
-    <title>Accessing Login</title>
+    <title>Accessing</title>
 </head>
 <body>
     
