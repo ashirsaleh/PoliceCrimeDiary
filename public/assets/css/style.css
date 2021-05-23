@@ -127,3 +127,39 @@ button:hover{
 	border:1px solic #5d8ffc;
 	cursor:pointer;
 }	
+/*css for reporting form*/
+html {
+	/* The viewer implements a custom pinch zoom. */
+	touch-action: pan-x pan-y;
+  }
+  
+  .report{
+	background-color: rgb(212, 212, 212);
+	color: var(--primary-text-color);
+	line-height: 154%;
+	margin: 5px;
+  
+  }
+  
+  .main{
+	width:auto;
+	height:90%;
+	margin-left: 20%;
+	margin-right: 20%;
+	padding-left: 2%;
+	padding-right: 2%;
+	margin-top: 3%;
+	margin-bottom:3%;
+	background-color: white;
+	box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  
+   }
+   h1{
+	text-align: center;
+	margin:30px;
+	font-size: 40px;
+   }
+  
+  
+  
+  
