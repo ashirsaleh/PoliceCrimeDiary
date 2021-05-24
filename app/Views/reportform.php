@@ -3,7 +3,7 @@
 <html>
 <head>
 	<link rel="stylesheet" href="style.css">
-<title>reporting form</title>
+<title>Reporting form</title>
 </head>
 <body class="report">
 <div class="main">
