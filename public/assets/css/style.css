@@ -15,9 +15,14 @@ background: linear-gradient(to bottom, #2948ff, #396afc);
 	margin-top:0;
 	padding:30px 20px 30px 20px;
 	margin-bottom:40px;
+	overflow: auto;  
+	z-index: 1;
+
 	/* -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
   	/* -moz-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
- 	box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+ 	/* box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0), 0 2px 4px 0 rgba(0, 0, 0, 0.1); */
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
 }
 .sidebar{
 	background-color: #fff;
@@ -127,3 +132,4 @@ button:hover{
 	border:1px solic #5d8ffc;
 	cursor:pointer;
 }	
+
