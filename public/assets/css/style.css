@@ -1,8 +1,4 @@
-/* body{
-     background: #396afc;
-background: -webkit-linear-gradient(to bottom, #6980ff, #5e85fc);  
-background: linear-gradient(to bottom, #2948ff, #396afc); 
-}; */
+
 
 .top-bar{
      height: 150px;
@@ -24,6 +20,9 @@ background: linear-gradient(to bottom, #2948ff, #396afc);
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 
 }
+.active{
+	background-color: #663b95;
+}
 .sidebar{
 	background-color: #fff;
 	position: fixed;
@@ -33,6 +32,9 @@ background: linear-gradient(to bottom, #2948ff, #396afc);
 	overflow-x: hidden;
 	margin-top: 60px;
 }
+.btn-search{
+	background-color: #663b95;
+} 
 .sidebar a {
 	padding: 6px 8px 6px 16px;
 	text-decoration: none;
@@ -41,13 +43,16 @@ background: linear-gradient(to bottom, #2948ff, #396afc);
 	display: block;
 	border-radius:5px;
 	padding:15px;
+	margin-top: 5px;
 
 }
 .sidebar a:hover {
 	color: #f1f1f1;
     background-color: #663b95;
 	width: 210px;
+
 }
+
 body{
   background:#fff;
   padding:0px;

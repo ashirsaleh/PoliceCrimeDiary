@@ -9,9 +9,9 @@ class Main extends BaseController
         $data = [];
 		
 		echo view('templates/header', $data);
-		//echo view('dashboard', $data);
-		echo view('login',$data);
-		//echo view('reportform',$data);
+		echo view('dashboard', $data);
+		// echo view('login',$data);
+		// echo view('reportform',$data);
 		echo view('templates/footer', $data);
 	}
 }
