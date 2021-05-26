@@ -1,6 +1,6 @@
 <footer class="main-footer">
   <strong>Copyright &copy; <?= Date('Y') ?>.</strong>
-  All rights reserved.
+  Police Crime Diary.
 </footer>
 </div>
 <script src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script>
