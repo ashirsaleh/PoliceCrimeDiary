@@ -10,5 +10,9 @@ class Main extends BaseController {
 		$data['location'] = "Dashboard";
 		$data['subRoute'] = "Home";
 		$this->Render('dashboard', $data);
+		$this->Render('');
+	}
+	public function users(){
+
 	}
 }

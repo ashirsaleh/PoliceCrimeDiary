@@ -78,7 +78,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="<?php echo site_url();?>" class="brand-link">
-                <img src="<?php echo base_url('assets/img/PoliceLogo.png'); ?>" alt=" Police Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="<?php echo base_url('assets/images/PoliceLogo.png'); ?>" alt=" Police Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">PCD</span>
             </a>
 
@@ -87,7 +87,7 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="<?php echo base_url("assets/img/avatar.png"); ?>" class=" img-circle elevation-2" alt="User Image">
+                        <img src="<?php echo base_url("assets/images/avatar.png"); ?>" class=" img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
                         <a href="<?php echo site_url('profile'); ?>" class="d-block">Ashir Mohammed</a>
