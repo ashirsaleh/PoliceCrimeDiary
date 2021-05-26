@@ -1,34 +1,18 @@
+<footer class="main-footer">
+  <strong>Copyright &copy; <?= Date('Y') ?>.</strong>
+  All rights reserved.
+</footer>
+</div>
+<script src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/jquery-ui.min.js'); ?>"></script>
 <script>
-    function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
-window.onclick = function(event) {
-  if (!event.target.matches('.dropdown')) {
-    var dropdowns = document.getElementsByClassName("dropdown-menu");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
+  $.widget.bridge('uibutton', $.ui.button)
 </script>
-    
-<script>
-    var header = document.getElementById("myDIV");
-    var btns = header.getElementsByClassName("btn");
-        for (var i = 0; i < btns.length; i++) {
-    btns[i].addEventListener("click", function() {
-        var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-    });
-}
-</script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="assets/js/popover.js"></script>
-    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+<script src="<?php echo base_url('assets/js/bootstrap.bundle.min.js'); ?>"></script>
+<!-- ChartJS -->
+<script src="<?php echo base_url('assets/js/Chart.min.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/main.js'); ?> "></script>
+<script src="<?php echo base_url('assets/js/pages/dashboard.js'); ?>"></script>
 </body>
+
 </html>

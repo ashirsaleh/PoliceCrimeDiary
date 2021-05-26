@@ -18,8 +18,7 @@ use Psr\Log\LoggerInterface;
  * For security be sure to declare any new methods as protected or private.
  */
 
-class BaseController extends Controller
-{
+class BaseController extends Controller {
 	/**
 	 * An array of helpers to be loaded automatically upon
 	 * class instantiation. These helpers will be available
@@ -27,7 +26,7 @@ class BaseController extends Controller
 	 *
 	 * @var array
 	 */
-	protected $helpers = [];
+	protected $helpers = ['form', 'session', 'url'];
 
 	/**
 	 * Constructor.
@@ -36,14 +35,21 @@ class BaseController extends Controller
 	 * @param ResponseInterface $response
 	 * @param LoggerInterface   $logger
 	 */
-	public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
-	{
+	public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger) {
 		// Do Not Edit This Line
 		parent::initController($request, $response, $logger);
 
 		//--------------------------------------------------------------------
 		// Preload any models, libraries, etc, here.
 		//--------------------------------------------------------------------
-		// E.g.: $this->session = \Config\Services::session();
+		$this->validation =  \Config\Services::validation();
+		$this->session = \Config\Services::session();
+		helper(['form', 'session', 'url']);
+	}
+
+	public function Render($page = null, $data = []) {
+		echo view('templates/header', $data);
+		echo view($page, $data);
+		echo view('templates/footer', $data);
 	}
 }
