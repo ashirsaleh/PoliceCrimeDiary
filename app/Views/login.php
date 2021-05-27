@@ -151,7 +151,7 @@
         <div class="main-div">
             <h3>POLICE CRIME DIARY</h3>
             <input type="text" placeholder="Police_Id" />
-            <input type="password" placeholder="password" />
+            <input type="password" placeholder="Password" />
 
             <button type="submit" class="btn">Login</button><br>
             <!--<button  type="submit" class="btn">Sign up for account</button><br>-->
