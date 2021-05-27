@@ -15,6 +15,7 @@
         margin: 0px;
         font-family: 'nunito', san-serif;
         font-size: 16px;
+        background-image: url('assets/images/police_logo-1');
     }
 
 
