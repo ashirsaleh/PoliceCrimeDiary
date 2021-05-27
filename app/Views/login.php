@@ -15,7 +15,11 @@
         margin: 0px;
         font-family: 'nunito', san-serif;
         font-size: 16px;
-        background-image: url('assets/images/police_logo-1');
+    }
+
+    body {
+        background-image: url('assets/images/police_logo-1.png');
+        background-size: cover;
     }
 
 
@@ -144,12 +148,20 @@
         height: 60px;
         width: 100%;
     }
+
+    img {
+        height: 100px;
+        margin-left: 120px;
+    }
     </style>
 </head>
 
 <body>
     <div class="content">
         <div class="main-div">
+            <div class="images">
+                <img src="assets\images\police.png" alt="">
+            </div>
             <h3>POLICE CRIME DIARY</h3>
             <input type="text" placeholder="Police_Id" />
             <input type="password" placeholder="Password" />
