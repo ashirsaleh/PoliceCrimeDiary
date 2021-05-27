@@ -11,4 +11,8 @@ class Main extends BaseController {
 		$data['subRoute'] = "Home";
 		$this->Render('dashboard', $data);
 	}
+	public function login(){
+		$data['title'] = "Login: Police Crime Diary";
+		echo view('login', $data);
+	}
 }
