@@ -10,7 +10,7 @@ class Main extends BaseController {
 		$data['location'] = "Dashboard";
 		$data['subRoute'] = "Home";
 		$this->Render('dashboard', $data);
-		$this->Render('');
+		//$this->Render('report',$data);
 	}
 	public function users(){
 
@@ -19,4 +19,11 @@ class Main extends BaseController {
 		$data['title'] = "Login: Police Crime Diary";
 		echo view('login', $data);
 	}
-}
+
+
+    public function report(){
+		 $data['title'] = "Filling: Police Crime Diary Report Form";
+		 echo view('report',$data);
+	 }
+
+} 

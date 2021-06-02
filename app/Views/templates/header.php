@@ -8,7 +8,6 @@
 
     <link rel="stylesheet" href="<?php echo base_url('assets/css/all.min.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/main.min.css') ?>">
-</head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
