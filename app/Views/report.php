@@ -116,18 +116,18 @@ img {
             <label for="name"> <b>Prepared By:</b> </label>
             <input type="text" placeholder="" name="name" required><br><br>
             <label for="incident"><b>Incident: </b></label><br>
-            <textarea name="incident" cols="80" maxlength="1000"></textarea><br><br>
+            <textarea name="incident" cols="60" maxlength="1000"></textarea><br><br>
 
             <hr noshade style="color:black" size=5>
 
             <label for="incident"><b>Detail of Event: </b></label><br>
-            <textarea name="incident" cols="89" rows="5" maxlength="2000"></textarea><br><br>
+            <textarea name="incident" cols="60" rows="5" maxlength="2000"></textarea><br><br>
 
             <label for="incident"><b>Area Taken: </b></label><br>
-            <textarea name="incident" cols="89" rows="5" maxlength="2000"></textarea><br><br>
+            <textarea name="incident" cols="60" rows="5" maxlength="2000"></textarea><br><br>
 
             <label for="incident"><b>Summary: </b></label><br>
-            <textarea name="incident" cols="89" rows="5" maxlength="2000"></textarea><br>
+            <textarea name="incident" cols="60  " rows="5" maxlength="2000"></textarea><br>
 
             <button type="submit" class="btn">Submit</button><br>
 
