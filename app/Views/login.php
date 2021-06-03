@@ -163,8 +163,8 @@
                 <img src="assets\images\police.png" alt="">
             </div>
             <h3>POLICE CRIME DIARY</h3>
-            <input type="text" placeholder="Police_Id" />
-            <input type="password" placeholder="Password" />
+            <input type="text" placeholder="Police_Id" required />
+            <input type="password" placeholder="Password" required />
 
             <button type="submit" class="btn">Login</button><br>
             <!--<button  type="submit" class="btn">Sign up for account</button><br>-->
