@@ -23,7 +23,7 @@ class Main extends BaseController {
 
     public function report(){
 		 $data['title'] = "Filling: Police Crime Diary Report Form";
-		 echo view('report',$data);
+		 $this->Render('report', $data);
 	 }
 
 } 
