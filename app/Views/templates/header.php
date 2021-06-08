@@ -104,7 +104,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="#" class="nav-link form">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
                                     Forms
@@ -113,7 +113,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="pages/tables/simple.html" class="nav-link">
+                                    <a href="<?php echo site_url('form1')?>" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Form One</p>
                                     </a>
