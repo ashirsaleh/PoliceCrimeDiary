@@ -17,13 +17,11 @@
                      </thead>
                      <tbody>
                          <tr>
-                             <td>Trident</td>
-                             <td>Internet
-                                 Explorer 4.0
-                             </td>
-                             <td>Win 95+</td>
-                             <td> 4</td>
-                             <td>X</td>
+                             <td><?php echo session()->get('Fname'), ' ', session()->get('Lname')?></td>
+                             <td><?php echo session()->get('policeNo')?></td>
+                             <td><?php echo session()->get('rank')?></td>
+                             <td><?php echo session()->get('tel_number')?></td>
+                             <td><?php echo session()->get('role')?></td>
                              <td class="project-actions text-right">
                                  <a class="btn btn-primary btn-sm" href="#">
                                      <i class="fas fa-folder">
@@ -42,61 +40,14 @@
                                  </a>
                              </td>
                          </tr>
-                         <tr>
-                             <td>Trident</td>
-                             <td>Internet
-                                 Explorer 5.0
-                             </td>
-                             <td>Win 95+</td>
-                             <td>5</td>
-                             <td>C</td>
-                             <td class="project-actions text-right">
-                                 <a class="btn btn-primary btn-sm" href="#">
-                                     <i class="fas fa-folder">
-                                     </i>
-                                     View
-                                 </a>
-                                 <a class="btn btn-info btn-sm" href="#">
-                                     <i class="fas fa-pencil-alt">
-                                     </i>
-                                     Edit
-                                 </a>
-                                 <a class="btn btn-danger btn-sm" href="#">
-                                     <i class="fas fa-trash">
-                                     </i>
-                                     Delete
-                                 </a>
-                             </td>
-                         </tr>
-                         <tr>
-                             <td>Trident</td>
-                             <td>Internet
-                                 Explorer 5.5
-                             </td>
-                             <td>Win 95+</td>
-                             <td>5.5</td>
-                             <td>A</td>
-                             <td class="project-actions text-right">
-                                 <a class="btn btn-primary btn-sm" href="#">
-                                     <i class="fas fa-folder">
-                                     </i>
-                                     View
-                                 </a>
-                                 <a class="btn btn-info btn-sm" href="#">
-                                     <i class="fas fa-pencil-alt">
-                                     </i>
-                                     Edit
-                                 </a>
-                                 <a class="btn btn-danger btn-sm" href="#">
-                                     <i class="fas fa-trash">
-                                     </i>
-                                     Delete
-                                 </a>
-                             </td>
-                         </tr>
-
                          </tfoot>
                  </table>
+                 <hr>
+                 <div class="row">
+                     <div class="col-12">
+                         <input type="submit" value="Add new User" class="btn btn-success float-right">
+                     </div>
+                 </div>
              </div>
          </div>
      </div>
