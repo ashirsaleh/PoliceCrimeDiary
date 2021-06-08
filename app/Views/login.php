@@ -158,23 +158,35 @@
 
 <body>
     <div class="content">
-        <div class="main-div">
-            <div class="images">
-                <img src="assets\images\police.png" alt="">
-            </div>
-            <h3>POLICE CRIME DIARY</h3>
-            <input type="text" placeholder="Police_Id" required />
-            <input type="password" placeholder="Password" required />
-
-            <button type="submit" class="btn">Login</button><br>
-            <!--<button  type="submit" class="btn">Sign up for account</button><br>-->
-            <footer class="footer">
-                <div class="footer-content">
-                    <strong>Copyright &copy; <?= Date('Y') ?>.</strong>
-                    Police Crime Diary.
+        <form action="<?php echo site_url('login') ?>" method="post">
+            <div class="main-div">
+                <div class="images">
+                    <img src="assets\images\police.png" alt="">
                 </div>
-            </footer>
-        </div>
+                <h3>POLICE CRIME DIARY</h3>
+                <input type="text" name="policeNo" placeholder="Police Identification Number" autocomplete="off"
+                    required />
+                <input type="password" name="password" placeholder="Password" autocomplete="off" required />
+
+                <?php if(isset($validation)):?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Error! </strong> <?php echo $validation->listErrors();?>
+                    <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button> -->
+                </div>
+
+                <?php endif ?>
+                <button type="submit" name="login" class="btn">Login</button><br>
+                <!--<button  type="submit" class="btn">Sign up for account</button><br>-->
+                <footer class="footer">
+                    <div class="footer-content">
+                        <strong>Copyright &copy; <?= Date('Y') ?>.</strong>
+                        Police Crime Diary.
+                    </div>
+                </footer>
+        </form>
+    </div>
     </div>
     <script src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/jquery-ui.min.js'); ?>"></script>
