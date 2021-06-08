@@ -35,6 +35,15 @@ $routes->get('/', 'Main::index', ['filter'=>'auth']);
 $routes->match(['get', 'post'], 'login', 'Login::index', ['filters' => 'noauth']);
 $routes->get('logout', 'Login::logout');
 
+//Routes for user management
+$routes->get('users', 'Users::index', ['filters' => 'auth']);
+$routes->match(['get', 'post'], 'adduser', 'Users::AddUser', ['filter' => 'auth']);
+$routes->match(['get', 'post'], 'edituser', 'Users::EditUser', ['filter' => 'auth']);
+$routes->match(['get', 'post'], 'deleteuser', 'Users::DeleteUser', ['filter' => 'auth']);
+
+//Routes for User profile
+$routes->get('user-profile', 'UserProfile::index', ['filter' => 'auth']);
+$routes->match(['get', 'post'], 'editprofile', 'UserProfile::EditProfile', ['filter' => 'auth']);
 /*
  * --------------------------------------------------------------------
  * Additional Routing
