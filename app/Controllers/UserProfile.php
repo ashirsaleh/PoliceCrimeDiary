@@ -4,12 +4,12 @@ namespace App\Controllers;
 
 use App\Models\AuthModel;
 
-class UsersProfile extends BaseController{
+class UserProfile extends BaseController{
     public function index(){
         $data['title'] = 'User Profile';
         $data['location'] = 'Profile';
         $data['subRoute'] = 'User Profle';
-        $this->Render('users',$data);
+        $this->Render('user-profile',$data);
     }
 
     public function EditProfile(){
