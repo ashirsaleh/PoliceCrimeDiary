@@ -89,7 +89,8 @@
                             alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="<?php echo site_url('profile'); ?>" class="d-block">Ashir Mohammed</a>
+                        <a href="<?php echo site_url('user-profile'); ?>"
+                            class="d-block"><?php echo session()->get('Fname').' '.session()->get('Lname')?></a>
                     </div>
                 </div>
                 <!-- Sidebar Menu -->
@@ -97,7 +98,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <li class="nav-item">
-                            <a href="<?php echo site_url(); ?>" class="nav-link active">
+                            <a href="<?php echo site_url(); ?>" class="nav-link dashboard">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>Dashboard</p>
                             </a>
@@ -106,7 +107,7 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
-                                    DropDown
+                                    Forms
                                     <i class="fas fa-angle-down right"></i>
                                 </p>
                             </a>
@@ -130,6 +131,12 @@
                                     </a>
                                 </li>
                             </ul>
+                        <li class="nav-item">
+                            <a href="<?php echo site_url('users'); ?>" class="nav-link users">
+                                <i class="nav-icon fa fa-user"></i>
+                                <p>Users</p>
+                            </a>
+                        </li>
                         </li>
                         <li class="nav-item">
                             <a href="<?php echo site_url('logout'); ?>" class="nav-link">
@@ -153,8 +160,8 @@
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a
-                                        href="<? echo base_url($location); ?>"><?php echo isset($location) ? $location : "Dashboard"; ?></a>
+                                <li class="breadcrumb-item">
+                                    <?php echo isset($location) ? $location : "Dashboard"; ?>
                                 </li>
                                 <li class="breadcrumb-item active">
                                     <?php echo isset($subRoute) ? $subRoute : "Dashboard"; ?></li>
@@ -162,4 +169,6 @@
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
-            </div>
+            </div><!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
