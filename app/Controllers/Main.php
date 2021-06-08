@@ -12,18 +12,4 @@ class Main extends BaseController {
 		$this->Render('dashboard', $data);
 		//$this->Render('report',$data);
 	}
-	public function users(){
-
-	}
-	public function login(){
-		$data['title'] = "Login: Police Crime Diary";
-		echo view('login', $data);
-	}
-
-
-    public function report(){
-		 $data['title'] = "Filling: Police Crime Diary Report Form";
-		 $this->Render('report', $data);
-	 }
-
 } 
