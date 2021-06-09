@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 08, 2021 at 02:13 PM
+-- Generation Time: Jun 09, 2021 at 05:30 PM
 -- Server version: 10.3.25-MariaDB-0ubuntu0.20.04.1
 -- PHP Version: 7.4.16
 
@@ -25,36 +25,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cases`
---
-
-CREATE TABLE `cases` (
-  `case_id` int(255) NOT NULL,
-  `case_type` varchar(255) NOT NULL,
-  `case_name` varchar(255) NOT NULL,
-  `criminal_caseid` varchar(255) NOT NULL,
-  `case_desk` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `criminals`
---
-
-CREATE TABLE `criminals` (
-  `criminalID` int(11) NOT NULL,
-  `fName` varchar(255) NOT NULL,
-  `lName` varchar(255) NOT NULL,
-  `age` int(255) NOT NULL,
-  `resident` varchar(255) NOT NULL,
-  `working_status` varchar(255) NOT NULL,
-  `criminalpic` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `users`
 --
 
@@ -67,31 +37,20 @@ CREATE TABLE `users` (
   `Lname` varchar(255) NOT NULL,
   `rank` varchar(255) NOT NULL,
   `age` int(11) NOT NULL,
-  `tel_number` int(11) NOT NULL
+  `tel_number` int(11) NOT NULL,
+  `role` tinyint(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`policeId`, `policeNo`, `password`, `policepic`, `Fname`, `Lname`, `rank`, `age`, `tel_number`) VALUES
-(1, '001234', '$2y$10$IbOV/.s8wbO0jaMFn6nwPef2YTV8T880iWi7coP4vbPmMBVWnPTeG', '', 'Ashir', 'Ally', 'Police Officer', 25, 627098270);
+INSERT INTO `users` (`policeId`, `policeNo`, `password`, `policepic`, `Fname`, `Lname`, `rank`, `age`, `tel_number`, `role`) VALUES
+(1, '001234', '$2y$10$IbOV/.s8wbO0jaMFn6nwPef2YTV8T880iWi7coP4vbPmMBVWnPTeG', '', 'Ashir', 'Ally', 'Police Officer', 25, 627098270, 0);
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `cases`
---
-ALTER TABLE `cases`
-  ADD PRIMARY KEY (`case_id`);
-
---
--- Indexes for table `criminals`
---
-ALTER TABLE `criminals`
-  ADD PRIMARY KEY (`criminalID`);
 
 --
 -- Indexes for table `users`
@@ -102,18 +61,6 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `cases`
---
-ALTER TABLE `cases`
-  MODIFY `case_id` int(255) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `criminals`
---
-ALTER TABLE `criminals`
-  MODIFY `criminalID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
