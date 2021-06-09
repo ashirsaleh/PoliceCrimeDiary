@@ -45,7 +45,9 @@
                  <hr>
                  <div class="row">
                      <div class="col-12">
-                         <input type="submit" value="Add new User" class="btn btn-success float-right">
+                         <a href="<?php echo site_url('add-user');?>">
+                             <input type="submit" value="Add new User" class="btn btn-success float-right">
+                         </a>
                      </div>
                  </div>
              </div>

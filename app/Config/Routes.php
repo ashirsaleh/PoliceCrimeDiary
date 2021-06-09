@@ -44,6 +44,12 @@ $routes->match(['get', 'post'], 'deleteuser', 'Users::DeleteUser', ['filter' => 
 //Routes for User profile
 $routes->get('user-profile', 'UserProfile::index', ['filter' => 'auth']);
 $routes->match(['get', 'post'], 'editprofile', 'UserProfile::EditProfile', ['filter' => 'auth']);
+
+//Routes for Admin to add user
+$routes->get('add-user', 'AddUser::index', ['filter' => 'auth']);
+$routes->match(['get', 'post'], 'adduser', 'AddUser::AddUser', ['filter' => 'auth']);
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
