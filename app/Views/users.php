@@ -21,7 +21,7 @@
                              <td><?php echo session()->get('policeNo')?></td>
                              <td><?php echo session()->get('rank')?></td>
                              <td><?php echo session()->get('tel_number')?></td>
-                             <td><?php echo session()->get('role')?></td>
+                             <td><?php echo session()->get('age')?></td>
                              <td class="project-actions text-right">
                                  <a class="btn btn-primary btn-sm" href="#">
                                      <i class="fas fa-folder">
