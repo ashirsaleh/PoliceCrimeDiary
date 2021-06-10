@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 09, 2021 at 07:14 PM
+-- Generation Time: Jun 10, 2021 at 01:36 PM
 -- Server version: 10.3.25-MariaDB-0ubuntu0.20.04.1
 -- PHP Version: 7.4.16
 
@@ -67,16 +67,21 @@ CREATE TABLE `users` (
   `Lname` varchar(255) NOT NULL,
   `rank` varchar(255) NOT NULL,
   `age` int(11) NOT NULL,
-  `tel_number` int(11) NOT NULL,
-  `role` tinyint(11) NOT NULL
+  `tel_number` varchar(255) NOT NULL,
+  `role` tinyint(11) NOT NULL,
+  `description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`policeId`, `policeNo`, `password`, `policepic`, `Fname`, `Lname`, `rank`, `age`, `tel_number`, `role`) VALUES
-(1, '001234', '$2y$10$IbOV/.s8wbO0jaMFn6nwPef2YTV8T880iWi7coP4vbPmMBVWnPTeG', '', 'Ashir', 'Ally', 'Police Officer', 25, 627098270, 0);
+INSERT INTO `users` (`policeId`, `policeNo`, `password`, `policepic`, `Fname`, `Lname`, `rank`, `age`, `tel_number`, `role`, `description`) VALUES
+(1, '001234', '$2y$10$IbOV/.s8wbO0jaMFn6nwPef2YTV8T880iWi7coP4vbPmMBVWnPTeG', '', 'Ashir', 'Ally', 'Police Officer', 25, '0627098270', 0, ''),
+(6, 'IS-009', '$2y$10$PgFFOQJPEf8P4v/q7gkZWujnUazf.xbRotqv1YUFZnxhT7hGhjlLS', '', 'fulan', 'fulana', 'Police Officer', 0, '', 0, 'FANYA UCHAWI'),
+(7, '0900', '$2y$10$J1me8OvrfUmxEqEI4/54kuJPW/CjZcGARQ6.VVln49twET8W2gbwC', '', 'mohhh', 'haddy', 'Head Of Station', 0, '', 0, 'jjksjkf'),
+(8, '001234', '$2y$10$1sq1OPq5bvw4HFIQHxHrwe7nPtxczCA.99nx89ftbvSZFkcWzpJG.', '', 'Ashir', 'Ally', 'Police Officer', 0, '', 0, 'someworlds'),
+(9, '001234', '$2y$10$hwlgpJxymYse95yDpGlYBujTwRubY5FfWcfTNYIMiju9BkrkRZRVS', '', 'Ashir', 'Ally', 'Police Officer', 0, '', 0, '');
 
 --
 -- Indexes for dumped tables
@@ -120,7 +125,7 @@ ALTER TABLE `criminals`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `policeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `policeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
