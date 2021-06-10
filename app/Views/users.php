@@ -14,7 +14,7 @@
                      <thead>
                          <tr>
                              <th>Full Name</th>
-                             <th>Police Identy Number</th>
+                             <th>Police Identity Number</th>
                              <th>Rank</th>
                              <th>Telephone Number</th>
                              <th>Role</th>
