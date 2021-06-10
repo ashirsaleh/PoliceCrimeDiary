@@ -120,7 +120,7 @@
                      <div class="modal-dialog">
                          <div class="modal-content bg-dark-primary">
                              <div class="modal-header">
-                                 <h4 class="modal-title">Add new user </h4>
+                                 <h4 class="modal-title">Edit user details</h4>
                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                      <span aria-hidden="true">&times;</span>
                                  </button>
@@ -174,7 +174,7 @@
                      <div class="modal-dialog">
                          <div class="modal-content bg-dark-primary">
                              <div class="modal-header">
-                                 <h4 class="modal-title">Add new user </h4>
+                                 <h4 class="modal-title">View user</h4>
                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                      <span aria-hidden="true">&times;</span>
                                  </button>
