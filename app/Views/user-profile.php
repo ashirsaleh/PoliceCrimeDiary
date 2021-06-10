@@ -13,22 +13,7 @@
 
                         <h3 class="profile-username text-center">
                             <?php echo session()->get('Fname'), ' ', session()->get('Lname') ?></h3>
-
-                        <p class="text-muted text-center">Software Engineer</p>
-
-                        <ul class="list-group list-group-unbordered mb-3">
-                            <li class="list-group-item">
-                                <b>Followers</b> <a class="float-right">1,322</a>
-                            </li>
-                            <li class="list-group-item">
-                                <b>Following</b> <a class="float-right">543</a>
-                            </li>
-                            <li class="list-group-item">
-                                <b>Friends</b> <a class="float-right">13,287</a>
-                            </li>
-                        </ul>
-
-                        <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+                        <p class="text-muted text-center"><?php echo session()->get('rank') ?></p>
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -47,34 +32,38 @@
                         <div class="tab-pane" id="settings">
                             <form class="form-horizontal">
                                 <div class="form-group row">
-                                    <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+                                    <label for="inputName" class="col-sm-2 col-form-label">First Name</label>
                                     <div class="col-sm-10">
-                                        <input type="email" class="form-control" id="inputName" placeholder="Name">
+                                        <input type="email" class="form-control" id="inputName"
+                                            placeholder="First Name">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                                    <label for="inputName2" class="col-sm-2 col-form-label">Last Name</label>
                                     <div class="col-sm-10">
-                                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                                        <input type="email" class="form-control" id="inputEmail"
+                                            placeholder="Last Name">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="inputName2" class="col-sm-2 col-form-label">Name</label>
+                                    <label for="inputName2" class="col-sm-2 col-form-label">Old Password</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputName2" placeholder="Name">
+                                        <input type="text" class="form-control" id="inputName2"
+                                            placeholder="Old Password">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="inputExperience" class="col-sm-2 col-form-label">Experience</label>
+                                    <label for="inputName2" class="col-sm-2 col-form-label">New Password</label>
                                     <div class="col-sm-10">
-                                        <textarea class="form-control" id="inputExperience"
-                                            placeholder="Experience"></textarea>
+                                        <input type="text" class="form-control" id="inputName2"
+                                            placeholder="New Password">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="inputSkills" class="col-sm-2 col-form-label">Skills</label>
+                                    <label for="inputName2" class="col-sm-2 col-form-label">Confirm Password</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
+                                        <input type="text" class="form-control" id="inputName2"
+                                            placeholder="Confirm Password">
                                     </div>
                                 </div>
                                 <div class="form-group row">
