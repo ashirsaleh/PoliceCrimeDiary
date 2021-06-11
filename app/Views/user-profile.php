@@ -77,38 +77,44 @@
                     </div>
                     <!-- /.tab-content -->
                 </div><!-- /.card-body -->
-            </div>
-            <div class="card card-primary">
-                <div class="card-header">
-                    <h3 class="card-title">About Me</h3>
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">About Me</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <strong><i class="fas fa-book mr-1"></i> Full name</strong>
+
+                        <p class="text-muted">
+                        <p><?php echo session()->get('Fname'), ' ', session()->get('Lname') ?></p>
+                        </p>
+
+                        <hr>
+
+                        <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
+
+                        <p class="text-muted">Dar Es Salaam,Tanzania</p>
+
+                        <hr>
+
+                        <strong><i class="fas fa-pencil-alt mr-1"></i> rank</strong>
+                        <p><?php print_r($_SESSION['rank']) ?></p>
+
+                        <hr>
+
+                        <strong><i class="far fa-file-alt mr-1"></i>Telephone</strong>
+                        <p><?php echo session()->get('tel_number') ?></p>
+
+                    </div>
+                    <!-- /.card -->
                 </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                    <strong><i class="fas fa-book mr-1"></i> Full name</strong>
-
-                    <p class="text-muted">
-                    <p><?php echo session()->get('Fname'), ' ', session()->get('Lname') ?></p>
-                    </p>
-
-                    <hr>
-
-                    <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
-
-                    <p class="text-muted">Dar Es Salaam,Tanzania</p>
-
-                    <hr>
-
-                    <strong><i class="fas fa-pencil-alt mr-1"></i> rank</strong>
-                    <p><?php print_r($_SESSION['rank']) ?></p>
-
-                    <hr>
-
-                    <strong><i class="far fa-file-alt mr-1"></i>Telephone</strong>
-                    <p><?php echo session()->get('tel_number') ?></p>
-
-                </div>
-                <!-- /.card -->
             </div>
+
             <!-- /.col -->
         </div>
         <!-- /.row -->
