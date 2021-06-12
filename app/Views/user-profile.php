@@ -23,7 +23,7 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <li class="nav nav-pills nav-item"><a class="nav-link" href="#settings"
+                    <li class="nav nav-pills nav-item"><a class="nav-link" href="#settings" data-card-widget="collapse"
                             data-toggle="tab">Settings</a>
                     </li>
                 </div><!-- /.card-header -->
