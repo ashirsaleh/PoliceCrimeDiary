@@ -102,8 +102,8 @@
 
                         <hr>
 
-                        <strong><i class="fas fa-pencil-alt mr-1"></i> rank</strong>
-                        <p><?php print_r($_SESSION['rank']) ?></p>
+                        <strong><i class="fas fa-pencil-alt mr-1"></i> Password</strong>
+                        <p><?php echo session()->get('users/password') ?></p>
 
                         <hr>
 
