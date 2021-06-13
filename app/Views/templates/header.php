@@ -85,7 +85,6 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="<?php echo base_url("assets/images/avatar.jpg"); ?>" class=" img-circle elevation-2"
                             alt="User Image">
                     </div>
                     <div class="info">
@@ -103,6 +102,8 @@
                                 <p>Dashboard</p>
                             </a>
                         </li>
+
+                        <!-- forms -->
                         <li class="nav-item">
                             <a href="#" class="nav-link form">
                                 <i class="nav-icon fas fa-table"></i>
@@ -128,6 +129,30 @@
                                     <a href="pages/tables/jsgrid.html" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Form Three</p>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <!-- records -->
+                        <li class="nav-item">
+                            <a href="#" class="nav-link form criminals">
+                                <i class="nav-icon fas fa-table"></i>
+                                <p>
+                                    Records
+                                    <i class="fas fa-angle-down right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="<?php echo site_url('criminals')?>" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Criminals</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?php echo site_url('cases')?>" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Cases</p>
                                     </a>
                                 </li>
                             </ul>
