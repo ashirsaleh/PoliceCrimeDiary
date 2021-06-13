@@ -17,7 +17,7 @@
                          <input type="text" id="caseno" class="form-control">
                      </div>
                      <div class="form-group">
-                         <label for="CaseNo">Case No:</label>
+                         <label for="CaseNo">Date:</label>
                          <input type="date" id="date" class="form-control">
                      </div>
                      <div class="form-group">
