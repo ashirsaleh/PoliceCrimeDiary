@@ -8,6 +8,8 @@
 
     <link rel="stylesheet" href="<?php echo base_url('assets/css/all.min.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/main.min.css') ?>">
+    <script src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script>
+</head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -85,6 +87,7 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
+                        <img src="<?php echo base_url("assets/images/userimg.jpg"); ?>" class=" img-circle elevation-2"
                             alt="User Image">
                     </div>
                     <div class="info">

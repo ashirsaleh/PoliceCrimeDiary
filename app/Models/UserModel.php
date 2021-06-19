@@ -5,9 +5,9 @@ use CodeIgniter\Model;
 
 class UserModel extends Model{
     protected $table = "users";
-    protected $primarykey = 'policeId';
+    protected $primaryKey = 'policeId';
     protected $returnType = 'array';
-    protected $allowedFields = ['policeId', 'policeNo', 'password','Fname', 'Lname', 'rank', 'age','role', 'description'];
+    protected $allowedFields = ['policeId', 'policeNo', 'password','Fname', 'Lname', 'rank', 'age','role', 'tel_number', 'description'];
 
     protected $beforeInsert = ['beforeInsert'];
     protected $beforeUpdate = ['beforeUpdate'];

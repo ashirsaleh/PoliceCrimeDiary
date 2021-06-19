@@ -29,7 +29,7 @@ $(function () {
   })
 
   // bootstrap WYSIHTML5 - text editor
-  $('.textarea').summernote()
+  // $('.textarea').summernote()
 
   $('.daterange').daterangepicker({
     ranges: {
@@ -92,9 +92,24 @@ $(function () {
   })
 
   // Sparkline charts
-  var sparkline1 = new Sparkline($('#sparkline-1')[0], { width: 80, height: 50, lineColor: '#92c1dc', endColor: '#ebf4f9' })
-  var sparkline2 = new Sparkline($('#sparkline-2')[0], { width: 80, height: 50, lineColor: '#92c1dc', endColor: '#ebf4f9' })
-  var sparkline3 = new Sparkline($('#sparkline-3')[0], { width: 80, height: 50, lineColor: '#92c1dc', endColor: '#ebf4f9' })
+  var sparkline1 = new Sparkline($('#sparkline-1')[0], {
+    width: 80,
+    height: 50,
+    lineColor: '#92c1dc',
+    endColor: '#ebf4f9'
+  })
+  var sparkline2 = new Sparkline($('#sparkline-2')[0], {
+    width: 80,
+    height: 50,
+    lineColor: '#92c1dc',
+    endColor: '#ebf4f9'
+  })
+  var sparkline3 = new Sparkline($('#sparkline-3')[0], {
+    width: 80,
+    height: 50,
+    lineColor: '#92c1dc',
+    endColor: '#ebf4f9'
+  })
 
   sparkline1.draw([1000, 1200, 920, 927, 931, 1027, 819, 930, 1021])
   sparkline2.draw([515, 519, 520, 522, 652, 810, 370, 627, 319, 630, 921])
@@ -118,8 +133,7 @@ $(function () {
 
   var salesChartData = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-    datasets: [
-      {
+    datasets: [{
         label: 'Digital Goods',
         backgroundColor: 'rgba(60,141,188,0.9)',
         borderColor: 'rgba(60,141,188,0.8)',
@@ -180,12 +194,10 @@ $(function () {
       'Download Sales',
       'Mail-Order Sales'
     ],
-    datasets: [
-      {
-        data: [30, 12, 20],
-        backgroundColor: ['#f56954', '#00a65a', '#f39c12']
-      }
-    ]
+    datasets: [{
+      data: [30, 12, 20],
+      backgroundColor: ['#f56954', '#00a65a', '#f39c12']
+    }]
   }
   var pieOptions = {
     legend: {
@@ -209,21 +221,19 @@ $(function () {
 
   var salesGraphChartData = {
     labels: ['2011 Q1', '2011 Q2', '2011 Q3', '2011 Q4', '2012 Q1', '2012 Q2', '2012 Q3', '2012 Q4', '2013 Q1', '2013 Q2'],
-    datasets: [
-      {
-        label: 'Digital Goods',
-        fill: false,
-        borderWidth: 2,
-        lineTension: 0,
-        spanGaps: true,
-        borderColor: '#efefef',
-        pointRadius: 3,
-        pointHoverRadius: 7,
-        pointColor: '#efefef',
-        pointBackgroundColor: '#efefef',
-        data: [2666, 2778, 4912, 3767, 6810, 5670, 4820, 15073, 10687, 8432]
-      }
-    ]
+    datasets: [{
+      label: 'Digital Goods',
+      fill: false,
+      borderWidth: 2,
+      lineTension: 0,
+      spanGaps: true,
+      borderColor: '#efefef',
+      pointRadius: 3,
+      pointHoverRadius: 7,
+      pointColor: '#efefef',
+      pointBackgroundColor: '#efefef',
+      data: [2666, 2778, 4912, 3767, 6810, 5670, 4820, 15073, 10687, 8432]
+    }]
   }
 
   var salesGraphChartOptions = {

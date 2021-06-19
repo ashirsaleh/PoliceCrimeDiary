@@ -3,16 +3,15 @@
 </section>
 </div>
 <footer class="main-footer">
-  <div class="footer-content">
-    <strong>Copyright &copy; <?= Date('Y') ?>.</strong>
-    Police Crime Diary.
-  </div>
+    <div class="footer-content">
+        <strong>Copyright &copy; <?= Date('Y') ?>.</strong>
+        Police Crime Diary.
+    </div>
 </footer>
 </div>
-<script src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/jquery-ui.min.js'); ?>"></script>
 <script>
-  $.widget.bridge('uibutton', $.ui.button)
+$.widget.bridge('uibutton', $.ui.button)
 </script>
 <script src="<?php echo base_url('assets/js/bootstrap.bundle.min.js'); ?>"></script>
 <!-- ChartJS -->

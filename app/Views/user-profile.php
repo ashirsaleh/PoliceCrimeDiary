@@ -20,12 +20,15 @@
             </div>
             <!-- /.col -->
 
-
             <div class="col-md-9">
                 <div class="card">
-                    <li class="nav nav-pills nav-item"><a class="nav-link" href="#settings" data-card-widget="collapse"
-                            data-toggle="tab">Settings</a>
-                    </li>
+                    <div class="card-header p-2">
+                        <ul class="nav nav-pills">
+                            <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a>
+                            <li class="nav-item"><a class="nav-link" href="#aboutme" data-toggle="tab">About me</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div><!-- /.card-header -->
                 <div class="card-body">
                     <div class="tab-content">
