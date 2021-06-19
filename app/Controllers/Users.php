@@ -5,19 +5,22 @@ namespace App\Controllers;
 use App\Models\UserModel;
 use CodeIgniter\HTTP\Request;
 
-class users extends BaseController{
-    public function index(){
+class users extends BaseController
+{
+    public function index()
+    {
         $model = new UserModel();
         $data['title'] = 'Users';
         $data['location'] = 'Users';
         $data['subRoute'] = 'All Users';
         $data['users'] = $model->findall();
-        $this->Render('users',$data);
+        $this->Render('users', $data);
     }
 
-    public function AddUser(){
+    public function AddUser()
+    {
         helper('form');
-        if($this->request->getMethod() === 'post'){
+        if ($this->request->getMethod() === 'post') {
             $rules = [
                 'Fname' => 'required|min_length[4]|max_length[50]',
                 'Lname' => 'required|min_length[4]|max_length[50]',
@@ -27,13 +30,13 @@ class users extends BaseController{
                 'description' => 'required|min_length[4]|max_length[255]',
             ];
             $errors = [];
-            if(!$this->validate(
+            if (!$this->validate(
                 $rules, $errors
-            )){
+            )) {
                 $data['validation'] = $this->validator;
                 return redirect()->to('users');
 
-            }else{
+            } else {
                 $user = array(
                     'policeNo' => $this->request->getVar('policeNo'),
                     'Fname' => $this->request->getVar('Fname'),
@@ -50,11 +53,112 @@ class users extends BaseController{
         }
     }
 
-    public function EditUser(){
-        $data = [];
+    public function viewUser()
+    {
+        $id = $this->request->getVar('id');
+        $model = new UserModel();
+        $user = $model->find($id);
+        echo '
+        <table class="table table-hover">
+            <tr>
+                <th>Full Name</th>
+                <td>' . $user['Fname'] . " " . $user['Lname'] . '</td>
+            </tr>
+            <tr>
+                <th>Police Identification</th>
+                <td>' . $user['policeNo'] . '</td>
+            </tr>
+            <tr>
+                <th>Rank</th>
+                <td>' . $user['rank'] . '</td>
+            </tr>
+            <tr>
+                <th>Phone Number</th>
+                <td>' . $user['tel_number'] . '</td>
+            </tr>
+            <tr>
+                <th>age</th>
+                <td>' . $user['age'] . '</td>
+            </tr>
+        </table>
+        ';
     }
 
-    public function DeleteUser(){
-        $data = [];
+    public function getUser()
+    {
+        $id = $this->request->getVar('id');
+        $model = new UserModel();
+        $user = $model->find($id);
+
+        echo '
+            <div class="form-group">
+                <label for="editFirstName">First name</label>
+                <input type="text" name="Fname" value="' . $user['Fname'] . '" id="editFirstName" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="editLastName">Last name</label>
+                <input type="text" name="Lname" value="' . $user['Lname'] . '" id="editLastName" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="editPoliceNo">Police Identification Number</label>
+                <input type="text" name="policeNo" value="' . $user['policeNo'] . '" id="editPoliceNo" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="editRank">Rank</label>
+                <select id="editRank" name="rank" value="' . $user['rank'] . '" class="form-control custom-select">
+                    <option selected disabled>Select Rank</option>
+                    <option>Police Officer</option>
+                    <option>Head Of Station</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="editPassword">User password</label>
+                <input type="password" placeholder="********" name="password" id="editPassword" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="editDescription">Short Description </label>
+                <textarea id="editDescription" name="description" class="form-control" rows="4">' . $user['description'] . '
+                </textarea>
+            </div>';
+    }
+
+    public function EditUser()
+    {
+        if ($this->request->getMethod() === 'post') {
+            $rules = [
+                'Fname' => 'required|min_length[4]|max_length[50]',
+                'Lname' => 'required|min_length[4]|max_length[50]',
+                'password' => 'required|min_length[4]|max_length[255]',
+                'policeNo' => 'required|min_length[4]|max_length[50]',
+                'rank' => 'required',
+                'description' => 'required|min_length[4]|max_length[255]',
+            ];
+            $errors = [];
+            if (!$this->validate($rules, $errors)) {
+                $data['validation'] = $this->validator;
+            } else {
+                $user = array(
+                    'policeNo' => $this->request->getVar('policeNo'),
+                    'Fname' => $this->request->getVar('Fname'),
+                    'Lname' => $this->request->getVar('Lname'),
+                    'rank' => $this->request->getVar('rank'),
+                    'tel_number' => $this->request->getVar('tel_number'),
+                    'description' => $this->request->getVar('description'),
+                    'password' => $this->request->getVar('password'),
+                );
+                $model = new UserModel();
+                $model->update();
+                return redirect()->to('users');
+            }
+        }
+
+    }
+
+    public function DeleteUser()
+    {
+        $id = $this->request->getVar('id');
+        $model = new UserModel();
+        $model->delete($id);
+        redirect()->to('users');
     }
 }
