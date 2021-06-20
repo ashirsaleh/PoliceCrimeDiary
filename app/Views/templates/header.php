@@ -111,7 +111,7 @@
                             <a href="#" class="nav-link form">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
-                                    Forms
+                                    Case Statements
                                     <i class="fas fa-angle-down right"></i>
                                 </p>
                             </a>
@@ -119,13 +119,13 @@
                                 <li class="nav-item">
                                     <a href="<?php echo site_url('form1')?>" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Form One</p>
+                                        <p>Report Form</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/tables/data.html" class="nav-link">
+                                    <a href="<?php echo site_url('form2')?>" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Form Two</p>
+                                        <p>Complaints Form</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">

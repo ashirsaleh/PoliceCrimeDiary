@@ -13,10 +13,10 @@
                         <tr>
                             <th>Full Name</th>
                             <th>Case Number</th>
-                            <th>Rank</th>
+                            <th>Relationship</th>
                             <th>Telephone Number</th>
-                            <th>Role</th>
-                            <th>Action</th>
+                            <th>Age of a Person</th>
+                            <th>Appearance</th>
                         </tr>
                     </thead>
                     <tbody>

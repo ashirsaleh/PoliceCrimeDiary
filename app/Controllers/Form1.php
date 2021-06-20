@@ -6,9 +6,9 @@ use App\Models\AuthModel;
 
 class Form1 extends BaseController{
     public function index(){
-        $data['title'] = 'Form1';
-        $data['location'] = 'Form';
-        $data['subRoute'] = 'Form1';
+        $data['title'] = 'Reporting Form';
+        $data['location'] = 'REPORT FORM';
+        $data['subRoute'] = 'REPORT FORM';
         $this->Render('form1',$data);
     }
 
