@@ -11,32 +11,24 @@
                      </div>
                  </div>
                  <div class="card-body">
-                     <div class="form-group">
-                         <label for="inputPoliceNo">Case No:</label>
-                         <input type="text" id="caseno" class="form-control">
-                     </div><span>
+                     <p><b>The Information below should be fullfiled by Plaintiff</b></p>
+                     <div class="d-flex justify-content-between">
                          <div class="form-group">
-                             <label for="inputPoliceNo">Estimated Age of a Person:</label>
-                             <input type="text" id="caseno" class="form-control">
+                             <label for="fullname">Full Name:</label>
+                             <input type="text" id="name" style="width: 500px;" class="form-control">
                          </div>
-                     </span>
+                         <div class="form-group">
+                             <label for="address">Address:</label>
+                             <input type="text" id="address" class="form-control">
+                         </div>
+                     </div>
 
                      <div class="form-group">
                          <label for="CaseNo">Date:</label>
                          <input type="date" id="date" class="form-control">
                      </div>
-                     <div class="form-group">
-                         <label for="reportingofficer">Accuser Name:</label>
-                         <input type="text" id="officer" class="form-control">
-                     </div>
-                     <div class="form-group">
-                         <label for="areataken">Appearance:</label>
-                         <input type="text" id="area" class="form-control">
-                     </div>
-                     <div class="form-group">
-                         <label for="areataken">Name of Gurdian/Relationship:</label>
-                         <input type="text" id="area" class="form-control">
-                     </div>
+
+
                      <div class="form-group">
                          <label>Phone mask:</label>
 
@@ -65,16 +57,51 @@
                          <!-- /.form group -->
                      </div>
                      <div class="form-group">
-                         <label for="event">Nature Of Complants:</label>
+                         <label for="event">Nature Of Complaints:</label>
                          <textarea id="event" class="form-control" rows="4"></textarea>
                      </div>
-                     <div class="form-group">
-                         <label for="areataken">Area Taken:</label>
-                         <input type="text" id="area" class="form-control">
+                     <p><b>Name of The people involved.</b>
+                     <p>
+                     <div class="d-flex justify-content-between">
+                         <div class="form-group">
+                             <label for="fullname">Full Name:</label>
+                             <input type="text" id="name" style="width: 500px;" class="form-control">
+                         </div>
+                         <div class="form-group">
+                             <label for="address">Location:</label>
+                             <input type="text" id="address" class="form-control">
+                         </div>
                      </div>
                      <div class="form-group">
-                         <label for="summary">Summary:</label>
-                         <textarea id="summary" class="form-control" rows="4"></textarea>
+                         <label>Describe what you saw</label>
+                         <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                     </div>
+                     <p><b>Add vehicles if involved</b></p>
+                     <div class="d-flex justify-content-between">
+                         <div class="form-group">
+                             <label for="fullname">Type:</label>
+                             <input type="text" id="name" class="form-control">
+                         </div>
+                         <div class="form-group">
+                             <label for="address">Plate Number:</label>
+                             <input type="text" id="address" class="form-control">
+                         </div>
+                         <div class="form-group">
+                             <label for="address">Color:</label>
+                             <input type="text" id="address" class="form-control">
+                         </div>
+                     </div>
+                     <div class="form-group">
+                         <label for="exampleInputFile">Attach witness statement</label>
+                         <div class="input-group">
+                             <div class="custom-file">
+                                 <input type="file" class="custom-file-input" id="exampleInputFile">
+                                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                             </div>
+                             <div class="input-group-append">
+                                 <span class="input-group-text">Upload</span>
+                             </div>
+                         </div>
                      </div>
                  </div>
                  <!-- /.card-body -->

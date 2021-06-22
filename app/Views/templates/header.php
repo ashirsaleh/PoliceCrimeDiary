@@ -117,23 +117,18 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="<?php echo site_url('form1')?>" class="nav-link">
+                                    <a href="<?php echo site_url('crime')?>" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Report Form</p>
+                                        <p>Record Crime</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?php echo site_url('form2')?>" class="nav-link">
+                                    <a href="<?php echo site_url('complaints')?>" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Complaints Form</p>
+                                        <p>Record Complaints </p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="pages/tables/jsgrid.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Form Three</p>
-                                    </a>
-                                </li>
+
                             </ul>
 
                             <!-- records -->
@@ -149,7 +144,13 @@
                                 <li class="nav-item">
                                     <a href="<?php echo site_url('criminals')?>" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Criminals</p>
+                                        <p>Defendants</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?php echo site_url('criminals')?>" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Complaints</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
