@@ -148,7 +148,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?php echo site_url('criminals')?>" class="nav-link">
+                                    <a href="<?php echo site_url('complainer')?>" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Complaints</p>
                                     </a>

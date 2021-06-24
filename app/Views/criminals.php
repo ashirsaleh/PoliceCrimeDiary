@@ -2,7 +2,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">List of Criminals</h3>
+                <h3 class="card-title">List of Defendant</h3>
                 <div class="float-right">
                     <!--  -->
                 </div>
@@ -12,11 +12,12 @@
                     <thead>
                         <tr>
                             <th>Full Name</th>
-                            <th>Case Number</th>
+                            <th>Time Arrested</th>
+                            <th>Location Arrested</th>
                             <th>Relationship</th>
-                            <th>Telephone Number</th>
                             <th>Age of a Person</th>
-                            <th>Appearance</th>
+                            <th>Amount Of Bail<?php echo "Tsh.xxxx"?></th>
+                            <th>All charges</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,7 +58,7 @@
                 </table>
                 <hr>
                 <div class="d-flex justify-content-center">
-                    <a type="button" class="btn btn-primary" href="form1">
+                    <a type="button" class="btn btn-primary" href="crime">
                         Record Crime
                     </a>
                 </div>
@@ -65,137 +66,85 @@
                 <div class="float-center">
 
                 </div>
-                <div class="modal fade" id="modal-add">
-                    <div class="modal-dialog">
-                        <div class="modal-content bg-dark-primary">
-                            <div class="modal-header">
-                                <h4 class="modal-title">Add new user </h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="card-body">
-                                <form action="<?php echo site_url('adduser')?>" method="POST">
-                                    <div class="form-group">
-                                        <label for="inputFirstname">First name</label>
-                                        <input type="text" name="Fname" id="inputFirstname" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputLastname">Last name</label>
-                                        <input type="text" name="Lname" id="inputLastname" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputPoliceNo">Police Identification Number</label>
-                                        <input type="text" name="policeNo" id="inputPoliceNo" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputStatus">Rank</label>
-                                        <select id="inputStatus" name="rank" class="form-control custom-select">
-                                            <option selected disabled>Select Rank</option>
-                                            <option>Police Officer</option>
-                                            <option>Head Of Station</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="password">User password</label>
-                                        <input type="password" name="password" id="passowrd" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputDescription">Short Description </label>
-                                        <textarea id="inputDescription" name="description" class="form-control"
-                                            rows="4"></textarea>
-                                    </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 p-3">
-                                    <a href="#" class="btn btn-secondary">Cancel</a>
-                                    <input type="submit" value="Add " class="btn btn-success float-right">
+                <div>
+                    <div class="modal fade" id="modal-edit">
+                        <div class="modal-dialog">
+                            <div class="modal-content bg-dark-primary">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Edit user details</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
-                                </form>
+                                <div class="card-body">
+                                    <form action="<?php echo site_url('edituser')?>" method="POST">
+                                        <div class="form-group">
+                                            <label for="inputFirstname">First name</label>
+                                            <input type="text" name="Fname" id="inputFirstname" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputLastname">Last name</label>
+                                            <input type="text" name="Lname" id="inputLastname" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputPoliceNo">Police Identification Number</label>
+                                            <input type="text" name="policeNo" id="inputPoliceNo" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputStatus">Rank</label>
+                                            <select id="inputStatus" name="rank" class="form-control custom-select">
+                                                <option selected disabled>Select Rank</option>
+                                                <option>Police Officer</option>
+                                                <option>Head Of Station</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password">User password</label>
+                                            <input type="password" name="password" id="passowrd" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputDescription">Short Description </label>
+                                            <textarea id="inputDescription" name="description" class="form-control"
+                                                rows="4"></textarea>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 p-3">
+                                        <a href="#" class="btn btn-secondary">Cancel</a>
+                                        <input type="submit" value="Add " class="btn btn-success float-right">
+                                    </div>
+                                    </form>
+                                </div>
+                                <br>
+                                <!-- /.card-body -->
                             </div>
-                            <br>
-                            <!-- /.card-body -->
                         </div>
                     </div>
-                </div>
-                <div class="modal fade" id="modal-edit">
-                    <div class="modal-dialog">
-                        <div class="modal-content bg-dark-primary">
-                            <div class="modal-header">
-                                <h4 class="modal-title">Edit user details</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="card-body">
-                                <form action="<?php echo site_url('edituser')?>" method="POST">
-                                    <div class="form-group">
-                                        <label for="inputFirstname">First name</label>
-                                        <input type="text" name="Fname" id="inputFirstname" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputLastname">Last name</label>
-                                        <input type="text" name="Lname" id="inputLastname" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputPoliceNo">Police Identification Number</label>
-                                        <input type="text" name="policeNo" id="inputPoliceNo" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputStatus">Rank</label>
-                                        <select id="inputStatus" name="rank" class="form-control custom-select">
-                                            <option selected disabled>Select Rank</option>
-                                            <option>Police Officer</option>
-                                            <option>Head Of Station</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="password">User password</label>
-                                        <input type="password" name="password" id="passowrd" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputDescription">Short Description </label>
-                                        <textarea id="inputDescription" name="description" class="form-control"
-                                            rows="4"></textarea>
-                                    </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 p-3">
-                                    <a href="#" class="btn btn-secondary">Cancel</a>
-                                    <input type="submit" value="Add " class="btn btn-success float-right">
+                    <div class="modal fade" id="modal-view">
+                        <div class="modal-dialog">
+                            <div class="modal-content bg-dark-primary">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">View user</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
-                                </form>
+                                <div class="card-body">
+                                    <h4>Full name: <span
+                                            class=""><?php echo session()->get('Fname'), ' ', session()->get('Lname') ?></span>
+                                    </h4>
+                                </div>
+                                <br>
+                                <!-- /.card-body -->
                             </div>
-                            <br>
-                            <!-- /.card-body -->
-                        </div>
-                    </div>
-                </div>
-                <div class="modal fade" id="modal-view">
-                    <div class="modal-dialog">
-                        <div class="modal-content bg-dark-primary">
-                            <div class="modal-header">
-                                <h4 class="modal-title">View user</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="card-body">
-                                <h4>Full name: <span
-                                        class=""><?php echo session()->get('Fname'), ' ', session()->get('Lname') ?></span>
-                                </h4>
-                            </div>
-                            <br>
-                            <!-- /.card-body -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<script type="text/javascript">
-let link = document.querySelector('.criminals');
-link.classList.add('active');
-</script>
+    <script type="text/javascript">
+    let link = document.querySelector('.criminals');
+    link.classList.add('active');
+    </script>
