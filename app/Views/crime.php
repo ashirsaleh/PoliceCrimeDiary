@@ -18,8 +18,8 @@
                              <input type="text" id="name" style="width: 500px;" class="form-control">
                          </div>
                          <div class="form-group">
-                             <label for="incident">Date Of Birth:</label>
-                             <input type="date" id="date" class="form-control">
+                             <label for="incident">Age:</label>
+                             <input type="text" id="age" class="form-control">
                          </div>
                      </div>
                      <div class="bootstrap-timepicker">

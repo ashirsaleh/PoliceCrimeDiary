@@ -62,68 +62,11 @@
                         Record Crime
                     </a>
                 </div>
-
-                <div class="float-center">
-
-                </div>
-                <div class="modal fade" id="modal-add">
-                    <div class="modal-dialog">
-                        <div class="modal-content bg-dark-primary">
-                            <div class="modal-header">
-                                <h4 class="modal-title">Add new user </h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="card-body">
-                                <form action="<?php echo site_url('adduser')?>" method="POST">
-                                    <div class="form-group">
-                                        <label for="inputFirstname">First name</label>
-                                        <input type="text" name="Fname" id="inputFirstname" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputLastname">Last name</label>
-                                        <input type="text" name="Lname" id="inputLastname" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputPoliceNo">Police Identification Number</label>
-                                        <input type="text" name="policeNo" id="inputPoliceNo" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputStatus">Rank</label>
-                                        <select id="inputStatus" name="rank" class="form-control custom-select">
-                                            <option selected disabled>Select Rank</option>
-                                            <option>Police Officer</option>
-                                            <option>Head Of Station</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="password">User password</label>
-                                        <input type="password" name="password" id="passowrd" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputDescription">Short Description </label>
-                                        <textarea id="inputDescription" name="description" class="form-control"
-                                            rows="4"></textarea>
-                                    </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 p-3">
-                                    <a href="#" class="btn btn-secondary">Cancel</a>
-                                    <input type="submit" value="Add " class="btn btn-success float-right">
-                                </div>
-                                </form>
-                            </div>
-                            <br>
-                            <!-- /.card-body -->
-                        </div>
-                    </div>
-                </div>
                 <div class="modal fade" id="modal-edit">
                     <div class="modal-dialog">
                         <div class="modal-content bg-dark-primary">
                             <div class="modal-header">
-                                <h4 class="modal-title">Edit user details</h4>
+                                <h4 class="modal-title">Edit complainer details</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -139,23 +82,15 @@
                                         <input type="text" name="Lname" id="inputLastname" class="form-control">
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputPoliceNo">Police Identification Number</label>
-                                        <input type="text" name="policeNo" id="inputPoliceNo" class="form-control">
+                                        <label for="inputPoliceNo">Phone number</label>
+                                        <input type="text" name="phone" id="phonenumber" class="form-control">
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputStatus">Rank</label>
-                                        <select id="inputStatus" name="rank" class="form-control custom-select">
-                                            <option selected disabled>Select Rank</option>
-                                            <option>Police Officer</option>
-                                            <option>Head Of Station</option>
-                                        </select>
+                                        <label for="incident">Date:</label>
+                                        <input type="date" id="date" class="form-control">
                                     </div>
                                     <div class="form-group">
-                                        <label for="password">User password</label>
-                                        <input type="password" name="password" id="passowrd" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputDescription">Short Description </label>
+                                        <label for="inputDescription">Nature of complaints </label>
                                         <textarea id="inputDescription" name="description" class="form-control"
                                             rows="4"></textarea>
                                     </div>
@@ -197,6 +132,101 @@
 </div>
 
 <script type="text/javascript">
-let link = document.querySelector('.criminals');
+let link = document.querySelector('.complainer');
 link.classList.add('active');
+
+$(document).ready(function() {
+    $(document).on('submit', '#dataform', function(event) {
+        event.preventDefault();
+        $.ajax({
+            url: '<?php echo base_url('users/addUser') ?>',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            method: 'POST',
+            data: new FormData(this),
+            contentType: false,
+            processData: false,
+            success: function(data) {
+
+            },
+            error: function() {
+                alert('error');
+            }
+
+        });
+    });
+
+    $('body').delegate('.deleteUser', 'click', function() {
+        var id = $(this).data('id3');
+        $.ajax({
+            url: '<?php echo base_url('users/deleteUser'); ?>',
+            method: 'POST',
+            data: {
+                id: id
+            },
+            success: (data) => {
+                console.log('data');
+            },
+            error: (err) => {
+                console.log(err);
+            }
+        });
+    });
+    $('body').delegate('.viewUser', 'click', function() {
+        var id = $(this).data('id1');
+        $('#modal-view').modal('show');
+        $.ajax({
+            url: '<?php echo site_url('users/viewuser'); ?>',
+            method: 'POST',
+            data: {
+                id: id
+            },
+            success: function(data) {
+                $('.viewcard-body').html(data);
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+
+    });
+    $('body').delegate('.editUser', 'click', function() {
+        var id = $(this).data('id2');
+        $('#modal-edit').modal('show');
+        $.ajax({
+            url: '<?php echo base_url('users/getUser'); ?>',
+            method: 'POST',
+            data: {
+                id: id
+            },
+            success: function(data) {
+                $('#editcard').html(data);
+            }
+        });
+
+    });
+    $(document).on('submit', '#edituserform', function(event) {
+        event.preventDefault();
+        var id = $('#editusername').data('id');
+        $.ajax({
+            url: '<?php echo base_url('users/edituser'); ?>',
+            method: 'POST',
+            data: {
+                name: $('#editusername').val(),
+                type: $('#editusertype').val(),
+                quantity: $('#edituserquantity').val(),
+                expiry: $('#edituserexpiry').val(),
+                price: $('#edituserprice').val(),
+                barcode: $('#editbarcode').val(),
+                id: id
+            },
+            success: function(data) {
+                alert('ok');
+            }
+        });
+    });
+
+});
+</script>
 </script>

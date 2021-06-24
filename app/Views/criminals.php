@@ -16,7 +16,7 @@
                             <th>Location Arrested</th>
                             <th>Relationship</th>
                             <th>Age of a Person</th>
-                            <th>Amount Of Bail<?php echo "Tsh.xxxx"?></th>
+                            <th>Amount Of Bail</th>
                             <th>All charges</th>
                         </tr>
                     </thead>
@@ -29,11 +29,13 @@
                          foreach ($users as $users){ 
                             ?>
                         <tr>
-                            <td><?php echo $users['Fname'].' '. $users['Lname']; ?></td>
-                            <td><?php echo $users['policeNo']; ?></td>
-                            <td><?php echo $users['rank']; ?></td>
-                            <td><?php echo $users['tel_number']; ?></td>
-                            <td><?php echo $users['age']; ?></td>
+                            <td><?php echo $defendants['Fname'].' '. $users['Lname']; ?></td>
+                            <td><?php echo $defendants['t_arrested']; ?></td>
+                            <td><?php echo $defendants['L_location']; ?></td>
+                            <td><?php echo $defendants['relaltionship']; ?></td>
+                            <td><?php echo $defendants['age']; ?></td>
+                            <td><?php echo $defendants['bail']; ?></td>
+                            <td><?php echo $defendants['charges']; ?></td>
                             <td class="project-actions text-right">
                                 <a class="btn btn-primary btn-sm" data-id1="<?php echo $users['policeId']; ?>"
                                     data-toggle="modal" data-target="#modal-view" href="#">
@@ -71,7 +73,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content bg-dark-primary">
                                 <div class="modal-header">
-                                    <h4 class="modal-title">Edit user details</h4>
+                                    <h4 class="modal-title">Edit defendant details</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -87,24 +89,22 @@
                                             <input type="text" name="Lname" id="inputLastname" class="form-control">
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputPoliceNo">Police Identification Number</label>
-                                            <input type="text" name="policeNo" id="inputPoliceNo" class="form-control">
+                                            <label for="inputPoliceNo">Time arrested</label>
+                                            <input type="text" name="time" id="tarrested" class="form-control">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="incident">Date Arrested:</label>
+                                            <input type="date" id="date" class="form-control">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="password">Amount of Bail</label>
+                                            <input type="text" name="bail" id="bail" class="form-control">
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputStatus">Rank</label>
-                                            <select id="inputStatus" name="rank" class="form-control custom-select">
-                                                <option selected disabled>Select Rank</option>
-                                                <option>Police Officer</option>
-                                                <option>Head Of Station</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="password">User password</label>
-                                            <input type="password" name="password" id="passowrd" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputDescription">Short Description </label>
-                                            <textarea id="inputDescription" name="description" class="form-control"
+                                            <label for="inputDescription">All charges </label>
+                                            <textarea id="inputcharges" name="charges" class="form-control"
                                                 rows="4"></textarea>
                                         </div>
                                 </div>
@@ -147,4 +147,99 @@
     <script type="text/javascript">
     let link = document.querySelector('.criminals');
     link.classList.add('active');
+
+    $(document).ready(function() {
+        $(document).on('submit', '#dataform', function(event) {
+            event.preventDefault();
+            $.ajax({
+                url: '<?php echo base_url('users/addUser') ?>',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                method: 'POST',
+                data: new FormData(this),
+                contentType: false,
+                processData: false,
+                success: function(data) {
+
+                },
+                error: function() {
+                    alert('error');
+                }
+
+            });
+        });
+
+        $('body').delegate('.deleteUser', 'click', function() {
+            var id = $(this).data('id3');
+            $.ajax({
+                url: '<?php echo base_url('users/deleteUser'); ?>',
+                method: 'POST',
+                data: {
+                    id: id
+                },
+                success: (data) => {
+                    console.log('data');
+                },
+                error: (err) => {
+                    console.log(err);
+                }
+            });
+        });
+        $('body').delegate('.viewUser', 'click', function() {
+            var id = $(this).data('id1');
+            $('#modal-view').modal('show');
+            $.ajax({
+                url: '<?php echo site_url('users/viewuser'); ?>',
+                method: 'POST',
+                data: {
+                    id: id
+                },
+                success: function(data) {
+                    $('.viewcard-body').html(data);
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+
+        });
+        $('body').delegate('.editUser', 'click', function() {
+            var id = $(this).data('id2');
+            $('#modal-edit').modal('show');
+            $.ajax({
+                url: '<?php echo base_url('users/getUser'); ?>',
+                method: 'POST',
+                data: {
+                    id: id
+                },
+                success: function(data) {
+                    $('#editcard').html(data);
+                }
+            });
+
+        });
+        $(document).on('submit', '#edituserform', function(event) {
+            event.preventDefault();
+            var id = $('#editusername').data('id');
+            $.ajax({
+                url: '<?php echo base_url('users/edituser'); ?>',
+                method: 'POST',
+                data: {
+                    name: $('#editusername').val(),
+                    type: $('#editusertype').val(),
+                    quantity: $('#edituserquantity').val(),
+                    expiry: $('#edituserexpiry').val(),
+                    price: $('#edituserprice').val(),
+                    barcode: $('#editbarcode').val(),
+                    id: id
+                },
+                success: function(data) {
+                    alert('ok');
+                }
+            });
+        });
+
+    });
+    </script>
     </script>

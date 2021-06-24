@@ -60,7 +60,8 @@
                          <label for="event">Nature Of Complaints:</label>
                          <textarea id="event" class="form-control" rows="4"></textarea>
                      </div>
-                     <p><b>Name of The people involved.</b>
+                     <p>
+                         <b>Name of The people involved.</b>
                      <p>
                      <div class="d-flex justify-content-between">
                          <div class="form-group">
@@ -76,7 +77,9 @@
                          <label>Describe what you saw</label>
                          <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
                      </div>
-                     <p><b>Add vehicles if involved</b></p>
+                     <p>
+                         <b>Add vehicles if involved</b>
+                     </p>
                      <div class="d-flex justify-content-between">
                          <div class="form-group">
                              <label for="fullname">Type:</label>
