@@ -1,6 +1,6 @@
  <section class="content">
-     <div class="row">
-         <div class="col-md-10">
+     <div class="row justify-content-center">
+         <div class="col-md-12">
              <div class="card card-primary">
                  <div class="card-header">
                      <h3 class="card-title">TANZANIA POLICE FORCE</h3>
@@ -14,21 +14,40 @@
                      <p><b>The Information below should be fullfiled by Plaintiff</b></p>
                      <div class="d-flex justify-content-between">
                          <div class="form-group">
-                             <label for="fullname">Full Name:</label>
-                             <input type="text" id="name" style="width: 500px;" class="form-control">
+                             <label for="fullname">First Name:</label>
+                             <input type="text" id="name" style="width: 250px;" class="form-control">
+                         </div>
+                         <div class="form-group">
+                             <label for="fullname">Last Name:</label>
+                             <input type="text" id="name" style="width: 250px;" class="form-control">
                          </div>
                          <div class="form-group">
                              <label for="address">Address:</label>
                              <input type="text" id="address" class="form-control">
                          </div>
                      </div>
+                     <div class="row d-flex justify-content-between">
+                         <div class="form-group">
+                             <label for="CaseNo">Date:</label>
+                             <input type="date" id="date" style="width: 200px;" class="form-control">
+                         </div>
+                         <div class="bootstrap-timepicker">
+                             <div class="form-group">
+                                 <label>Time:</label>
 
-                     <div class="form-group">
-                         <label for="CaseNo">Date:</label>
-                         <input type="date" id="date" class="form-control">
+                                 <div class="input-group date" id="timepicker" data-target-input="nearest">
+                                     <input type="timepicker" class="form-control datetimepicker-input"
+                                         data-target="#timepicker" />
+                                     <div class="input-group-append" data-target="#timepicker"
+                                         data-toggle="datetimepicker">
+                                         <div class="input-group-text"><i class="far fa-clock"></i></div>
+                                     </div>
+                                 </div>
+                                 <!-- /.input group -->
+                             </div>
+                             <!-- /.form group -->
+                         </div>
                      </div>
-
-
                      <div class="form-group">
                          <label>Phone mask:</label>
 
@@ -40,21 +59,6 @@
                                  data-inputmask="'mask': ['9999-999-999 [x999999]', '+0999 999 999 9999[9]-9999']"
                                  data-mask>
                          </div>
-                     </div>
-                     <div class="bootstrap-timepicker">
-                         <div class="form-group">
-                             <label>Time:</label>
-
-                             <div class="input-group date" id="timepicker" data-target-input="nearest">
-                                 <input type="timepicker" class="form-control datetimepicker-input"
-                                     data-target="#timepicker" />
-                                 <div class="input-group-append" data-target="#timepicker" data-toggle="datetimepicker">
-                                     <div class="input-group-text"><i class="far fa-clock"></i></div>
-                                 </div>
-                             </div>
-                             <!-- /.input group -->
-                         </div>
-                         <!-- /.form group -->
                      </div>
                      <div class="form-group">
                          <label for="event">Nature Of Complaints:</label>
