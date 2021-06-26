@@ -21,19 +21,19 @@
                     </thead>
                     <tbody>
                         <?php 
-                     if (empty($users)){
+                     if (empty($complainers)){
                          echo "<tr><td colspan='6' class='' style='color: red; text-align: center;' ><h4>There are No Records</h4></td></tr>";
                      }else{
                          $counter = 1;
-                         foreach ($Complaints as $Complaint){ 
+                         foreach ($complainers as $complaint){ 
                             ?>
                         <tr>
                             <td><?php echo $complaint['Fname'].' '. $complaint['Lname']; ?></td>
                             <td><?php echo $complaint['address']; ?></td>
-                            <td><?php echo $complaint['Time']; ?></td>
-                            <td><?php echo $complaint['tel_number']; ?></td>
+                            <td><?php echo $complaint['time']; ?></td>
+                            <td><?php echo $complaint['p_number']; ?></td>
                             <td><?php echo $complaint['date']; ?></td>
-                            <td><?php echo $complaint['n_complaints']; ?></td>
+                            <td><?php echo $complaint['nature_complaints']; ?></td>
                             <td class="project-actions text-right">
                                 <a class="btn btn-primary btn-sm" data-id1="<?php echo $complaint['complainer_id']; ?>">
                                     <i class="fas fa-folder"></i>View
@@ -175,7 +175,7 @@ $(document).ready(function() {
         var id = $(this).data('id1');
         $('#modal-view').modal('show');
         $.ajax({
-            url: '<?php echo site_url('complainer/viewcomplainer'); ?>',
+            url: '<?php echo site_url('complainers/viewcomplainer'); ?>',
             method: 'POST',
             data: {
                 id: id
@@ -193,7 +193,7 @@ $(document).ready(function() {
         var id = $(this).data('id2');
         $('#modal-edit').modal('show');
         $.ajax({
-            url: '<?php echo base_url('complainer/getUser'); ?>',
+            url: '<?php echo base_url('complainers/getUser'); ?>',
             method: 'POST',
             data: {
                 id: id
@@ -208,7 +208,7 @@ $(document).ready(function() {
         event.preventDefault();
         var id = $('#editusername').data('id');
         $.ajax({
-            url: '<?php echo base_url('complainer/editcomplainer'); ?>',
+            url: '<?php echo base_url('complainers/editcomplainer'); ?>',
             method: 'POST',
             data: {
                 name: $('#editusername').val(),

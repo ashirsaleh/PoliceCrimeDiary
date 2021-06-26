@@ -6,13 +6,13 @@ use App\models\ComplaintModel;
 class complainer extends BaseController{
     public function index(){
         $model = new ComplaintModel();
-        $data['title'] = 'Complainer';
+        $data['title'] = 'Complainers';
         $data['location'] = 'Records';
         $data['subRoute'] = 'Complainer records';
-        $data['complainer'] = $model->findall();
+        $data['complainers'] = $model->findall();
         $this->Render('complainer',$data);
     }
-    public function viewcomplaints()
+    public function viewcomplainers()
     {
         $id = $this->request->getVar('id');
         $model = new ComplaintModel();
