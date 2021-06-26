@@ -1,6 +1,6 @@
  <section class="content">
      <div class="row d-flex">
-         <div class="col-md-10 justfy-content-between">
+         <div class="col-md-12">
              <div class="card card-primary">
                  <div class="card-header">
                      <h3 class="card-title">TANZANIA POLICE FORCE</h3>
@@ -14,31 +14,38 @@
                  <div class="card-body">
                      <div class="d-flex justify-content-between">
                          <div class="form-group">
-                             <label for="fullname">Full Name:</label>
-                             <input type="text" id="name" style="width: 500px;" class="form-control">
+                             <label for="fullname">First Name:</label>
+                             <input type="text" id="name" style="width: 250px;" class="form-control">
+                         </div>
+                         <div class="form-group">
+                             <label for="fullname">Last Name:</label>
+                             <input type="text" id="name" style="width: 250px;" class="form-control">
                          </div>
                          <div class="form-group">
                              <label for="incident">Age:</label>
                              <input type="text" id="age" class="form-control">
                          </div>
                      </div>
-                     <div class="bootstrap-timepicker">
+                     <div class="row d-flex justify-content-between">
                          <div class="form-group">
-                             <label>Time Arrested:</label>
-
-                             <div class="input-group date" id="timepicker" data-target-input="nearest">
-                                 <input type="timepicker" class="form-control datetimepicker-input"
-                                     data-target="#timepicker" />
-                                 <div class="input-group-append" data-target="#timepicker" data-toggle="datetimepicker">
-                                     <div class="input-group-text"><i class="far fa-clock"></i></div>
+                             <label for="incident">Date Arrested:</label>
+                             <input type="date" style="width: 200px;" id="date" class="form-control">
+                         </div>
+                         <div class="bootstrap-timepicker">
+                             <div class="form-group">
+                                 <label>Time Arrested:</label>
+                                 <div class="input-group date" id="timepicker" data-target-input="nearest">
+                                     <input type="timepicker" style="width: 200px;"
+                                         class="form-control datetimepicker-input" data-target="#timepicker" />
+                                     <div class="input-group-append" data-target="#timepicker"
+                                         data-toggle="datetimepicker">
+                                         <div class="input-group-text"><i class="far fa-clock"></i></div>
+                                     </div>
                                  </div>
                              </div>
                          </div>
                      </div>
-                     <div class="form-group">
-                         <label for="incident">Date Arrested:</label>
-                         <input type="date" id="date" class="form-control">
-                     </div>
+
                      <div class="form-group">
                          <label for="areataken">Location Arrested:</label>
                          <input type="text" id="area" class="form-control">

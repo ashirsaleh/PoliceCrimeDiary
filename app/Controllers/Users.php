@@ -22,18 +22,19 @@ class users extends BaseController
         helper('form');
         if ($this->request->getMethod() === 'post') {
             $rules = [
-                'Fname' => 'required|min_length[4]|max_length[50]',
-                'Lname' => 'required|min_length[4]|max_length[50]',
-                'password' => 'required|min_length[4]|max_length[255]',
-                'policeNo' => 'required|min_length[4]|max_length[50]',
+                'Fname' => 'required|min_length[2]|max_length[50]',
+                'Lname' => 'required|min_length[2]|max_length[50]',
+                'password' => 'required|min_length[2]|max_length[255]',
+                'policeNo' => 'required|min_length[2]|max_length[50]',
                 'rank' => 'required',
-                'description' => 'required|min_length[4]|max_length[255]',
+                'description' => 'required|min_length[2]|max_length[255]',
             ];
             $errors = [];
             if (!$this->validate(
                 $rules, $errors
             )) {
                 $data['validation'] = $this->validator;
+                // echo $data['validation']->listErrors();
                 return redirect()->to('users');
 
             } else {

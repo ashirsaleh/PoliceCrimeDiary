@@ -9,6 +9,11 @@
                      </button>
                  </div>
              </div>
+             <?php
+                if(isset($validation)){
+                    echo $validation->listErrors();
+                }
+             ?>
              <div class="card-body">
                  <table id="example2" class="table table-bordered table-hover">
                      <thead>
@@ -104,74 +109,76 @@
                                          <textarea id="inputDescription" name="description" class="form-control"
                                              rows="4"></textarea>
                                      </div>
+                                     <div class="row">
+                                         <div class="col-12 p-3">
+                                             <a href="#" class="btn btn-secondary" data-dismiss="modal">Cancel</a>
+                                             <input type="submit" value="Add " class="btn btn-success float-right">
+                                         </div>
                                  </form>
                              </div>
-                             <div class="row">
-                                 <div class="col-12 p-3">
-                                     <a href="#" class="btn btn-secondary" data-dismiss="modal">Cancel</a>
-                                     <input type="submit" value="Add " class="btn btn-success float-right">
-                                 </div>
-                                 </form>
-                             </div>
-                             <br>
-                             <!-- /.card-body -->
+                             </form>
+
                          </div>
 
+                         <br>
+                         <!-- /.card-body -->
                      </div>
+
                  </div>
-                 <div class="modal fade" id="modal-edit">
-                     <div class="modal-dialog">
-                         <div class="modal-content bg-dark-primary">
-                             <div class="modal-header">
-                                 <h4 class="modal-title">Edit user details</h4>
-                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                     <span aria-hidden="true">&times;</span>
-                                 </button>
-                             </div>
-                             <div class="card-body" id="editcard">
-
-                             </div>
-                             <div class="row">
-                                 <div class="col-12 p-3">
-                                     <a data-dismiss="modal" class="btn btn-secondary">Cancel</a>
-                                     <input type="submit" value="Edit User" class="btn btn-success float-right">
-                                 </div>
-                                 </form>
-                             </div>
-                             <br>
-                             <!-- /.card-body -->
+             </div>
+             <div class="modal fade" id="modal-edit">
+                 <div class="modal-dialog">
+                     <div class="modal-content bg-dark-primary">
+                         <div class="modal-header">
+                             <h4 class="modal-title">Edit user details</h4>
+                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                 <span aria-hidden="true">&times;</span>
+                             </button>
                          </div>
+                         <div class="card-body" id="editcard">
 
+                         </div>
+                         <div class="row">
+                             <div class="col-12 p-3">
+                                 <a data-dismiss="modal" class="btn btn-secondary">Cancel</a>
+                                 <input type="submit" value="Edit User" class="btn btn-success float-right">
+                             </div>
+                             </form>
+                         </div>
+                         <br>
+                         <!-- /.card-body -->
                      </div>
+
                  </div>
-                 <div class="modal fade" id="modal-view">
-                     <div class="modal-dialog">
-                         <div class="modal-content bg-dark-primary">
-                             <div class="modal-header">
-                                 <h4 class="modal-title">View user</h4>
-                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                     <span aria-hidden="true">&times;</span>
-                                 </button>
-                             </div>
-                             <div class="viewcard-body">
-
-                             </div>
-                             <div class="row">
-                                 <div class="col-12 p-3">
-                                     <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
-                                 </div>
-                                 </form>
-                             </div>
-                             <br>
-                             <!-- /.card-body -->
+             </div>
+             <div class="modal fade" id="modal-view">
+                 <div class="modal-dialog">
+                     <div class="modal-content bg-dark-primary">
+                         <div class="modal-header">
+                             <h4 class="modal-title">View user</h4>
+                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                 <span aria-hidden="true">&times;</span>
+                             </button>
                          </div>
+                         <div class="viewcard-body">
 
+                         </div>
+                         <div class="row">
+                             <div class="col-12 p-3">
+                                 <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
+                             </div>
+                             </form>
+                         </div>
+                         <br>
+                         <!-- /.card-body -->
                      </div>
+
                  </div>
              </div>
          </div>
-
      </div>
+
+ </div>
  </div>
 
 
@@ -182,26 +189,26 @@ let link = document.querySelector('.users');
 link.classList.add('active');
 
 $(document).ready(function() {
-    $(document).on('submit', '#dataform', function(event) {
-        event.preventDefault();
-        $.ajax({
-            url: '<?php echo base_url('users/addUser') ?>',
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest'
-            },
-            method: 'POST',
-            data: new FormData(this),
-            contentType: false,
-            processData: false,
-            success: function(data) {
+    // $(document).on('submit', '#dataform', function(event) {
+    //     event.preventDefault();
+    //     $.ajax({
+    //         url: '<?php echo base_url('users/addUser') ?>',
+    //         headers: {
+    //             'X-Requested-With': 'XMLHttpRequest'
+    //         },
+    //         method: 'POST',
+    //         data: new FormData(this),
+    //         contentType: false,
+    //         processData: false,
+    //         success: function(data) {
 
-            },
-            error: function() {
-                alert('error');
-            }
+    //         },
+    //         error: function() {
+    //             alert('error');
+    //         }
 
-        });
-    });
+    //     });
+    // });
 
     $('body').delegate('.deleteUser', 'click', function() {
         var id = $(this).data('id3');

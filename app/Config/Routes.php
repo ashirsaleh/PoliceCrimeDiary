@@ -51,7 +51,17 @@ $routes->match(['get', 'post'], 'edicriminal', 'Criminals::EditCriminal', ['filt
 $routes->match(['get', 'post'], 'addcriminal', 'Criminals::AddCriminal', ['filter' => 'auth']);
 $routes->match(['get', 'post'], 'deletecriminal', 'Criminals::DeleteCriminal', ['filter' => 'auth']);
 
+//Routes for complaints
+$routes->get('complaints', 'Complaints::index', ['filters' => 'auth']);
+$routes->match(['get', 'post'], 'edicomplaints', 'Complaints::EditComplaints', ['filter' => 'auth']);
+$routes->match(['get', 'post'], 'addcomplaints', 'Complaints::AddComplaints', ['filter' => 'auth']);
+$routes->match(['get', 'post'], 'deletecomplaints', 'Complaints::DeleteComplaints', ['filter' => 'auth']);
 
+//Routes for accusers
+$routes->get('crime', 'Crime::index', ['filters' => 'auth']);
+$routes->match(['get', 'post'], 'edicrime', 'Crime::EditCrime', ['filter' => 'auth']);
+$routes->match(['get', 'post'], 'addcrime', 'Crime::AddCrime', ['filter' => 'auth']);
+$routes->match(['get', 'post'], 'deletecrime', 'Crime::DeleteCrime', ['filter' => 'auth']);
 /*
  * --------------------------------------------------------------------
  * Additional Routing
