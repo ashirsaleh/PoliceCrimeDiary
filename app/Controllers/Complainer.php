@@ -12,35 +12,38 @@ class complainer extends BaseController{
         $data['complainers'] = $model->findall();
         $this->Render('complainer',$data);
     }
-    public function viewcomplainers()
+    public function viewcomplainer()
     {
         $id = $this->request->getVar('id');
         $model = new ComplaintModel();
         $user = $model->find($id);
         echo '
         <table class="table table-hover">
-            <tr>
-                <th>Full Name</th>
-                <td>' . $user['Fname'] . " " . $user['Lname'] . '</td>
-            </tr>
+        
             <tr>
                 <th>Name of people involved</th>
+                <th>Short Description Statement</th>       
+            </tr>
+            <tr>
                 <td>' . $user['th_name'] . '</td>
+                <td>' . $user['short_info'] . '</td>    
             </tr>
             <tr>
-                <th>What you saw</th>
-                <td>' . $user['short_info'] . '</td>
-            </tr>
-            <tr>
-                <th>If vehicles involved</th>
+            <th>If vehicles involved</th>
+                <th>Car Type</th>
+                <th>Plate Number</th>
+                <th>Color</th>
+                <tr> 
+                <td></td>
                 <td>' . $user['car_name'] . '</td>
                 <td>' . $user['plate_number'] . '</td>
                 <td>' . $user['color'] . '</td>
+                </tr>
             </tr>
             <tr>
-                <th>Witness statement</th>
-                <td>' . $user['wit_statement'] . '</td>
-            </tr>
+            <th>Witness statement</th>
+            <td colspan="6">' . $user['wit_statement'] . '</td>
+           </tr>
         </table>
         ';
     }

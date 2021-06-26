@@ -35,9 +35,10 @@
                             <td><?php echo $complaint['date']; ?></td>
                             <td><?php echo $complaint['nature_complaints']; ?></td>
                             <td class="project-actions text-right">
-                                <a class="btn btn-primary btn-sm" data-id1="<?php echo $complaint['complainer_id']; ?>">
+                                <button class="btn btn-primary btn-sm viewcomplainer"
+                                    data-id1="<?php echo $complaint['complainer_id']; ?>">
                                     <i class="fas fa-folder"></i>View
-                                </a>
+                                </button>
                                 <a class="btn btn-info btn-sm" href="#
                                     data-id2=" <?php echo $complaint['complainer_id']; ?>" data-toggle="modal"
                                     data-target="#modal-edit">
@@ -59,13 +60,13 @@
                 <hr>
                 <div class="d-flex justify-content-center">
                     <a type="button" class="btn btn-primary" href="complaints">
-                        Record Crime
+                        Record Complainer
                     </a>
                 </div>
                 <div class="modal fade" id="modal-edit">
                     <div class="modal-dialog">
                         <div class="modal-content bg-dark-primary">
-                            <div class="modal-header">y
+                            <div class="modal-header">
                                 <h4 class="modal-title">Edit complainer details</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
@@ -111,7 +112,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content bg-dark-primary">
                             <div class="modal-header">
-                                <h4 class="modal-title">View user</h4>
+                                <h4 class="modal-title">View Complainer</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -130,7 +131,7 @@
 </div>
 
 <script type="text/javascript">
-let link = document.querySelector('.complainer');
+let link = document.querySelector('.criminals');
 link.classList.add('active');
 
 $(document).ready(function() {
@@ -158,7 +159,7 @@ $(document).ready(function() {
     $('body').delegate('.deleteUser', 'click', function() {
         var id = $(this).data('id3');
         $.ajax({
-            url: '<?php echo base_url('users/deleteUser'); ?>',
+            url: '<?php echo base_url('complainer/deleteUser'); ?>',
             method: 'POST',
             data: {
                 id: id
@@ -171,11 +172,11 @@ $(document).ready(function() {
             }
         });
     });
-    $('body').delegate('.viewUser', 'click', function() {
+    $('body').delegate('.viewcomplainer', 'click', function() {
         var id = $(this).data('id1');
         $('#modal-view').modal('show');
         $.ajax({
-            url: '<?php echo site_url('complainers/viewcomplainer'); ?>',
+            url: '<?php echo site_url('complainer/viewcomplainer'); ?>',
             method: 'POST',
             data: {
                 id: id
@@ -193,7 +194,7 @@ $(document).ready(function() {
         var id = $(this).data('id2');
         $('#modal-edit').modal('show');
         $.ajax({
-            url: '<?php echo base_url('complainers/getUser'); ?>',
+            url: '<?php echo base_url('complainer/getUser'); ?>',
             method: 'POST',
             data: {
                 id: id
@@ -208,7 +209,7 @@ $(document).ready(function() {
         event.preventDefault();
         var id = $('#editusername').data('id');
         $.ajax({
-            url: '<?php echo base_url('complainers/editcomplainer'); ?>',
+            url: '<?php echo base_url('complainer/editcomplainer'); ?>',
             method: 'POST',
             data: {
                 name: $('#editusername').val(),
@@ -226,5 +227,4 @@ $(document).ready(function() {
     });
 
 });
-</script>
 </script>
