@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5deb2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Jun 10, 2021 at 01:36 PM
--- Server version: 10.3.25-MariaDB-0ubuntu0.20.04.1
--- PHP Version: 7.4.16
+-- Host: 127.0.0.1
+-- Generation Time: Jun 26, 2021 at 04:33 PM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 8.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -39,18 +38,59 @@ CREATE TABLE `cases` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `criminals`
+-- Table structure for table `complainers`
 --
 
-CREATE TABLE `criminals` (
-  `criminalID` int(11) NOT NULL,
-  `fName` varchar(255) NOT NULL,
-  `lName` varchar(255) NOT NULL,
-  `age` int(255) NOT NULL,
-  `resident` varchar(255) NOT NULL,
-  `working_status` varchar(255) NOT NULL,
-  `criminalpic` varchar(255) NOT NULL
+CREATE TABLE `complainers` (
+  `complainer_id` int(11) NOT NULL,
+  `Fnam` varchar(255) DEFAULT NULL,
+  `Lname` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `date` date NOT NULL,
+  `p_number` int(20) NOT NULL,
+  `time` time(5) NOT NULL,
+  `nature_complaints` varchar(255) NOT NULL,
+  `th_name` int(50) NOT NULL,
+  `location` varchar(255) NOT NULL,
+  `short_info` varchar(255) NOT NULL,
+  `car_name` varchar(30) NOT NULL,
+  `plate_number` varchar(20) NOT NULL,
+  `color` varchar(20) NOT NULL,
+  `wit_statement` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `complainers`
+--
+
+INSERT INTO `complainers` (`complainer_id`, `Fnam`, `Lname`, `address`, `date`, `p_number`, `time`, `nature_complaints`, `th_name`, `location`, `short_info`, `car_name`, `plate_number`, `color`, `wit_statement`) VALUES
+(1, 'Issa', 'hamadi', 'tiptop', '2021-06-09', 764546779, '26:41:37.18200', 'murder ', 0, '', '', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `defendants`
+--
+
+CREATE TABLE `defendants` (
+  `defendant_id` int(11) NOT NULL,
+  `Fname` varchar(255) NOT NULL,
+  `Lname` varchar(255) NOT NULL,
+  `age` int(12) NOT NULL,
+  `t_arrested` time(5) NOT NULL,
+  `d_arrested` date NOT NULL,
+  `L_arrested` varchar(30) NOT NULL,
+  `relationship` varchar(40) NOT NULL,
+  `bail` int(50) NOT NULL,
+  `charges` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `defendants`
+--
+
+INSERT INTO `defendants` (`defendant_id`, `Fname`, `Lname`, `age`, `t_arrested`, `d_arrested`, `L_arrested`, `relationship`, `bail`, `charges`) VALUES
+(1, 'motinho', 'hilmy', 24, '12:05:14.05007', '2021-06-15', 'manzese', 'mother', 100000, '');
 
 -- --------------------------------------------------------
 
@@ -67,21 +107,18 @@ CREATE TABLE `users` (
   `Lname` varchar(255) NOT NULL,
   `rank` varchar(255) NOT NULL,
   `age` int(11) NOT NULL,
-  `tel_number` varchar(255) NOT NULL,
-  `role` tinyint(11) NOT NULL,
-  `description` varchar(255) NOT NULL
+  `tel_number` int(255) DEFAULT NULL,
+  `role` tinyint(11) DEFAULT NULL,
+  `description` varchar(255) NOT NULL,
+  `location` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`policeId`, `policeNo`, `password`, `policepic`, `Fname`, `Lname`, `rank`, `age`, `tel_number`, `role`, `description`) VALUES
-(1, '001234', '$2y$10$IbOV/.s8wbO0jaMFn6nwPef2YTV8T880iWi7coP4vbPmMBVWnPTeG', '', 'Ashir', 'Ally', 'Police Officer', 25, '0627098270', 0, ''),
-(6, 'IS-009', '$2y$10$PgFFOQJPEf8P4v/q7gkZWujnUazf.xbRotqv1YUFZnxhT7hGhjlLS', '', 'fulan', 'fulana', 'Police Officer', 0, '', 0, 'FANYA UCHAWI'),
-(7, '0900', '$2y$10$J1me8OvrfUmxEqEI4/54kuJPW/CjZcGARQ6.VVln49twET8W2gbwC', '', 'mohhh', 'haddy', 'Head Of Station', 0, '', 0, 'jjksjkf'),
-(8, '001234', '$2y$10$1sq1OPq5bvw4HFIQHxHrwe7nPtxczCA.99nx89ftbvSZFkcWzpJG.', '', 'Ashir', 'Ally', 'Police Officer', 0, '', 0, 'someworlds'),
-(9, '001234', '$2y$10$hwlgpJxymYse95yDpGlYBujTwRubY5FfWcfTNYIMiju9BkrkRZRVS', '', 'Ashir', 'Ally', 'Police Officer', 0, '', 0, '');
+INSERT INTO `users` (`policeId`, `policeNo`, `password`, `policepic`, `Fname`, `Lname`, `rank`, `age`, `tel_number`, `role`, `description`, `location`) VALUES
+(10, '00586', '$2y$10$o5bqycPajuhnvBTddQoWRuDtJ3cJXzzHy0.eD7HxzeQH.kDxFu8vW', '', 'Mohamed', 'Hamadi', 'luetinant', 23, 777567454, 0, 'hey there I am Mohamed i had a choice of thankful to my leaders but fuck them all', 'zanzibar');
 
 --
 -- Indexes for dumped tables
@@ -94,10 +131,16 @@ ALTER TABLE `cases`
   ADD PRIMARY KEY (`case_id`);
 
 --
--- Indexes for table `criminals`
+-- Indexes for table `complainers`
 --
-ALTER TABLE `criminals`
-  ADD PRIMARY KEY (`criminalID`);
+ALTER TABLE `complainers`
+  ADD PRIMARY KEY (`complainer_id`);
+
+--
+-- Indexes for table `defendants`
+--
+ALTER TABLE `defendants`
+  ADD PRIMARY KEY (`defendant_id`);
 
 --
 -- Indexes for table `users`
@@ -116,16 +159,22 @@ ALTER TABLE `cases`
   MODIFY `case_id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `criminals`
+-- AUTO_INCREMENT for table `complainers`
 --
-ALTER TABLE `criminals`
-  MODIFY `criminalID` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `complainers`
+  MODIFY `complainer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `defendants`
+--
+ALTER TABLE `defendants`
+  MODIFY `defendant_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `policeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `policeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

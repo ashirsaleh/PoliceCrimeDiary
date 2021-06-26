@@ -22,31 +22,32 @@
                     </thead>
                     <tbody>
                         <?php 
-                     if (empty($users)){
+                     if (empty($criminals)){
                          echo "<tr><td colspan='6' class='' style='color: red; text-align: center;' ><h4>There are No Records</h4></td></tr>";
                      }else{
                          $counter = 1;
-                         foreach ($users as $users){ 
+                         foreach ($criminals as $criminal){ 
                             ?>
                         <tr>
-                            <td><?php echo $defendants['Fname'].' '. $users['Lname']; ?></td>
-                            <td><?php echo $defendants['t_arrested']; ?></td>
-                            <td><?php echo $defendants['L_location']; ?></td>
-                            <td><?php echo $defendants['relaltionship']; ?></td>
-                            <td><?php echo $defendants['age']; ?></td>
-                            <td><?php echo $defendants['bail']; ?></td>
-                            <td><?php echo $defendants['charges']; ?></td>
+                            <td><?php echo $criminal['Fname'].' '. $criminal['Lname']; ?></td>
+                            <td><?php echo $criminal['t_arrested']; ?></td>
+                            <td><?php echo $criminal['L_arrested']; ?></td>
+                            <td><?php echo $criminal['relationship']; ?></td>
+                            <td><?php echo $criminal['age']; ?></td>
+                            <td><?php echo $criminal['bail']; ?></td>
+                            <td><?php echo $criminal['charges']; ?></td>
                             <td class="project-actions text-right">
-                                <a class="btn btn-primary btn-sm" data-id1="<?php echo $users['policeId']; ?>"
-                                    data-toggle="modal" data-target="#modal-view" href="#">
+                                <a class="btn btn-primary btn-sm viewdefendant"
+                                    data-id1="<?php echo $criminal['defendant_id']; ?>">
                                     <i class="fas fa-folder"></i>View
                                 </a>
-                                <a class="btn btn-info btn-sm" href="#" data-id2="<?php echo $users['policeId']; ?>"
-                                    data-toggle="modal" data-target="#modal-edit">
+                                <a class="btn btn-info btn-sm" href="#"
+                                    data-id2="<?php echo $criminal['defendant_id']; ?>" data-toggle="modal"
+                                    data-target="#modal-edit">
                                     <i class="fas fa-pencil-alt"></i>Edit
                                 </a>
                                 <a class="btn btn-danger btn-sm modal-delete"
-                                    data-id3="<?php echo $users['policeId']; ?>">
+                                    data-id3="<?php echo $criminal['defendant_id']; ?>">
                                     <i class="fas fa-trash"></i>Delete
                                 </a>
                             </td>
@@ -129,10 +130,8 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <div class="card-body">
-                                    <h4>Full name: <span
-                                            class=""><?php echo session()->get('Fname'), ' ', session()->get('Lname') ?></span>
-                                    </h4>
+                                <div class="viewcard-body">
+
                                 </div>
                                 <br>
                                 <!-- /.card-body -->
@@ -186,11 +185,11 @@
                 }
             });
         });
-        $('body').delegate('.viewUser', 'click', function() {
+        $('body').delegate('.viewdefendant', 'click', function() {
             var id = $(this).data('id1');
             $('#modal-view').modal('show');
             $.ajax({
-                url: '<?php echo site_url('users/viewuser'); ?>',
+                url: '<?php echo site_url('criminals/viewDefendant'); ?>',
                 method: 'POST',
                 data: {
                     id: id
@@ -208,7 +207,7 @@
             var id = $(this).data('id2');
             $('#modal-edit').modal('show');
             $.ajax({
-                url: '<?php echo base_url('users/getUser'); ?>',
+                url: '<?php echo base_url('criminals/getUser'); ?>',
                 method: 'POST',
                 data: {
                     id: id
@@ -223,7 +222,7 @@
             event.preventDefault();
             var id = $('#editusername').data('id');
             $.ajax({
-                url: '<?php echo base_url('users/edituser'); ?>',
+                url: '<?php echo base_url('criminals/edituser'); ?>',
                 method: 'POST',
                 data: {
                     name: $('#editusername').val(),

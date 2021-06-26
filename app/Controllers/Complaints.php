@@ -12,7 +12,4 @@ class complaints extends BaseController{
         $this->Render('complaints',$data);
     }
 
-    public function EditProfile(){
-        $data[] = [];
-    }
 }

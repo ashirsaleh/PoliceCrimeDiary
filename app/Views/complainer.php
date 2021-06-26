@@ -25,26 +25,26 @@
                          echo "<tr><td colspan='6' class='' style='color: red; text-align: center;' ><h4>There are No Records</h4></td></tr>";
                      }else{
                          $counter = 1;
-                         foreach ($users as $users){ 
+                         foreach ($Complaints as $Complaint){ 
                             ?>
                         <tr>
-                            <td><?php echo $users['Fname'].' '. $users['Lname']; ?></td>
-                            <td><?php echo $users['address']; ?></td>
-                            <td><?php echo $users['Time']; ?></td>
-                            <td><?php echo $users['tel_number']; ?></td>
-                            <td><?php echo $users['date']; ?></td>
-                            <td><?php echo $users['n_complaints']; ?></td>
+                            <td><?php echo $complaint['Fname'].' '. $complaint['Lname']; ?></td>
+                            <td><?php echo $complaint['address']; ?></td>
+                            <td><?php echo $complaint['Time']; ?></td>
+                            <td><?php echo $complaint['tel_number']; ?></td>
+                            <td><?php echo $complaint['date']; ?></td>
+                            <td><?php echo $complaint['n_complaints']; ?></td>
                             <td class="project-actions text-right">
-                                <a class="btn btn-primary btn-sm" data-id1="<?php echo $users['policeId']; ?>"
-                                    data-toggle="modal" data-target="#modal-view" href="#">
+                                <a class="btn btn-primary btn-sm" data-id1="<?php echo $complaint['complainer_id']; ?>">
                                     <i class="fas fa-folder"></i>View
                                 </a>
-                                <a class="btn btn-info btn-sm" href="#" data-id2="<?php echo $users['policeId']; ?>"
-                                    data-toggle="modal" data-target="#modal-edit">
+                                <a class="btn btn-info btn-sm" href="#
+                                    data-id2=" <?php echo $complaint['complainer_id']; ?>" data-toggle="modal"
+                                    data-target="#modal-edit">
                                     <i class="fas fa-pencil-alt"></i>Edit
                                 </a>
                                 <a class="btn btn-danger btn-sm modal-delete"
-                                    data-id3="<?php echo $users['policeId']; ?>">
+                                    data-id3="<?php echo $complaint['complainer_id']; ?>">
                                     <i class="fas fa-trash"></i>Delete
                                 </a>
                             </td>
@@ -65,7 +65,7 @@
                 <div class="modal fade" id="modal-edit">
                     <div class="modal-dialog">
                         <div class="modal-content bg-dark-primary">
-                            <div class="modal-header">
+                            <div class="modal-header">y
                                 <h4 class="modal-title">Edit complainer details</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
@@ -116,10 +116,8 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="card-body">
-                                <h4>Full name: <span
-                                        class=""><?php echo session()->get('Fname'), ' ', session()->get('Lname') ?></span>
-                                </h4>
+                            <div class="viewcard-body">
+
                             </div>
                             <br>
                             <!-- /.card-body -->
@@ -177,7 +175,7 @@ $(document).ready(function() {
         var id = $(this).data('id1');
         $('#modal-view').modal('show');
         $.ajax({
-            url: '<?php echo site_url('users/viewuser'); ?>',
+            url: '<?php echo site_url('complainer/viewcomplainer'); ?>',
             method: 'POST',
             data: {
                 id: id
@@ -195,7 +193,7 @@ $(document).ready(function() {
         var id = $(this).data('id2');
         $('#modal-edit').modal('show');
         $.ajax({
-            url: '<?php echo base_url('users/getUser'); ?>',
+            url: '<?php echo base_url('complainer/getUser'); ?>',
             method: 'POST',
             data: {
                 id: id
@@ -210,7 +208,7 @@ $(document).ready(function() {
         event.preventDefault();
         var id = $('#editusername').data('id');
         $.ajax({
-            url: '<?php echo base_url('users/edituser'); ?>',
+            url: '<?php echo base_url('complainer/editcomplainer'); ?>',
             method: 'POST',
             data: {
                 name: $('#editusername').val(),
