@@ -17,6 +17,7 @@
                             <th>Telephone Number</th>
                             <th>Date</th>
                             <th>Nature Of Complaints</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>

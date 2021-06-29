@@ -34,7 +34,7 @@ class Database extends Config
 		'DSN'      => '',
 		'hostname' => 'localhost',
 		'username' => 'root',
-		'password' => 'hash',
+		'password' => '',
 		'database' => 'police_crime_diary',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',

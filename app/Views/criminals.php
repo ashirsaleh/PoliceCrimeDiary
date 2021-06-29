@@ -18,6 +18,7 @@
                             <th>Age of a Person</th>
                             <th>Amount Of Bail</th>
                             <th>All charges</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
