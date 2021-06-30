@@ -22,15 +22,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php 
-                     if (empty($criminals)){
-                         echo "<tr><td colspan='6' class='' style='color: red; text-align: center;' ><h4>There are No Records</h4></td></tr>";
-                     }else{
-                         $counter = 1;
-                         foreach ($criminals as $criminal){ 
-                            ?>
+                        <?php
+                        if (empty($criminals)) {
+                            echo "<tr><td colspan='6' class='' style='color: red; text-align: center;' ><h4>There are No Records</h4></td></tr>";
+                        } else {
+                            $counter = 1;
+                            foreach ($criminals as $criminal) {
+                        ?>
                         <tr>
-                            <td><?php echo $criminal['Fname'].' '. $criminal['Lname']; ?></td>
+                            <td><?php echo $criminal['Fname'] . ' ' . $criminal['Lname']; ?></td>
                             <td><?php echo $criminal['t_arrested']; ?></td>
                             <td><?php echo $criminal['L_arrested']; ?></td>
                             <td><?php echo $criminal['relationship']; ?></td>
@@ -54,11 +54,11 @@
                             </td>
                         </tr>
                         <?php
-                            $counter++;
-                         }
+                                $counter++;
+                            }
                         }
                         ?>
-                        </tfoot>
+                    </tbody>
                 </table>
                 <hr>
                 <div class="d-flex justify-content-center">
@@ -81,7 +81,7 @@
                                     </button>
                                 </div>
                                 <div class="card-body">
-                                    <form action="<?php echo site_url('edituser')?>" method="POST">
+                                    <form action="<?php echo site_url('edituser') ?>" method="POST">
                                         <div class="form-group">
                                             <label for="inputFirstname">First name</label>
                                             <input type="text" name="Fname" id="inputFirstname" class="form-control">
