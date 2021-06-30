@@ -4,7 +4,6 @@
              <div class="card card-primary">
                  <div class="card-header">
                      <h3 class="card-title">TANZANIA POLICE FORCE</h3>
-
                      <div class="card-tools">
                          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                              <i class="fas fa-minus"></i>
@@ -23,7 +22,7 @@
                          </div>
                          <div class="form-group">
                              <label for="incident">Age:</label>
-                             <input type="text" id="age" class="form-control">
+                             <input type="number" id="age" class="form-control">
                          </div>
                      </div>
                      <div class="row d-flex justify-content-between">
@@ -60,7 +59,7 @@
                      </div>
                      <div class="form-group">
                          <label for="areataken">Amount of Bail Set:</label>
-                         <input type="text" id="area" class="form-control" placeholder="Tsh xxxxx/=">
+                         <input type="number" id="area" class="form-control" placeholder="Tsh xxxxx/=">
                      </div>
                      <div class="form-group">
                          <label for="charges">All charges:</label>
