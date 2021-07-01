@@ -24,26 +24,25 @@ class users extends BaseController
             $rules = [
                 'Fname' => 'required|min_length[2]|max_length[50]',
                 'Lname' => 'required|min_length[2]|max_length[50]',
+                // 'tel_number' => 'required|min_length[10]|max_length[15]',
                 'password' => 'required|min_length[2]|max_length[255]',
                 'policeNo' => 'required|min_length[2]|max_length[50]',
                 'rank' => 'required',
                 'description' => 'required|min_length[2]|max_length[255]',
             ];
             $errors = [];
-            if (!$this->validate(
-                $rules, $errors
-            )) {
+            if (!$this->validate($rules, $errors)) {
                 $data['validation'] = $this->validator;
-                // echo $data['validation']->listErrors();
-                return redirect()->to('users');
+                echo $data['validation']->listErrors();
+                // return redirect()->to('/users');
 
-            } else {
+            }else {
                 $user = array(
                     'policeNo' => $this->request->getVar('policeNo'),
                     'Fname' => $this->request->getVar('Fname'),
                     'Lname' => $this->request->getVar('Lname'),
                     'rank' => $this->request->getVar('rank'),
-                    'tel_number' => $this->request->getVar('tel_number'),
+                    // 'tel_number' => $this->request->getVar('tel_number'),
                     'description' => $this->request->getVar('description'),
                     'password' => $this->request->getVar('password'),
                 );

@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\models\ComplaintModel;
+use App\Models\ComplaintModel;
 class complainer extends BaseController{
     public function index(){
         $model = new ComplaintModel();

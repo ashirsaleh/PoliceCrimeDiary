@@ -14,10 +14,11 @@
                             <th>Full Name</th>
                             <th>Time Arrested</th>
                             <th>Location Arrested</th>
-                            <th>Relationship</th>
+                            <th>Guardian Name</th>
                             <th>Age of a Person</th>
                             <th>Amount Of Bail</th>
                             <th>All charges</th>
+                            <th>Circumstance</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -30,25 +31,25 @@
                             foreach ($criminals as $criminal) {
                         ?>
                         <tr>
-                            <td><?php echo $criminal['Fname'] . ' ' . $criminal['Lname']; ?></td>
-                            <td><?php echo $criminal['t_arrested']; ?></td>
-                            <td><?php echo $criminal['L_arrested']; ?></td>
-                            <td><?php echo $criminal['relationship']; ?></td>
+                            <td><?php echo $criminal['fName'] . ' ' . $criminal['lName']; ?></td>
+                            <td><?php echo $criminal['dateArrested']; ?></td>
+                            <td><?php echo $criminal['locationArrested']; ?></td>
+                            <td><?php echo $criminal['guardianName']; ?></td>
                             <td><?php echo $criminal['age']; ?></td>
-                            <td><?php echo $criminal['bail']; ?></td>
+                            <td><?php echo $criminal['bailset']; ?></td>
                             <td><?php echo $criminal['charges']; ?></td>
+                            <td><?php echo $criminal['circumstance']; ?></td>
                             <td class="project-actions text-right">
                                 <a class="btn btn-primary btn-sm viewdefendant"
-                                    data-id1="<?php echo $criminal['defendant_id']; ?>">
+                                    data-id1="<?php echo $criminal['accuserId']; ?>">
                                     <i class="fas fa-folder"></i>View
                                 </a>
-                                <a class="btn btn-info btn-sm" href="#"
-                                    data-id2="<?php echo $criminal['defendant_id']; ?>" data-toggle="modal"
-                                    data-target="#modal-edit">
+                                <a class="btn btn-info btn-sm" href="#" data-id2="<?php echo $criminal['accuserId']; ?>"
+                                    data-toggle="modal" data-target="#modal-edit">
                                     <i class="fas fa-pencil-alt"></i>Edit
                                 </a>
                                 <a class="btn btn-danger btn-sm modal-delete"
-                                    data-id3="<?php echo $criminal['defendant_id']; ?>">
+                                    data-id3="<?php echo $criminal['accuserId']; ?>">
                                     <i class="fas fa-trash"></i>Delete
                                 </a>
                             </td>
@@ -97,7 +98,7 @@
 
                                         <div class="form-group">
                                             <label for="incident">Date Arrested:</label>
-                                            <input type="date" id="date" class="form-control">
+                                            <input type="date" id="date" name="dateArrested" class="form-control">
                                         </div>
 
                                         <div class="form-group">

@@ -17,7 +17,7 @@ class criminals extends BaseController{
     public function viewdefendant()
     {
         $id = $this->request->getVar('id');
-        $model = new criminalModel();
+        $model = new CriminalModel();
         $user = $model->find($id);
         echo '
         <table class="table table-hover">
