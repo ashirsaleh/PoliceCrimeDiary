@@ -48,22 +48,6 @@
                     </div>
                 </li>
                 <!-- Notifications Menu -->
-                <li class="nav-item dropdown" title="Notification Menu">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="far fa-bell"></i>
-                        <span class="badge badge-warning navbar-badge">5</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">2 Notifications</span>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> 1 new messages
-                            <span class="float-right text-muted text-sm">3 mins</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                    </div>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" data-widget="fullscreen" title="Open Full Screen" role="button">
                         <i class="fas fa-expand-arrows-alt"></i>
@@ -76,7 +60,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="<?php echo site_url();?>" class="brand-link">
+            <a href="<?php echo site_url(); ?>" class="brand-link">
                 <img src="<?php echo base_url('assets/images/PoliceLogo.png'); ?>" alt=" Police Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">PCD</span>
@@ -92,7 +76,7 @@
                     </div>
                     <div class="info">
                         <a href="<?php echo site_url('user-profile'); ?>"
-                            class="d-block"><?php echo session()->get('Fname').' '.session()->get('Lname')?></a>
+                            class="d-block"><?php echo session()->get('Fname') . ' ' . session()->get('Lname') ?></a>
                     </div>
                 </div>
                 <!-- Sidebar Menu -->
@@ -117,13 +101,19 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="<?php echo site_url('crime')?>" class="nav-link">
+                                    <a href="<?php echo site_url('crime') ?>" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Record Crime</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?php echo site_url('complaints')?>" class="nav-link">
+                                    <a href="<?php echo site_url('caser') ?>" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Record Case</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?php echo site_url('complaints') ?>" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Record Complaints </p>
                                     </a>
@@ -140,19 +130,19 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="<?php echo site_url('criminals')?>" class="nav-link">
+                                    <a href="<?php echo site_url('criminals') ?>" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Defendants</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?php echo site_url('complainer')?>" class="nav-link">
+                                    <a href="<?php echo site_url('complainer') ?>" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Complaints</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?php echo site_url('cases')?>" class="nav-link">
+                                    <a href="<?php echo site_url('cases') ?>" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Cases</p>
                                     </a>
