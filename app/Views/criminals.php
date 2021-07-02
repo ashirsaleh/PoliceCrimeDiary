@@ -29,23 +29,22 @@
                             <td><?php echo $criminal['fName'] . ' ' . $criminal['lName']; ?></td>
                             <td><?php echo $criminal['age']; ?></td>
                             <td><?php echo $criminal['charges']; ?></td>
-                            <td class="project-actions text-right d-flex justify-content-between"><a
-                                    data-id1="<?php echo $criminal['accuserId']; ?>"
+                            <td class="project-actions text-right d-flex justify-content-between">
+                                <a data-id1="<?php echo $criminal['accuserId']; ?>"
                                     class="btn btn-primary btn-sm viewDefendant">
                                     <i class="fas fa-folder">
                                     </i>
                                     View
                                 </a>
-                                <a class="btn btn-warning btn-sm " data-id3="<?php echo $criminal['accuserId']; ?>">
-                                    <i class="fas fa-asign"></i>Assign Case
-                                </a>
-                                <a class="btn btn-info btn-sm" href="#" data-id2="<?php echo $criminal['accuserId']; ?>"
-                                    data-toggle="modal" data-target="#modal-edit">
-                                    <i class="fas fa-pencil-alt"></i>Edit
+                                <a data-id1="<?php echo $criminal['accuserId']; ?>"
+                                    class="btn btn-warning btn-sm editDefendant">
+                                    <i class="fas fa-tasks">
+                                    </i>
+                                    Assign Case
                                 </a>
                                 <a class="btn btn-danger btn-sm deleteDefendant"
                                     data-id3="<?php echo $criminal['accuserId']; ?>">
-                                    <i class="fas fa-trash"></i>Delete
+                                    <i class="fas fa-trash"></i> Delete
                                 </a>
                             </td>
                         </tr>
@@ -66,61 +65,45 @@
                 <div class="float-center">
 
                 </div>
-                <div>
-                    <div class="modal fade" id="modal-edit">
-                        <div class="modal-dialog">
-                            <div class="modal-content bg-dark-primary">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Edit defendant details</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="card-body">
-                                    <form action="<?php echo site_url('edituser') ?>" method="POST">
-                                        <div class="form-group">
-                                            <label for="inputFirstname">First name</label>
-                                            <input type="text" name="Fname" id="inputFirstname" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputLastname">Last name</label>
-                                            <input type="text" name="Lname" id="inputLastname" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputDescription">All charges </label>
-                                            <textarea id="inputcharges" name="charges" class="form-control"
-                                                rows="4"></textarea>
-                                        </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12 p-3">
-                                        <a href="#" class="btn btn-secondary">Cancel</a>
-                                        <input type="submit" value="Add " class="btn btn-success float-right">
-                                    </div>
-                                    </form>
-                                </div>
-                                <br>
-                                <!-- /.card-body -->
+                <div class="modal fade" id="modal-view">
+                    <div class="modal-dialog">
+                        <div class="modal-content bg-dark-primary">
+                            <div class="modal-header">
+                                <h4 class="modal-title">View Defendant</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                        </div>
-                    </div>
-                    <div class="modal fade" id="modal-view">
-                        <div class="modal-dialog">
-                            <div class="modal-content bg-dark-primary">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">View Defendant</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="viewcard-body">
+                            <div class="viewcard-body">
 
-                                </div>
-                                <br>
-                                <!-- /.card-body -->
+                            </div>
+                            <br>
+                            <!-- /.card-body -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modal-assign">
+                <div class="modal-dialog">
+                    <div class="modal-content bg-dark-primary">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Assign New Case </h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="editcard card-body">
+
+                        </div>
+                        <div class="row">
+                            <div class="col-12 p-3">
+                                <a data-dismiss="modal" class="btn btn-secondary">Cancel</a>
+                                <input type="submit" value="Assign" class="btn btn-success float-right">
                             </div>
                         </div>
                     </div>
+                    <br>
+                    <!-- /.card-body -->
                 </div>
             </div>
         </div>
@@ -186,42 +169,40 @@
             });
 
         });
-        $('body').delegate('.editUser', 'click', function() {
-            var id = $(this).data('id2');
-            $('#modal-edit').modal('show');
-            $.ajax({
-                url: '<?php echo base_url('criminals/getUser'); ?>',
-                method: 'POST',
-                data: {
-                    id: id
-                },
-                success: function(data) {
-                    $('#editcard').html(data);
-                }
-            });
+    })
 
-        });
-        $(document).on('submit', '#edituserform', function(event) {
-            event.preventDefault();
-            var id = $('#editusername').data('id');
-            $.ajax({
-                url: '<?php echo base_url('criminals/edituser'); ?>',
-                method: 'POST',
-                data: {
-                    name: $('#editusername').val(),
-                    type: $('#editusertype').val(),
-                    quantity: $('#edituserquantity').val(),
-                    expiry: $('#edituserexpiry').val(),
-                    price: $('#edituserprice').val(),
-                    barcode: $('#editbarcode').val(),
-                    id: id
-                },
-                success: function(data) {
-                    alert('ok');
-                }
-            });
+
+    $('body').delegate('.editDefendant', 'click', function() {
+        var id = $(this).data('id2');
+        $('#modal-assign').modal('show');
+        $.ajax({
+            url: '<?php echo base_url('criminals/assignDefendant'); ?>',
+            method: 'POST',
+            data: {
+                id: id
+            },
+            success: function(data) {
+                $('.editcard').html(data);
+            }
         });
 
     });
-    </script>
+    $(document).on('submit', '#editdefendant', function(event) {
+        event.preventDefault();
+        var id = $('#id').data('id');
+        $.ajax({
+            url: '<?php echo base_url('criminals/editdefendant'); ?>',
+            method: 'POST',
+            data: {
+                // fName: $('#getFirstName').val(),
+                // lName: $('#getLastName').val(),
+                // charges: $('#getcharges').val(),
+                id: id
+            },
+            success: function(data) {
+                alert('ok');
+                location.reload();
+            }
+        });
+    })
     </script>

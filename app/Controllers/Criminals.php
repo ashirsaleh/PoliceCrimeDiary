@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\CriminalModel;
+use App\models\UserModel;
 
 class criminals extends BaseController{
     public function index(){
@@ -42,6 +43,30 @@ class criminals extends BaseController{
                 <td>' . $user['bail'] . '</td>
             </tr>
         </table>
+        ';
+    }
+
+    public function assignDefendant(){
+        $id = $this->request->getVar('id');
+        $criminlas = new CriminalModel();
+        // $officers = new UserModel();
+        // $users = $officers->find($id);
+        $defendant = $criminlas->find($id);
+        echo '
+            <div class="form-group">
+                <label for="FirstLastName">Full Name</label>
+                <input type="text" disabled name="fName" value="' . $defendant[0]['lName']." ".$defendant[0]['lName'] . '" id="getFirstName" class="form-control">
+                <input type="hidden" value="'. $id .'" name="id" id="id">
+            </div>
+            
+            <div class="form-group">
+                <label for="getcharges">All Charges</label>
+                <input type="text" disabled name="charges" value="' . $defendant[0]['charges'] . '" id="getcharges" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="getLastName">Age</label>
+                <input type="text"  name="age" value="' . $defendant[0]['age'] . '" id="getLastName" class="form-control">
+            </div>
         ';
     }
 }
