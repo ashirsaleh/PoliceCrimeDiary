@@ -29,7 +29,7 @@
                      <tbody>
                          <?php
                         if (empty($users)) {
-                            echo "<tr><td colspan='6'style=' 'color: red; text-align: center;'><h4>There are No Users</h4></td></tr>";
+                            echo "<tr><td colspan='8' style='color: red; text-align: center;'><h4>There are No Users</h4></td></tr>";
                         } else {
                             $counter = 1;
                             foreach ($users as $users) {
@@ -40,12 +40,12 @@
                              <td><?php echo $users['rank']; ?></td>
                              <td><?php echo $users['tel_number']; ?></td>
                              <td><?php echo $users['age']; ?></td>
-                             <td class="project-actions text-right">
-                                 <button data-id1="<?php echo $users['policeId']; ?>"
-                                     class="btn btn-primary btn-sm viewUser">
-                                     <i class="fas fa-folder">
-                                     </i>
-                                     View
+                             <td class="project-actions text-right d-flex justify-content-between"">
+                                 <button data-id1=" <?php echo $users['policeId']; ?>"
+                                 class="btn btn-primary btn-sm viewUser">
+                                 <i class="fas fa-folder">
+                                 </i>
+                                 View
                                  </button>
                                  <button data-id2="<?php echo $users['policeId']; ?>"
                                      class="btn btn-info btn-sm editUser">
@@ -135,16 +135,17 @@
                                  <span aria-hidden="true">&times;</span>
                              </button>
                          </div>
-                         <div class="card-body" id="editcard">
+                         <form id="edituserform">
+                             <div class="card-body" id="editcard">
 
-                         </div>
-                         <div class="row">
-                             <div class="col-12 p-3">
-                                 <a data-dismiss="modal" class="btn btn-secondary">Cancel</a>
-                                 <input type="submit" value="Edit User" class="btn btn-success float-right">
                              </div>
-                             </form>
-                         </div>
+                             <div class="row">
+                                 <div class="col-12 p-3">
+                                     <a data-dismiss="modal" class="btn btn-secondary">Cancel</a>
+                                     <input type="submit" value="Edit User" class="btn btn-success float-right">
+                                 </div>
+                             </div>
+                         </form>
                          <br>
                          <!-- /.card-body -->
                      </div>
@@ -167,7 +168,6 @@
                              <div class="col-12 p-3">
                                  <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
                              </div>
-                             </form>
                          </div>
                          <br>
                          <!-- /.card-body -->
@@ -219,7 +219,7 @@ $(document).ready(function() {
                 id: id
             },
             success: (data) => {
-                console.log('data');
+                location.reload();
             },
             error: (err) => {
                 console.log(err);
@@ -261,21 +261,23 @@ $(document).ready(function() {
     });
     $(document).on('submit', '#edituserform', function(event) {
         event.preventDefault();
-        var id = $('#editusername').data('id');
+        var id = $('#id').data('id');
         $.ajax({
             url: '<?php echo base_url('users/edituser'); ?>',
             method: 'POST',
             data: {
-                name: $('#editusername').val(),
-                type: $('#editusertype').val(),
-                quantity: $('#edituserquantity').val(),
-                expiry: $('#edituserexpiry').val(),
-                price: $('#edituserprice').val(),
-                barcode: $('#editbarcode').val(),
+                Fname: $('#editFirstName').val(),
+                Lname: $('#editLastName').val(),
+                policeNo: $('#editPoliceNo').val(),
+                rank: $('#editRank').val(),
+                tel_number: $('#editPhone').val(),
+                password: $('#editPassword').val(),
+                description: $('#editDescription').val(),
                 id: id
             },
             success: function(data) {
                 alert('ok');
+                location.reload();
             }
         });
     });

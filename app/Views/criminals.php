@@ -12,43 +12,38 @@
                     <thead>
                         <tr>
                             <th>Full Name</th>
-                            <th>Time Arrested</th>
-                            <th>Location Arrested</th>
-                            <th>Guardian Name</th>
                             <th>Age of a Person</th>
-                            <th>Amount Of Bail</th>
                             <th>All charges</th>
-                            <th>Circumstance</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         if (empty($criminals)) {
-                            echo "<tr><td colspan='6' class='' style='color: red; text-align: center;' ><h4>There are No Records</h4></td></tr>";
+                            echo "<tr><td colspan='9' class='' style='color: red; text-align: center;' ><h4>There are No Records</h4></td></tr>";
                         } else {
                             $counter = 1;
                             foreach ($criminals as $criminal) {
                         ?>
                         <tr>
                             <td><?php echo $criminal['fName'] . ' ' . $criminal['lName']; ?></td>
-                            <td><?php echo $criminal['dateArrested']; ?></td>
-                            <td><?php echo $criminal['locationArrested']; ?></td>
-                            <td><?php echo $criminal['guardianName']; ?></td>
                             <td><?php echo $criminal['age']; ?></td>
-                            <td><?php echo $criminal['bailset']; ?></td>
                             <td><?php echo $criminal['charges']; ?></td>
-                            <td><?php echo $criminal['circumstance']; ?></td>
-                            <td class="project-actions text-right">
-                                <a class="btn btn-primary btn-sm viewdefendant"
-                                    data-id1="<?php echo $criminal['accuserId']; ?>">
-                                    <i class="fas fa-folder"></i>View
+                            <td class="project-actions text-right d-flex justify-content-between"><a
+                                    data-id1="<?php echo $criminal['accuserId']; ?>"
+                                    class="btn btn-primary btn-sm viewDefendant">
+                                    <i class="fas fa-folder">
+                                    </i>
+                                    View
+                                </a>
+                                <a class="btn btn-warning btn-sm " data-id3="<?php echo $criminal['accuserId']; ?>">
+                                    <i class="fas fa-asign"></i>Assign Case
                                 </a>
                                 <a class="btn btn-info btn-sm" href="#" data-id2="<?php echo $criminal['accuserId']; ?>"
                                     data-toggle="modal" data-target="#modal-edit">
                                     <i class="fas fa-pencil-alt"></i>Edit
                                 </a>
-                                <a class="btn btn-danger btn-sm modal-delete"
+                                <a class="btn btn-danger btn-sm deleteDefendant"
                                     data-id3="<?php echo $criminal['accuserId']; ?>">
                                     <i class="fas fa-trash"></i>Delete
                                 </a>
@@ -92,20 +87,6 @@
                                             <input type="text" name="Lname" id="inputLastname" class="form-control">
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputPoliceNo">Time arrested</label>
-                                            <input type="text" name="time" id="tarrested" class="form-control">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="incident">Date Arrested:</label>
-                                            <input type="date" id="date" name="dateArrested" class="form-control">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="password">Amount of Bail</label>
-                                            <input type="text" name="bail" id="bail" class="form-control">
-                                        </div>
-                                        <div class="form-group">
                                             <label for="inputDescription">All charges </label>
                                             <textarea id="inputcharges" name="charges" class="form-control"
                                                 rows="4"></textarea>
@@ -127,7 +108,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content bg-dark-primary">
                                 <div class="modal-header">
-                                    <h4 class="modal-title">View Comlainer</h4>
+                                    <h4 class="modal-title">View Defendant</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -171,27 +152,27 @@
             });
         });
 
-        $('body').delegate('.deleteUser', 'click', function() {
+        $('body').delegate('.deleteDefendant', 'click', function() {
             var id = $(this).data('id3');
             $.ajax({
-                url: '<?php echo base_url('users/deleteUser'); ?>',
+                url: '<?php echo base_url('crime/deleteDefendant'); ?>',
                 method: 'POST',
                 data: {
                     id: id
                 },
                 success: (data) => {
-                    console.log('data');
+                    location.reload();
                 },
                 error: (err) => {
                     console.log(err);
                 }
             });
         });
-        $('body').delegate('.viewdefendant', 'click', function() {
+        $('body').delegate('.viewDefendant', 'click', function() {
             var id = $(this).data('id1');
             $('#modal-view').modal('show');
             $.ajax({
-                url: '<?php echo site_url('criminals/viewDefendant'); ?>',
+                url: '<?php echo site_url('crime/viewdefendant'); ?>',
                 method: 'POST',
                 data: {
                     id: id

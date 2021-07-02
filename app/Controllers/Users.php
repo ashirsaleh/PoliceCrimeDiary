@@ -84,44 +84,12 @@ class users extends BaseController
         ';
     }
 
-    public function getUser()
+    public function DeleteUser()
     {
         $id = $this->request->getVar('id');
         $model = new UserModel();
-        $user = $model->find($id);
-
-        echo '
-            <div class="form-group">
-                <label for="editFirstName">First name</label>
-                <input type="text" name="Fname" value="' . $user['Fname'] . '" id="editFirstName" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="editLastName">Last name</label>
-                <input type="text" name="Lname" value="' . $user['Lname'] . '" id="editLastName" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="editPoliceNo">Police Identification Number</label>
-                <input type="text" name="policeNo" value="' . $user['policeNo'] . '" id="editPoliceNo" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="editRank">Rank</label>
-                <select id="editRank" name="rank" value="' . $user['rank'] . '" class="form-control custom-select">
-                    <option selected disabled>Select Rank</option>
-                    <option>Police Officer</option>
-                    <option>Head Of Station</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="editPassword">User password</label>
-                <input type="password" placeholder="********" name="password" id="editPassword" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="editDescription">Short Description </label>
-                <textarea id="editDescription" name="description" class="form-control" rows="4">' . $user['description'] . '
-                </textarea>
-            </div>';
+        $model->delete($id);
     }
-
     public function EditUser()
     {
         if ($this->request->getMethod() === 'post') {
@@ -146,19 +114,55 @@ class users extends BaseController
                     'description' => $this->request->getVar('description'),
                     'password' => $this->request->getVar('password'),
                 );
+                $id = $this->request->getVar('id');
                 $model = new UserModel();
-                $model->update();
-                return redirect()->to('users');
+                $model->update($id, $user);
+                // return redirect()->to('users');
+                print_r($id);
             }
         }
-
     }
-
-    public function DeleteUser()
+    public function getUser()
     {
         $id = $this->request->getVar('id');
         $model = new UserModel();
-        $model->delete($id);
-        redirect()->to('users');
+        $user = $model->find($id);
+
+        echo '
+            <div class="form-group">
+                <label for="editFirstName">First name</label>
+                <input type="text" disabled name="Fname" value="' . $user['Fname'] . '" id="editFirstName" class="form-control">
+                <input type="hidden" value="'. $id .'" name="id" id="id">
+            </div>
+            <div class="form-group">
+                <label for="editLastName">Last name</label>
+                <input type="text" disabled name="Lname" value="' . $user['Lname'] . '" id="editLastName" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="editPoliceNo">Police Identification Number</label>
+                <input type="text" disabled name="policeNo" value="' . $user['policeNo'] . '" id="editPoliceNo" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="editRank">Rank</label>
+                <select id="editRank" name="rank" value="' . $user['rank'] . '" class="form-control custom-select">
+                    <option selected disabled>Select Rank</option>
+                    <option>Police Officer</option>
+                    <option>Head Of Station</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="editPhone">Telephone Number</label>
+                <input type="numbers" name="password" id="editPhone" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="editPassword">User password</label>
+                <input type="password" placeholder="********" name="password" id="editPassword" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="editDescription">Short Description </label>
+                <textarea id="editDescription" name="description" class="form-control" rows="4">' . $user['description'] . '
+                </textarea>
+            </div>';
+            
     }
 }

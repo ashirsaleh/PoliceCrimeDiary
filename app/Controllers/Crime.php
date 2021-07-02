@@ -59,4 +59,41 @@ class crime extends BaseController{
         }
     }
     }
+    public function viewDefendant()
+    {
+        $id = $this->request->getVar('id');
+        $model = new CriminalModel();
+        $criminal = $model->find($id);
+        echo '
+        <table class="table table-hover">
+            <tr>
+                <th>Full Name</th>
+                <td>' . $criminal['fName'] . " " . $criminal['lName'] . '</td>
+            </tr>
+            <tr>
+                <th>Age of the defendant</th>
+                <td>' . $criminal['age'] . '</td>
+            </tr>
+            <tr>
+                <th>Charges arrested for</th>
+                <td>' . $criminal['charges'] . '</td>
+            </tr>
+            <tr>
+                <th>Arrested date, time and location</th>
+                <td>' . $criminal['dateArrested'] . " ". $criminal['locationArrested'].'</td>
+            </tr>
+            <tr>
+                <th>Name of Guardian, Relationship and Contacts Info</th>
+                <td>' . $criminal['guardianName'] . " " . $criminal['gRelation']. " " . $criminal['age'].'</td>
+            </tr>
+        </table>
+        ';
+    }
+    public function deleteDefendant()
+    {
+        $id = $this->request->getVar('id');
+        $model = new CriminalModel();
+        $model->delete($id);
+        
+    }
 }

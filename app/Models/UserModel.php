@@ -18,7 +18,7 @@ class UserModel extends Model{
     }
 
     protected function beforeUpdate(array $data){
-        $data = $this->passwordHas($data);
+        $data = $this->passwordHash($data);
         $data['data']['updated_at'] = date('Y-m-d H:i:s');
         return $data;
     }
