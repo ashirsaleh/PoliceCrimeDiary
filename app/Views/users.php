@@ -188,99 +188,76 @@
 let link = document.querySelector('.users');
 link.classList.add('active');
 
-$(document).ready(function() {
-    // $(document).on('submit', '#dataform', function(event) {
-    //     event.preventDefault();
-    //     $.ajax({
-    //         url: '<?php echo base_url('users/addUser') ?>',
-    //         headers: {
-    //             'X-Requested-With': 'XMLHttpRequest'
-    //         },
-    //         method: 'POST',
-    //         data: new FormData(this),
-    //         contentType: false,
-    //         processData: false,
-    //         success: function(data) {
 
-    //         },
-    //         error: function() {
-    //             alert('error');
-    //         }
-
-    //     });
-    // });
-
-    $('body').delegate('.deleteUser', 'click', function() {
-        var id = $(this).data('id3');
-        $.ajax({
-            url: '<?php echo base_url('users/deleteUser'); ?>',
-            method: 'POST',
-            data: {
-                id: id
-            },
-            success: (data) => {
-                location.reload();
-            },
-            error: (err) => {
-                console.log(err);
-            }
-        });
+$('body').delegate('.deleteUser', 'click', function() {
+    var id = $(this).data('id3');
+    $.ajax({
+        url: '<?php echo base_url('users/deleteUser'); ?>',
+        method: 'POST',
+        data: {
+            id: id
+        },
+        success: (data) => {
+            location.reload();
+        },
+        error: (err) => {
+            console.log(err);
+        }
     });
-    $('body').delegate('.viewUser', 'click', function() {
-        var id = $(this).data('id1');
-        $('#modal-view').modal('show');
-        $.ajax({
-            url: '<?php echo site_url('users/viewuser'); ?>',
-            method: 'POST',
-            data: {
-                id: id
-            },
-            success: function(data) {
-                $('.viewcard-body').html(data);
-            },
-            error: function(err) {
-                console.log(err);
-            }
-        });
-
-    });
-    $('body').delegate('.editUser', 'click', function() {
-        var id = $(this).data('id2');
-        $('#modal-edit').modal('show');
-        $.ajax({
-            url: '<?php echo base_url('users/getUser'); ?>',
-            method: 'POST',
-            data: {
-                id: id
-            },
-            success: function(data) {
-                $('#editcard').html(data);
-            }
-        });
-
-    });
-    $(document).on('submit', '#edituserform', function(event) {
-        event.preventDefault();
-        var id = $('#id').data('id');
-        $.ajax({
-            url: '<?php echo base_url('users/edituser'); ?>',
-            method: 'POST',
-            data: {
-                Fname: $('#editFirstName').val(),
-                Lname: $('#editLastName').val(),
-                policeNo: $('#editPoliceNo').val(),
-                rank: $('#editRank').val(),
-                tel_number: $('#editPhone').val(),
-                password: $('#editPassword').val(),
-                description: $('#editDescription').val(),
-                id: id
-            },
-            success: function(data) {
-                alert('ok');
-                location.reload();
-            }
-        });
+});
+$('body').delegate('.viewUser', 'click', function() {
+    var id = $(this).data('id1');
+    $('#modal-view').modal('show');
+    $.ajax({
+        url: '<?php echo site_url('users/viewuser'); ?>',
+        method: 'POST',
+        data: {
+            id: id
+        },
+        success: function(data) {
+            $('.viewcard-body').html(data);
+        },
+        error: function(err) {
+            console.log(err);
+        }
     });
 
 });
+$('body').delegate('.editUser', 'click', function() {
+    var id = $(this).data('id2');
+    $('#modal-edit').modal('show');
+    $.ajax({
+        url: '<?php echo base_url('users/getUser'); ?>',
+        method: 'POST',
+        data: {
+            id: id
+        },
+        success: function(data) {
+            $('#editcard').html(data);
+        }
+    });
+
+});
+$(document).on('submit', '#edituserform', function(event) {
+    event.preventDefault();
+    var id = $('#id').data('id');
+    $.ajax({
+        url: '<?php echo base_url('users/edituser'); ?>',
+        method: 'POST',
+        data: {
+            Fname: $('#editFirstName').val(),
+            Lname: $('#editLastName').val(),
+            policeNo: $('#editPoliceNo').val(),
+            rank: $('#editRank').val(),
+            tel_number: $('#editPhone').val(),
+            password: $('#editPassword').val(),
+            description: $('#editDescription').val(),
+            id: id
+        },
+        success: function(data) {
+            alert('ok');
+            location.reload();
+        }
+    });
+})
  </script>
