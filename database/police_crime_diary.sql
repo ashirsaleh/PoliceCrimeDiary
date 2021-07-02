@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5deb2
+-- version 4.6.6deb4+deb9u2
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 10, 2021 at 01:36 PM
--- Server version: 10.3.25-MariaDB-0ubuntu0.20.04.1
--- PHP Version: 7.4.16
+-- Generation Time: Jul 02, 2021 at 04:47 AM
+-- Server version: 10.3.27-MariaDB-0+deb10u1
+-- PHP Version: 7.3.19-1+eagle
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -39,18 +37,41 @@ CREATE TABLE `cases` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `complainers`
+--
+
+CREATE TABLE `complainers` (
+  `complainerId` int(50) NOT NULL,
+  `Fname` varchar(255) NOT NULL,
+  `Lname` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `date` date NOT NULL,
+  `time` time(6) NOT NULL,
+  `natureComplaints` varchar(255) NOT NULL,
+  `phoneNum` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `criminals`
 --
 
 CREATE TABLE `criminals` (
-  `criminalID` int(11) NOT NULL,
-  `fName` varchar(255) NOT NULL,
+  `fName` varchar(255) DEFAULT NULL,
+  `accuserId` int(11) NOT NULL,
   `lName` varchar(255) NOT NULL,
-  `age` int(255) NOT NULL,
-  `resident` varchar(255) NOT NULL,
-  `working_status` varchar(255) NOT NULL,
-  `criminalpic` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `age` int(11) NOT NULL,
+  `locationArrested` varchar(255) NOT NULL,
+  `guardianName` varchar(255) NOT NULL,
+  `gRelation` varchar(255) NOT NULL,
+  `circumstance` varchar(255) NOT NULL,
+  `bailset` int(50) NOT NULL,
+  `charges` varchar(255) NOT NULL,
+  `resident` varchar(50) NOT NULL,
+  `wstatus` varchar(50) NOT NULL,
+  `dateArrested` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT;
 
 -- --------------------------------------------------------
 
@@ -69,19 +90,16 @@ CREATE TABLE `users` (
   `age` int(11) NOT NULL,
   `tel_number` varchar(255) NOT NULL,
   `role` tinyint(11) NOT NULL,
-  `description` varchar(255) NOT NULL
+  `description` varchar(255) NOT NULL,
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`policeId`, `policeNo`, `password`, `policepic`, `Fname`, `Lname`, `rank`, `age`, `tel_number`, `role`, `description`) VALUES
-(1, '001234', '$2y$10$IbOV/.s8wbO0jaMFn6nwPef2YTV8T880iWi7coP4vbPmMBVWnPTeG', '', 'Ashir', 'Ally', 'Police Officer', 25, '0627098270', 0, ''),
-(6, 'IS-009', '$2y$10$PgFFOQJPEf8P4v/q7gkZWujnUazf.xbRotqv1YUFZnxhT7hGhjlLS', '', 'fulan', 'fulana', 'Police Officer', 0, '', 0, 'FANYA UCHAWI'),
-(7, '0900', '$2y$10$J1me8OvrfUmxEqEI4/54kuJPW/CjZcGARQ6.VVln49twET8W2gbwC', '', 'mohhh', 'haddy', 'Head Of Station', 0, '', 0, 'jjksjkf'),
-(8, '001234', '$2y$10$1sq1OPq5bvw4HFIQHxHrwe7nPtxczCA.99nx89ftbvSZFkcWzpJG.', '', 'Ashir', 'Ally', 'Police Officer', 0, '', 0, 'someworlds'),
-(9, '001234', '$2y$10$hwlgpJxymYse95yDpGlYBujTwRubY5FfWcfTNYIMiju9BkrkRZRVS', '', 'Ashir', 'Ally', 'Police Officer', 0, '', 0, '');
+INSERT INTO `users` (`policeId`, `policeNo`, `password`, `policepic`, `Fname`, `Lname`, `rank`, `age`, `tel_number`, `role`, `description`, `updated_at`) VALUES
+(19, '557', '$2y$10$WC6rnerQaqt88sYD6nqajO5NU8VyqXLgui18RvZtsPKfMhovGhrxm', '', 'Echo', 'Malone', 'Head Of Station', 0, '', 0, 'Veniam itaque quasi', '2021-07-02 03:01:37');
 
 --
 -- Indexes for dumped tables
@@ -94,10 +112,16 @@ ALTER TABLE `cases`
   ADD PRIMARY KEY (`case_id`);
 
 --
+-- Indexes for table `complainers`
+--
+ALTER TABLE `complainers`
+  ADD PRIMARY KEY (`complainerId`);
+
+--
 -- Indexes for table `criminals`
 --
 ALTER TABLE `criminals`
-  ADD PRIMARY KEY (`criminalID`);
+  ADD PRIMARY KEY (`accuserId`);
 
 --
 -- Indexes for table `users`
@@ -114,20 +138,21 @@ ALTER TABLE `users`
 --
 ALTER TABLE `cases`
   MODIFY `case_id` int(255) NOT NULL AUTO_INCREMENT;
-
+--
+-- AUTO_INCREMENT for table `complainers`
+--
+ALTER TABLE `complainers`
+  MODIFY `complainerId` int(50) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `criminals`
 --
 ALTER TABLE `criminals`
-  MODIFY `criminalID` int(11) NOT NULL AUTO_INCREMENT;
-
+  MODIFY `accuserId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `policeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-COMMIT;
-
+  MODIFY `policeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
