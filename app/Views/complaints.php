@@ -11,91 +11,93 @@
                      </div>
                  </div>
                  <div class="card-body">
-                     <p><b>The Information below should be fullfiled by Plaintiff</b></p>
-                     <div class="d-flex justify-content-between">
-                         <div class="form-group">
-                             <label for="fullname">First Name:</label>
-                             <input type="text" id="name" style="width: 250px;" class="form-control">
-                         </div>
-                         <div class="form-group">
-                             <label for="fullname">Last Name:</label>
-                             <input type="text" id="name" style="width: 250px;" class="form-control">
-                         </div>
-                         <div class="form-group">
-                             <label for="address">Address:</label>
-                             <input type="text" id="address" class="form-control">
-                         </div>
-                     </div>
-                     <div class="row d-flex justify-content-between">
-                         <div class="form-group">
-                             <label for="CaseNo">Date:</label>
-                             <input type="date" id="date" style="width: 200px;" class="form-control">
-                         </div>
-                         <div class="bootstrap-timepicker">
+                     <div class="">
+                         <p><b>The Information below should be fullfiled by Plaintiff</b></p>
+                         <div class="d-flex justify-content-between">
                              <div class="form-group">
-                                 <label>Time:</label>
-
-                                 <div class="input-group date" id="timepicker" data-target-input="nearest">
-                                     <input type="timepicker" class="form-control datetimepicker-input"
-                                         data-target="#timepicker" />
-                                     <div class="input-group-append" data-target="#timepicker"
-                                         data-toggle="datetimepicker">
-                                         <div class="input-group-text"><i class="far fa-clock"></i></div>
-                                     </div>
-                                 </div>
-                                 <!-- /.input group -->
+                                 <label for="fullname">First Name:</label>
+                                 <input type="text" id="name" class="form-control">
                              </div>
-                             <!-- /.form group -->
+                             <div class="form-group">
+                                 <label for="fullname">Last Name:</label>
+                                 <input type="text" id="name" class="form-control">
+                             </div>
+                             <div class="form-group">
+                                 <label for="address">Address:</label>
+                                 <input type="text" id="address" class="form-control">
+                             </div>
                          </div>
-                     </div>
-                     <div class="form-group">
-                         <label>Phone mask:</label>
-
-                         <div class="input-group">
-                             <div class="input-group-prepend">
-                                 <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                         <div class="d-flex justify-content-between">
+                             <div class="form-group">
+                                 <label>Phone Number:</label>
+                                 <div class="input-group" style="width: 250px;">
+                                     <div class="input-group-prepend">
+                                         <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                     </div>
+                                     <input type="text" class="form-control">
+                                 </div>
                              </div>
-                             <input type="text" class="form-control"
-                                 data-inputmask="'mask': ['9999-999-999 [x999999]', '+0999 999 999 9999[9]-9999']"
-                                 data-mask>
+                             <div class="row d-flex justify-content-between">
+                                 <div class="form-group">
+                                     <label for="incident">Dateof Action:</label>
+                                     <input type="datetime-local" style="width: 250px;" id="date" name="dateArrested"
+                                         class="form-control">
+                                 </div>
+                             </div>
                          </div>
                      </div>
                      <div class="form-group">
                          <label for="event">Nature Of Complaints:</label>
                          <textarea id="event" class="form-control" rows="4"></textarea>
                      </div>
-                     <p>
-                         <b>Name of The people involved.</b>
-                     <p>
+                 </div>
+                 <br>
+                 <div class="card-body">
+                     <p><b>People involved in the action.</b>
                      <div class="d-flex justify-content-between">
                          <div class="form-group">
-                             <label for="fullname">Full Name:</label>
-                             <input type="text" id="name" style="width: 500px;" class="form-control">
+                             <label for="fullname">First Name:</label>
+                             <input type="text" id="name" class="form-control">
                          </div>
                          <div class="form-group">
-                             <label for="address">Location:</label>
+                             <label for="fullname">Last Name:</label>
+                             <input type="text" id="name" class="form-control">
+                         </div>
+                         <div class="form-group">
+                             <label for="address">Accusations:</label>
                              <input type="text" id="address" class="form-control">
                          </div>
                      </div>
                      <div class="form-group">
+                         <label for="event">Other Informations About the Defendant:</label>
+                         <textarea id="event" class="form-control" rows="3"></textarea>
+                     </div>
+                     <div class="row d-flex float-right pb-3">
+                         <a class="btn btn-primary">
+                             <b>Add People Involved </b><i class="fa fa-user-plus"></i>
+                         </a>
+                     </div>
+                 </div>
+                 <div class="card-body">
+                     <div class="form-group">
                          <label>Describe what you saw</label>
                          <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
                      </div>
-                     <p>
-                         <b>Add vehicles if involved</b>
-                     </p>
-                     <div class="d-flex justify-content-between">
-                         <div class="form-group">
-                             <label for="fullname">Type:</label>
-                             <input type="text" id="name" class="form-control">
-                         </div>
-                         <div class="form-group">
-                             <label for="address">Plate Number:</label>
-                             <input type="text" id="address" class="form-control">
-                         </div>
-                         <div class="form-group">
-                             <label for="address">Color:</label>
-                             <input type="text" id="address" class="form-control">
+                     <div>
+                         <p><b>Add vehicles if involved</b></p>
+                         <div class="d-flex justify-content-between">
+                             <div class="form-group">
+                                 <label for="fullname">Type:</label>
+                                 <input type="text" id="name" class="form-control">
+                             </div>
+                             <div class="form-group">
+                                 <label for="address">Plate Number:</label>
+                                 <input type="text" id="address" class="form-control">
+                             </div>
+                             <div class="form-group">
+                                 <label for="address">Color:</label>
+                                 <input type="text" id="address" class="form-control">
+                             </div>
                          </div>
                      </div>
                      <div class="form-group">
@@ -113,8 +115,8 @@
                  </div>
                  <!-- /.card-body -->
              </div>
-             <div class="row">
-                 <div class="col-12">
+             <div class="row ">
+                 <div class="col-12 px-5">
                      <a href="header.php" class="btn btn-secondary">Cancel</a>
                      <input type="submit" value="Add " class="btn btn-success float-right">
                  </div>
