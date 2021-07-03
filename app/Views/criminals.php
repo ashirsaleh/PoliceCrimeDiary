@@ -44,7 +44,7 @@
                                 </a>
                                 <a class="btn btn-danger btn-sm deleteDefendant"
                                     data-id3="<?php echo $criminal['accuserId']; ?>">
-                                    <i class="fas fa-trash"></i> Delete
+                                    <i class="fas fa-trash"></i> Close
                                 </a>
                             </td>
                         </tr>

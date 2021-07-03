@@ -58,33 +58,38 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3">
-
-                <!-- Profile Image -->
-                <div class="card card-primary card-outline">
-                    <div class="card-body box-profile">
-                        <div class="profile-pic-wrapper">
-                            <div class="pic-holder">
-                                <div class="container">
-                                    <div class="picture-container">
-                                        <h6 class="">Set your profile picture</h6>
-                                        <div class="picture">
-                                            <img src="" class="picture-src" id="wizardPicturePreview" title="">
-                                            <input type="file" id="wizard-picture" class="">
+                <form action="<?php echo base_url('userprofile/store'); ?>" name="ajax_form" id="ajax_form"
+                    method="post" accept-charset="utf-8" enctype="multipart/form-data">
+                    <!-- Profile Image -->
+                    <div class="card card-primary card-outline">
+                        <div class="card-body box-profile">
+                            <div class="profile-pic-wrapper">
+                                <div class="pic-holder">
+                                    <div class="container">
+                                        <div class="picture-container">
+                                            <h6 class="">Set your profile picture</h6>
+                                            <div class="picture">
+                                                <img src="" class="picture-src" id="wizardPicturePreview" title="">
+                                                <input type="file" name="profile" id="wizard-picture"
+                                                    class="form-control" onchange="readURL(this);"
+                                                    accept=".png, .jpg, .jpeg" />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row justify-content-center p-2">
-                                        <button class="btn btn-sm bg-primary ">Save your Picture</button>
+                                        <div class="row justify-content-center p-2">
+                                            <button type="submit" class="btn btn-success" id="send-form">Save your
+                                                Picture</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <h3 class="profile-username text-center">
-                            <?php echo session()->get('Fname'), ' ', session()->get('Lname') ?></h3>
-                        <p class="text-muted text-center"><?php echo session()->get('rank') ?></p>
+                            <h3 class="profile-username text-center">
+                                <?php echo session()->get('Fname'), ' ', session()->get('Lname') ?></h3>
+                            <p class="text-muted text-center"><?php echo session()->get('rank') ?></p>
+                        </div>
+                        <!-- /.card-body -->
                     </div>
-                    <!-- /.card-body -->
-                </div>
+                </form>
             </div>
             <!-- /.col -->
             <div class="col-md-9">

@@ -5,14 +5,16 @@ namespace App\Controllers;
 use App\Models\CriminalModel;
 use App\models\UserModel;
 
-class criminals extends BaseController{
-    public function index(){
+class criminals extends BaseController
+{
+    public function index()
+    {
         $model = new CriminalModel();
         $data['title'] = 'Criminal';
         $data['location'] = 'Records';
         $data['subRoute'] = 'Criminal records';
         $data['criminals'] = $model->findall();
-        $this->Render('criminals',$data);
+        $this->Render('criminals', $data);
     }
 
     public function viewdefendant()
@@ -46,7 +48,8 @@ class criminals extends BaseController{
         ';
     }
 
-    public function assignDefendant(){
+    public function assignDefendant()
+    {
         $id = $this->request->getVar('id');
         $criminlas = new CriminalModel();
         // $officers = new UserModel();
@@ -54,19 +57,31 @@ class criminals extends BaseController{
         $defendant = $criminlas->find($id);
         echo '
             <div class="form-group">
-                <label for="FirstLastName">Full Name</label>
-                <input type="text" disabled name="fName" value="' . $defendant[0]['lName']." ".$defendant[0]['lName'] . '" id="getFirstName" class="form-control">
-                <input type="hidden" value="'. $id .'" name="id" id="id">
+                <label for="FirstLastName">Criminal Name</label>
+                <input type="text"  value=""  class="form-control">
             </div>
             
             <div class="form-group">
-                <label for="getcharges">All Charges</label>
-                <input type="text" disabled name="charges" value="' . $defendant[0]['charges'] . '" id="getcharges" class="form-control">
+                <label for="getcharges">Action Committed</label>
+                <input type="text" name="charges" value="" id="getcharges" class="form-control">
             </div>
-            <div class="form-group">
-                <label for="getLastName">Age</label>
-                <input type="text"  name="age" value="' . $defendant[0]['age'] . '" id="getLastName" class="form-control">
+             <div class="form-group">
+                <label for="FirstLastName">Case No:</label>
+                <input type="text"  value=""  class="form-control">
             </div>
+             <div class="form-group">
+                <label for="FirstLastName">Case Status</label></label>
+                <input type="text"  value=""  class="form-control">
+            </div>
+             <div class="form-group">
+                <label for="FirstLastName">Conviction</label>
+                <input type="text"  value=""  class="form-control">
+            </div>
+             <div class="form-group">
+                <label for="FirstLastName">Date of Conviction</label>
+                <input type="text"  value=""  class="form-control">
+            </div>
+           
         ';
     }
 }

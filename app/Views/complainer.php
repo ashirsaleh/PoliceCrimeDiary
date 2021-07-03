@@ -21,46 +21,46 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php 
-                     if (empty($complainers)){
-                         echo "<tr><td colspan='6' class='' style='color: red; text-align: center;' ><h4>There are No Records</h4></td></tr>";
-                     }else{
-                         $counter = 1;
-                         foreach ($complainers as $complaint){ 
-                            ?>
+                        <?php
+                        if (empty($complainers)) {
+                            echo "<tr><td colspan='6' class='' style='color: red; text-align: center;' ><h4>There are No Records</h4></td></tr>";
+                        } else {
+                            $counter = 1;
+                            foreach ($complainers as $complaint) {
+                        ?>
                         <tr>
-                            <td><?php echo $complaint['Fname'].' '. $complaint['Lname']; ?></td>
+                            <td><?php echo $complaint['Fname'] . ' ' . $complaint['Lname']; ?></td>
                             <td><?php echo $complaint['address']; ?></td>
-                            <td><?php echo $complaint['time']; ?></td>
+                            <td><?php echo date('H:i', strtotime($complaint['date'])); ?></td>
                             <td><?php echo $complaint['p_number']; ?></td>
                             <td><?php echo $complaint['date']; ?></td>
-                            <td><?php echo $complaint['nature_complaints']; ?></td>
+                            <td><?php echo $complaint['natureComplaints']; ?></td>
                             <td class="project-actions text-right">
                                 <button class="btn btn-primary btn-sm viewcomplainer"
-                                    data-id1="<?php echo $complaint['complainer_id']; ?>">
+                                    data-id1="<?php echo $complaint['complainerId']; ?>">
                                     <i class="fas fa-folder"></i>View
                                 </button>
                                 <a class="btn btn-info btn-sm" href="#
-                                    data-id2=" <?php echo $complaint['complainer_id']; ?>" data-toggle="modal"
+                                    data-id2=" <?php echo $complaint['complainerId']; ?>" data-toggle="modal"
                                     data-target="#modal-edit">
-                                    <i class="fas fa-pencil-alt"></i>Edit
+                                    <i class="fas fa-pencil-alt"></i>EdicomplainerId
                                 </a>
                                 <a class="btn btn-danger btn-sm modal-delete"
-                                    data-id3="<?php echo $complaint['complainer_id']; ?>">
-                                    <i class="fas fa-trash"></i>Delete
+                                    data-id3="<?php echo $complaint['complainerId']; ?>">
+                                    <i class="fas fa-trash"></i>Close
                                 </a>
                             </td>
                         </tr>
                         <?php
-                            $counter++;
-                         }
+                                $counter++;
+                            }
                         }
                         ?>
                         </tfoot>
                 </table>
                 <hr>
                 <div class="d-flex justify-content-center">
-                    <a type="button" class="btn btn-primary" href="complaints">
+                    <a type="button" class="btn btn-primary" href="">
                         Record Complainer
                     </a>
                 </div>
@@ -74,7 +74,7 @@
                                 </button>
                             </div>
                             <div class="card-body">
-                                <form action="<?php echo site_url('edituser')?>" method="POST">
+                                <form action="<?php echo site_url('edituser') ?>" method="POST">
                                     <div class="form-group">
                                         <label for="inputFirstname">First name</label>
                                         <input type="text" name="Fname" id="inputFirstname" class="form-control">
