@@ -10,7 +10,7 @@
                          </button>
                      </div>
                  </div>
-                 <form action="<?php echo site_url('addComplaints'); ?>" method="POST">
+                 <form action="<?php echo site_url('complainer/addComplaints'); ?>" method="POST">
                      <div class="card-body">
                          <div class="">
                              <p><b>The Information below should be fullfiled by Plaintiff</b></p>
@@ -25,7 +25,7 @@
                                  </div>
                                  <div class="form-group">
                                      <label for="address">Address:</label>
-                                     <input type="text" name="address" class="form-control">
+                                     <input type="address" name="address" class="form-control">
                                  </div>
                              </div>
                              <div class="d-flex justify-content-between">
@@ -49,7 +49,7 @@
                          </div>
                          <div class="form-group">
                              <label for="event">Nature Of Complaints:</label>
-                             <textarea name="natureComplaints" class="form-control" rows="4"></textarea>
+                             <textarea class="form-control" name="natureComplaints" rows="4"></textarea>
                          </div>
                          <br>
                          <div class="card-body">
@@ -66,7 +66,7 @@
                              </div>
                              <div class="form-group">
                                  <label for="event">Other Informations About the Defendant:</label>
-                                 <textarea name="def_info" class="form-control" rows="3"></textarea>
+                                 <textarea class="form-control" name="def_info" rows="3"></textarea>
                              </div>
                          </div>
                          <div class="card-body">

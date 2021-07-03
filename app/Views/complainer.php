@@ -14,9 +14,9 @@
                             <th>Full Name</th>
                             <th>Address</th>
                             <th>Time</th>
-                            <th>Telephone Number</th>
+                            <th>Phone Number</th>
                             <th>Date</th>
-                            <th>Nature Of Complaints</th>
+                            <th>Complaints</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -32,7 +32,7 @@
                             <td><?php echo $complaint['Fname'] . ' ' . $complaint['Lname']; ?></td>
                             <td><?php echo $complaint['address']; ?></td>
                             <td><?php echo date('H:i', strtotime($complaint['date'])); ?></td>
-                            <td><?php echo $complaint['p_number']; ?></td>
+                            <td><?php echo $complaint['phoneNum']; ?></td>
                             <td><?php echo $complaint['date']; ?></td>
                             <td><?php echo $complaint['natureComplaints']; ?></td>
                             <td class="project-actions text-right">
@@ -43,7 +43,7 @@
                                 <a class="btn btn-info btn-sm" href="#
                                     data-id2=" <?php echo $complaint['complainerId']; ?>" data-toggle="modal"
                                     data-target="#modal-edit">
-                                    <i class="fas fa-pencil-alt"></i>EdicomplainerId
+                                    <i class="fas fa-pencil-alt"></i>Edit
                                 </a>
                                 <a class="btn btn-danger btn-sm modal-delete"
                                     data-id3="<?php echo $complaint['complainerId']; ?>">
@@ -60,7 +60,7 @@
                 </table>
                 <hr>
                 <div class="d-flex justify-content-center">
-                    <a type="button" class="btn btn-primary" href="">
+                    <a type="button" class="btn btn-primary" href="complaints">
                         Record Complainer
                     </a>
                 </div>
@@ -157,10 +157,10 @@ $(document).ready(function() {
         });
     });
 
-    $('body').delegate('.deleteUser', 'click', function() {
+    $('body').delegate('.deleteCompaliner', 'click', function() {
         var id = $(this).data('id3');
         $.ajax({
-            url: '<?php echo base_url('complainer/deleteUser'); ?>',
+            url: '<?php echo base_url('complaints/deletecomplainer'); ?>',
             method: 'POST',
             data: {
                 id: id
@@ -177,7 +177,7 @@ $(document).ready(function() {
         var id = $(this).data('id1');
         $('#modal-view').modal('show');
         $.ajax({
-            url: '<?php echo site_url('complainer/viewcomplainer'); ?>',
+            url: '<?php echo site_url('complainer/viewcomplaints'); ?>',
             method: 'POST',
             data: {
                 id: id

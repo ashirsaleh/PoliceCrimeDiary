@@ -9,5 +9,5 @@ class ComplaintModel extends model
     protected $table = "complainers";
     protected $primaryKey = 'complainer_id';
     protected $returnType = 'array';
-    protected $allowedFields = ['Fname', 'Lname', 'address', 'date', 'p_number', 'time', 'nature_complaints', 'th_name', 'location', 'short_info', 'car_name', 'plate_number', 'color', 'wit_statement'];
+    protected $allowedFields = ['FName', 'LName', 'address', 'date', 'p_number', 'time', 'natureComplaints', 'th_name', 'def_info', 'other_info', 'type', 'p_number', 'color', 'w_statement', 'accusation'];
 }

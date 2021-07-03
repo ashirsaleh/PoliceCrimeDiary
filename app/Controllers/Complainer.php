@@ -21,16 +21,16 @@ class Complainer extends BaseController
             helper('form');
             if ($this->request->getMethod() === 'post') {
                 $rules = [
-                    'FName' => 'required|min_length[3]|max_length[50]',
-                    'LName' => 'required|min_length[2]|max_length[50]',
+                    'FName' => 'required',
+                    'LName' => 'required',
                     'address' => 'required',
                     'date' => 'required',
-                    'natureComplaints' => 'required|min_length[5]|max_length[255]',
-                    'phoneNum' => 'required|min_length[10]|max_length[20    ]',
-                    'th_name' => 'required|min_length[2]|max_length[50]',
-                    'accusation' => 'required|min_length[2]|max_length[255]',
-                    'def_info' => 'required|min_length[10]|max_length[255]',
-                    'other_info' => 'required|min_length[10]|max_length[255]',
+                    'natureComplaints' => 'required',
+                    'phoneNum' => 'required',
+                    'th_name' => 'required',
+                    'accusation' => 'required',
+                    'def_info' => 'required',
+                    'other_info' => 'required',
                 ];
                 $errors = [];
                 if (!$this->validate(
@@ -64,39 +64,44 @@ class Complainer extends BaseController
             }
         }
     }
-    public function viewcomplainer()
+    public function viewComplaints()
     {
         $id = $this->request->getVar('id');
         $model = new ComplaintModel();
-        $user = $model->find($id);
+        $complaint = $model->find($id);
         echo '
         <table class="table table-hover">
-        
             <tr>
-                <th>Name of people involved</th>
-                <th>Short Description Statement</th>       
+                <th>Full Name</th>
+                <td>' . $complaint['th_name'] . '</td>
             </tr>
             <tr>
-                <td>' . $user['th_name'] . '</td>
-                <td>' . $user['short_info'] . '</td>    
+                <th>Accusation</th>
+                <td>' . $complaint['accusation'] . '</td>
             </tr>
             <tr>
-            <th>If vehicles involved</th>
-                <th>Car Type</th>
-                <th>Plate Number</th>
-                <th>Color</th>
-                <tr> 
-                <td></td>
-                <td>' . $user['car_name'] . '</td>
-                <td>' . $user['plate_number'] . '</td>
-                <td>' . $user['color'] . '</td>
-                </tr>
+                <th>Defendant information</th>
+                <td>' . $complaint['def_info'] . '</td>
             </tr>
             <tr>
-            <th>Witness statement</th>
-            <td colspan="6">' . $user['wit_statement'] . '</td>
-           </tr>
+                <th>Describe what you saw</th>
+                <td>' . $complaint['other_info'] . '</td>
+            </tr>
+            <tr>
+                <th>Vehicle involved</th>
+                <td>' . $complaint['type'] . " " . $complaint['p_number'] . " " . $complaint['color'] . '</td>
+            </tr>
+             <tr>
+                <th>Witnes Statement</th>
+                <td>' . $complaint['w_statement'] . '</td>
+            </tr>
         </table>
         ';
+    }
+    public function deletecomplainer()
+    {
+        $id = $this->request->getVar('id');
+        $model = new ComplaintModel();
+        $model->delete($id);
     }
 }
