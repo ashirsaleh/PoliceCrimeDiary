@@ -57,8 +57,8 @@ class criminals extends BaseController
         $defendant = $criminlas->find($id);
         echo '
             <div class="form-group">
-                <label for="FirstLastName">Criminal Name</label>
-                <input type="text"  value=""  class="form-control">
+                <label for="criminalname">Criminal Name</label>
+                <input type="text" disabled name="fName" value="" id="fName" class="form-control">
             </div>
             
             <div class="form-group">
@@ -66,7 +66,7 @@ class criminals extends BaseController
                 <input type="text" name="charges" value="" id="getcharges" class="form-control">
             </div>
              <div class="form-group">
-                <label for="FirstLastName">Case No:</label>
+                <label for="FirstLastName">Case No:</label> 
                 <input type="text"  value=""  class="form-control">
             </div>
              <div class="form-group">
@@ -74,11 +74,7 @@ class criminals extends BaseController
                 <input type="text"  value=""  class="form-control">
             </div>
              <div class="form-group">
-                <label for="FirstLastName">Conviction</label>
-                <input type="text"  value=""  class="form-control">
-            </div>
-             <div class="form-group">
-                <label for="FirstLastName">Date of Conviction</label>
+                <label for="FirstLastName">assign to</label>
                 <input type="text"  value=""  class="form-control">
             </div>
            

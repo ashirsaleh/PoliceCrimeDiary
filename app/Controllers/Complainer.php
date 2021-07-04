@@ -21,8 +21,8 @@ class Complainer extends BaseController
             helper('form');
             if ($this->request->getMethod() === 'post') {
                 $rules = [
-                    'FName' => 'required',
-                    'LName' => 'required',
+                    'FName' => 'required|min_length[5]|max_length[15]',
+                    'LName' => 'required|min_length[5]|max_length[15]',
                     'address' => 'required',
                     'date' => 'required',
                     'natureComplaints' => 'required',

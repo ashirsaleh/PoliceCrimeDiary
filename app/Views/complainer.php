@@ -13,7 +13,6 @@
                         <tr>
                             <th>Full Name</th>
                             <th>Address</th>
-                            <th>Time</th>
                             <th>Phone Number</th>
                             <th>Date</th>
                             <th>Complaints</th>
@@ -31,7 +30,7 @@
                         <tr>
                             <td><?php echo $complaint['Fname'] . ' ' . $complaint['Lname']; ?></td>
                             <td><?php echo $complaint['address']; ?></td>
-                            <td><?php echo date('H:i', strtotime($complaint['date'])); ?></td>
+                            <!--<td><?php echo date('H:i', strtotime($complaint['date'])); ?></td>-->
                             <td><?php echo $complaint['phoneNum']; ?></td>
                             <td><?php echo $complaint['date']; ?></td>
                             <td><?php echo $complaint['natureComplaints']; ?></td>
@@ -40,11 +39,6 @@
                                     data-id1="<?php echo $complaint['complainerId']; ?>">
                                     <i class="fas fa-folder"></i>View
                                 </button>
-                                <a class="btn btn-info btn-sm" href="#
-                                    data-id2=" <?php echo $complaint['complainerId']; ?>" data-toggle="modal"
-                                    data-target="#modal-edit">
-                                    <i class="fas fa-pencil-alt"></i>Edit
-                                </a>
                                 <a class="btn btn-danger btn-sm modal-delete"
                                     data-id3="<?php echo $complaint['complainerId']; ?>">
                                     <i class="fas fa-trash"></i>Close
@@ -67,36 +61,6 @@
                 <div class="modal fade" id="modal-edit">
                     <div class="modal-dialog">
                         <div class="modal-content bg-dark-primary">
-                            <div class="modal-header">
-                                <h4 class="modal-title">Edit complainer details</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="card-body">
-                                <form action="<?php echo site_url('edituser') ?>" method="POST">
-                                    <div class="form-group">
-                                        <label for="inputFirstname">First name</label>
-                                        <input type="text" name="Fname" id="inputFirstname" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputLastname">Last name</label>
-                                        <input type="text" name="Lname" id="inputLastname" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputPoliceNo">Phone number</label>
-                                        <input type="text" name="phone" id="phonenumber" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="incident">Date:</label>
-                                        <input type="date" id="date" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputDescription">Nature of complaints </label>
-                                        <textarea id="inputDescription" name="description" class="form-control"
-                                            rows="4"></textarea>
-                                    </div>
-                            </div>
                             <div class="row">
                                 <div class="col-12 p-3">
                                     <a href="#" class="btn btn-secondary">Cancel</a>
