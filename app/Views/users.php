@@ -10,51 +10,51 @@
                  </div>
              </div>
              <?php
-                if(isset($validation)){
+                if (isset($validation)) {
                     echo $validation->listErrors();
                 }
-             ?>
+                ?>
              <div class="card-body">
                  <table id="example2" class="table table-bordered table-hover">
                      <thead>
                          <tr>
+                             <th>No</th>
                              <th>Full Name</th>
                              <th>Police Identity Number</th>
                              <th>Rank</th>
                              <th>Telephone Number</th>
-                             <th>Role</th>
+                             <th>Description</th>
                              <th>Action</th>
                          </tr>
                      </thead>
                      <tbody>
                          <?php
-                        if (empty($users)) {
-                            echo "<tr><td colspan='8' style='color: red; text-align: center;'><h4>There are No Users</h4></td></tr>";
-                        } else {
-                            $counter = 1;
-                            foreach ($users as $users) {
-                                ?>
+                            if (empty($users)) {
+                                echo "<tr><td colspan='8' style='color: red; text-align: center;'><h4>There are No Users</h4></td></tr>";
+                            } else {
+                                $counter = 0;
+                                foreach ($users as $users) {
+                                    $counter++;
+                            ?>
                          <tr>
+                             <td><?php echo $counter; ?></td>
                              <td><?php echo $users['Fname'] . ' ' . $users['Lname']; ?></td>
                              <td><?php echo $users['policeNo']; ?></td>
                              <td><?php echo $users['rank']; ?></td>
                              <td><?php echo $users['tel_number']; ?></td>
-                             <td><?php echo $users['age']; ?></td>
+                             <td><?php echo $users['description']; ?></td>
                              <td class="project-actions text-right d-flex justify-content-between"">
-                                 <button data-id1=" <?php echo $users['policeId']; ?>"
-                                 class="btn btn-primary btn-sm viewUser">
+                                 <button data-id1=" <?php echo $users['policeId']; ?>" class="btn btn-primary btn-sm viewUser">
                                  <i class="fas fa-folder">
                                  </i>
                                  View
                                  </button>
-                                 <button data-id2="<?php echo $users['policeId']; ?>"
-                                     class="btn btn-info btn-sm editUser">
+                                 <button data-id2="<?php echo $users['policeId']; ?>" class="btn btn-info btn-sm editUser">
                                      <i class="fas fa-pencil-alt">
                                      </i>
                                      Edit
                                  </button>
-                                 <button data-id3="<?php echo $users['policeId']; ?>"
-                                     class="btn btn-danger btn-sm deleteUser">
+                                 <button data-id3="<?php echo $users['policeId']; ?>" class="btn btn-danger btn-sm deleteUser">
                                      <i class="fas fa-trash">
                                      </i>
                                      Delete
@@ -62,10 +62,10 @@
                              </td>
                          </tr>
                          <?php
-                    $counter++;
-                        }
-                    }
-                    ?>
+                                    $counter++;
+                                }
+                            }
+                            ?>
                          </tfoot>
                  </table>
                  <hr>
@@ -106,8 +106,7 @@
                                      </div>
                                      <div class="form-group">
                                          <label for="inputDescription">Short Description </label>
-                                         <textarea id="inputDescription" name="description" class="form-control"
-                                             rows="4"></textarea>
+                                         <textarea id="inputDescription" name="description" class="form-control" rows="4"></textarea>
                                      </div>
                                      <div class="row">
                                          <div class="col-12 p-3">

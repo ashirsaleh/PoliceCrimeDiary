@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.4deb2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 04, 2021 at 12:33 AM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.6
+-- Host: localhost:3306
+-- Generation Time: Jul 05, 2021 at 07:05 AM
+-- Server version: 10.3.29-MariaDB-0+deb10u1
+-- PHP Version: 7.3.27-1~deb10u1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `police_crime_diary`
+-- Database: `pcd`
 --
 
 -- --------------------------------------------------------
@@ -133,7 +133,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`policeId`, `policeNo`, `password`, `policepic`, `Fname`, `Lname`, `rank`, `age`, `tel_number`, `role`, `description`, `updated_at`) VALUES
-(21, '00186', '$2y$10$YlCjd50exM7OeMiHPh4aR.nIZRaV466ebkjyYTPS.fMzDe3L8L.gu', '', 'mohamed', 'Hamadi', 'Head Of Station', 0, '0672212334', 0, 'As you a Head of police Station, You are supposed to review daily criminila record and to assign to your officers.', '2021-07-02 15:26:45');
+(21, '00321', '$2y$10$7f7IQZ85a9de558z48YVoeI7WJMY5laNO7nUWB97ORmp6Nl8dCShG', '', 'Hashir', 'Sales', 'Head Of Station', 0, '+255754552233', 0, 'The police office of  the stations\n                ', '2021-07-04 23:59:14'),
+(23, '00321', '$2y$10$7f7IQZ85a9de558z48YVoeI7WJMY5laNO7nUWB97ORmp6Nl8dCShG', '', 'Hashir', 'Sales', 'Head Of Station', 0, '+255754552233', 0, 'The police office of  the stations\n                ', '2021-07-04 23:59:14');
 
 --
 -- Indexes for dumped tables
@@ -189,7 +190,7 @@ ALTER TABLE `criminals`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `policeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `policeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
