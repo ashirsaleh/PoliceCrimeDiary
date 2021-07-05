@@ -4,10 +4,8 @@ namespace App\Controllers;
 
 use App\Models\ComplaintModel;
 
-class Complainer extends BaseController
-{
-    public function index()
-    {
+class Complainer extends BaseController {
+    public function index() {
         $model = new ComplaintModel();
         $data['title'] = 'Complainers';
         $data['location'] = 'Records';
@@ -16,8 +14,7 @@ class Complainer extends BaseController
         $this->Render('complainer', $data);
     }
 
-    public function  AddComplaints()
-    { {
+    public function  AddComplaints() { {
             helper('form');
             if ($this->request->getMethod() === 'post') {
                 $rules = [
@@ -38,10 +35,13 @@ class Complainer extends BaseController
                     $errors
                 )) {
                     $data['validation'] = $this->validator;
-                    echo $data['validation']->listErrors();
-                    // return redirect()->to('complainer');
-
                 } else {
+                    $file = $this->request->getFile('statement');
+                    if (!$file->isValid()) {
+                        return $this->fail($file->getErrorString());
+                    }
+                    $file->move(ROOTPATH . 'public/assets/uploads/documents');
+                    $url = "assets/uploads/documents/" . $file->getName();
                     $complaint = array(
                         'FName' => $this->request->getVar('FName'),
                         'LName' => $this->request->getVar('LName'),
@@ -51,7 +51,7 @@ class Complainer extends BaseController
                         'date' => date('Y-m-d H:i:s', strtotime($this->request->getVar('date'))),
                         'phoneNum' => $this->request->getVar('phoneNum'),
                         'color' => $this->request->getVar('color'),
-                        'w_statement' => $this->request->getVar('w_statement'),
+                        'w_statement' => $url,
                         'p_number' => $this->request->getVar('p_number'),
                         'other_info' => $this->request->getVar('other_info'),
                         'accusation' => $this->request->getVar('accusation'),
@@ -62,10 +62,13 @@ class Complainer extends BaseController
                     return redirect()->to('complainer');
                 }
             }
+            $data['title'] = 'Record Complaints';
+            $data['location'] = 'Case Statements';
+            $data['subRoute'] = 'Record Complaints';
+            $this->Render('complaints', $data);
         }
     }
-    public function viewComplaints()
-    {
+    public function viewComplaints() {
         $id = $this->request->getVar('id');
         $model = new ComplaintModel();
         $complaint = $model->find($id);
@@ -93,13 +96,12 @@ class Complainer extends BaseController
             </tr>
              <tr>
                 <th>Witnes Statement</th>
-                <td>' . $complaint['w_statement'] . '</td>
+                <td> <img height="300" width="350" src="' . $complaint['w_statement'] . '" </td>
             </tr>
         </table>
         ';
     }
-    public function deletecomplainer()
-    {
+    public function deleteComplaints() {
         $id = $this->request->getVar('id');
         $model = new ComplaintModel();
         $model->delete($id);

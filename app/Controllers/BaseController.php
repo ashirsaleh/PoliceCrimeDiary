@@ -52,4 +52,7 @@ class BaseController extends Controller {
 		echo view($page, $data);
 		echo view('templates/footer', $data);
 	}
+
+	public function uploadFile($file, $folder) {
+	}
 }

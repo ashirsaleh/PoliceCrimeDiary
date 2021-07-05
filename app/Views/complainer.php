@@ -11,12 +11,13 @@
                 <table id="example2" class="table table-bordered table-hover">
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>Full Name</th>
                             <th>Address</th>
                             <th>Phone Number</th>
                             <th>Date</th>
                             <th>Complaints</th>
-                            <th>Action</th>
+                            <th width="10%">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -24,23 +25,22 @@
                         if (empty($complainers)) {
                             echo "<tr><td colspan='6' class='' style='color: red; text-align: center;' ><h4>There are No Records</h4></td></tr>";
                         } else {
-                            $counter = 1;
+                            $counter = 0;
                             foreach ($complainers as $complaint) {
+                                $counter++;
                         ?>
                         <tr>
+                            <th><?php echo $counter; ?></th>
                             <td><?php echo $complaint['Fname'] . ' ' . $complaint['Lname']; ?></td>
                             <td><?php echo $complaint['address']; ?></td>
-                            <!--<td><?php echo date('H:i', strtotime($complaint['date'])); ?></td>-->
                             <td><?php echo $complaint['phoneNum']; ?></td>
-                            <td><?php echo $complaint['date']; ?></td>
+                            <td><?php echo date('d/m/Y H:i', strtotime($complaint['date'])); ?></td>
                             <td><?php echo $complaint['natureComplaints']; ?></td>
                             <td class="project-actions text-right">
-                                <button class="btn btn-primary btn-sm viewcomplainer"
-                                    data-id1="<?php echo $complaint['complainerId']; ?>">
+                                <button class="btn btn-primary btn-sm viewcomplainer" data-id1="<?php echo $complaint['complainerId']; ?>">
                                     <i class="fas fa-folder"></i>View
                                 </button>
-                                <a class="btn btn-danger btn-sm modal-delete"
-                                    data-id3="<?php echo $complaint['complainerId']; ?>">
+                                <a class="btn btn-danger btn-sm deleteCompaliner" data-id3="<?php echo $complaint['complainerId']; ?>">
                                     <i class="fas fa-trash"></i>Close
                                 </a>
                             </td>
@@ -54,7 +54,7 @@
                 </table>
                 <hr>
                 <div class="d-flex justify-content-center">
-                    <a type="button" class="btn btn-primary" href="complaints">
+                    <a type="button" class="btn btn-primary" href="<?php echo site_url('AddComplaints'); ?>">
                         Record Complainer
                     </a>
                 </div>
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal fade" id="modal-view">
+                <div class="modal modal-md fade" id="modal-view">
                     <div class="modal-dialog">
                         <div class="modal-content bg-dark-primary">
                             <div class="modal-header">
@@ -124,13 +124,15 @@ $(document).ready(function() {
     $('body').delegate('.deleteCompaliner', 'click', function() {
         var id = $(this).data('id3');
         $.ajax({
-            url: '<?php echo base_url('complaints/deletecomplainer'); ?>',
+            url: '<?php echo base_url('complainer/deleteComplaints'); ?>',
             method: 'POST',
             data: {
                 id: id
             },
             success: (data) => {
-                console.log('data');
+                location.reload();
+                // console.log('data');
+
             },
             error: (err) => {
                 console.log(err);

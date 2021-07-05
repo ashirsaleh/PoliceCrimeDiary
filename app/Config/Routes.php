@@ -31,7 +31,7 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Main::index', ['filter'=>'auth']);
+$routes->get('/', 'Main::index', ['filter' => 'auth']);
 $routes->match(['get', 'post'], 'login', 'Login::index', ['filters' => 'noauth']);
 $routes->get('logout', 'Login::logout');
 
@@ -52,10 +52,9 @@ $routes->match(['get', 'post'], 'addcriminal', 'Crime::AddCriminal', ['filter' =
 $routes->match(['get', 'post'], 'deletecriminal', 'Crime::DeleteCriminal', ['filter' => 'auth']);
 
 //Routes for complaints
-$routes->get('complaints', 'Complaints::index', ['filters' => 'auth']);
-$routes->match(['get', 'post'], 'edicomplaints', 'Complaints::EditComplaints', ['filter' => 'auth']);
-$routes->match(['get', 'post'], 'addcomplaints', 'Complaints::AddComplaints', ['filter' => 'auth']);
-$routes->match(['get', 'post'], 'deletecomplaints', 'Complaints::DeleteComplaints', ['filter' => 'auth']);
+$routes->get('complaints', 'Complainer::index', ['filters' => 'auth']);
+$routes->match(['get', 'post'], 'AddComplaints', 'Complainer::AddComplaints', ['filter' => 'auth']);
+$routes->match(['get', 'post'], 'deleteComplaints', 'Complainer::DeleteComplaints', ['filter' => 'auth']);
 
 //Routes for accusers
 $routes->get('crime', 'Crime::index', ['filters' => 'auth']);
