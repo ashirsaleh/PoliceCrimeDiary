@@ -12,6 +12,7 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
+                                    <th>#</th>
                                     <th>Criminal Name</th>
                                     <th>Case No:</th>
                                     <th>Case Status</th>
@@ -29,6 +30,7 @@
                                     foreach ($cases as $case) {
                                 ?>
                                 <tr>
+                                    <td><?php echo $counter; ?></td>
                                     <td><?php echo $case['criminal_name']; ?></td>
                                     <td><?php echo $case['case_no']; ?></td>
                                     <td><?php echo $case['case_status']; ?></td>

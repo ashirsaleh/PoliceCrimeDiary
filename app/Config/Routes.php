@@ -47,6 +47,7 @@ $routes->match(['get', 'post'], 'editprofile', 'UserProfile::EditProfile', ['fil
 
 //Router for criminals
 $routes->get('crime', 'Crime::index', ['filters' => 'auth']);
+$routes->match(['get', 'post'], 'editdefendant', 'Crime::EditDefendant', ['filter' => 'auth']);
 $routes->match(['get', 'post'], 'edicriminal', 'Crime::EditCriminal', ['filter' => 'auth']);
 $routes->match(['get', 'post'], 'addcriminal', 'Crime::AddCriminal', ['filter' => 'auth']);
 $routes->match(['get', 'post'], 'deletecriminal', 'Crime::DeleteCriminal', ['filter' => 'auth']);

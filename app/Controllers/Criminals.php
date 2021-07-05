@@ -3,12 +3,10 @@
 namespace App\Controllers;
 
 use App\Models\CriminalModel;
-use App\models\UserModel;
+use App\Models\UserModel;
 
-class criminals extends BaseController
-{
-    public function index()
-    {
+class criminals extends BaseController {
+    public function index() {
         $model = new CriminalModel();
         $data['title'] = 'Criminal';
         $data['location'] = 'Records';
@@ -17,8 +15,7 @@ class criminals extends BaseController
         $this->Render('criminals', $data);
     }
 
-    public function viewdefendant()
-    {
+    public function viewdefendant() {
         $id = $this->request->getVar('id');
         $model = new CriminalModel();
         $user = $model->find($id);
@@ -48,36 +45,37 @@ class criminals extends BaseController
         ';
     }
 
-    public function assignDefendant()
-    {
+    public function assignDefendant() {
         $id = $this->request->getVar('id');
-        $criminlas = new CriminalModel();
-        // $officers = new UserModel();
-        // $users = $officers->find($id);
-        $defendant = $criminlas->find($id);
+        $criminals = new CriminalModel();
+        $officers = new UserModel();
+        $polices = $officers->findAll();
+        $criminal = $criminals->find($id);
         echo '
             <div class="form-group">
                 <label for="criminalname">Criminal Name</label>
-                <input type="text" disabled name="fName" value="" id="fName" class="form-control">
+                <input type="text" disabled name="fName" value="' . $criminal[0]['fName'] . " " . $criminal[0]['fName'] . '" id="fName" class="form-control">
+                <input type="hidden" value="' . $id . '">
             </div>
-            
             <div class="form-group">
                 <label for="getcharges">Action Committed</label>
-                <input type="text" name="charges" value="" id="getcharges" class="form-control">
+                <input type="text" name="charges" required disabled value="' . $criminal[0]['charges'] . '" id="getcharges" class="form-control">
             </div>
              <div class="form-group">
-                <label for="FirstLastName">Case No:</label> 
-                <input type="text"  value=""  class="form-control">
-            </div>
-             <div class="form-group">
-                <label for="FirstLastName">Case Status</label></label>
-                <input type="text"  value=""  class="form-control">
+                <label for="FirstLastName">Case No:</label>
+                <input type="text"  pattern="[A-Za-Z]{3}" required class="form-control">
             </div>
              <div class="form-group">
                 <label for="FirstLastName">assign to</label>
-                <input type="text"  value=""  class="form-control">
-            </div>
-           
+                <select name="assignedTo" class="form-control">
+                <option value="" disabled selected hidden> - SELECT OFFICER -</option>';
+        foreach ($polices as $police) {
+            echo "
+            <option value='" . $police['Fname'] . " " . $police['Lname'] . "'>" . $police['Fname'] . " " . $police['Lname'] . "</option>";
+        }
+
+        echo '</select></div>
+
         ';
     }
 }

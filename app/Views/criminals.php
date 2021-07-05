@@ -11,6 +11,7 @@
                 <table id="example2" class="table table-bordered table-hover">
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>Full Name</th>
                             <th>Age of a Person</th>
                             <th>All charges</th>
@@ -26,24 +27,22 @@
                             foreach ($criminals as $criminal) {
                         ?>
                         <tr>
+                            <td><?php echo $counter; ?></td>
                             <td><?php echo $criminal['fName'] . ' ' . $criminal['lName']; ?></td>
                             <td><?php echo $criminal['age']; ?></td>
                             <td><?php echo $criminal['charges']; ?></td>
                             <td class="project-actions text-right d-flex justify-content-between">
-                                <a data-id1="<?php echo $criminal['accuserId']; ?>"
-                                    class="btn btn-primary btn-sm viewDefendant">
+                                <a data-id1="<?php echo $criminal['accuserId']; ?>" class="btn btn-primary btn-sm viewDefendant">
                                     <i class="fas fa-folder">
                                     </i>
                                     View
                                 </a>
-                                <a data-id1="<?php echo $criminal['accuserId']; ?>"
-                                    class="btn btn-warning btn-sm editDefendant">
+                                <a data-id1="<?php echo $criminal['accuserId']; ?>" class="btn btn-warning btn-sm editDefendant">
                                     <i class="fas fa-tasks">
                                     </i>
                                     Assign Case
                                 </a>
-                                <a class="btn btn-danger btn-sm deleteDefendant"
-                                    data-id3="<?php echo $criminal['accuserId']; ?>">
+                                <a class="btn btn-danger btn-sm deleteDefendant" data-id3="<?php echo $criminal['accuserId']; ?>">
                                     <i class="fas fa-trash"></i> Close
                                 </a>
                             </td>
@@ -92,15 +91,17 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="editcard card-body">
+                        <form id="editdefendantform">
+                            <div class="editcard card-body">
 
-                        </div>
-                        <div class="row">
-                            <div class="col-12 p-3">
-                                <a data-dismiss="modal" class="btn btn-secondary">Cancel</a>
-                                <input type="submit" value="Assign" class="btn btn-success float-right">
                             </div>
-                        </div>
+                            <div class="row">
+                                <div class="col-12 p-3">
+                                    <a data-dismiss="modal" class="btn btn-secondary">Cancel</a>
+                                    <input type="submit" value="Assign" class="btn btn-success float-right">
+                                </div>
+                            </div>
+                        </form>
                     </div>
                     <br>
                     <!-- /.card-body -->
@@ -187,19 +188,20 @@
         });
 
     });
-    $(document).on('submit', '#editdefendant', function(event) {
+    $(document).on('submit', '#editdefendantform', function(event) {
         event.preventDefault();
-        var id = $('#id').data('id');
+        var id = $('#id').val();
         $.ajax({
             url: '<?php echo base_url('criminals/editdefendant'); ?>',
             method: 'POST',
             data: {
-                // fName: $('#getFirstName').val(),
-                // lName: $('#getLastName').val(),
-                // charges: $('#getcharges').val(),
+                fName: $('#getFirstName').val(),
+                lName: $('#getLastName').val(),
+                charges: $('#getcharges').val(),
                 id: id
             },
             success: function(data) {
+
                 alert('ok');
                 location.reload();
             }

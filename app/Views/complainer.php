@@ -46,7 +46,6 @@
                             </td>
                         </tr>
                         <?php
-                                $counter++;
                             }
                         }
                         ?>
