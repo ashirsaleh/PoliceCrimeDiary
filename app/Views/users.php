@@ -62,7 +62,6 @@
                              </td>
                          </tr>
                          <?php
-                                    $counter++;
                                 }
                             }
                             ?>
@@ -82,31 +81,35 @@
                                  <form action="<?php echo site_url('adduser') ?>" method="POST">
                                      <div class="form-group">
                                          <label for="inputFirstname">First name</label>
-                                         <input type="text" name="Fname" id="inputFirstname" class="form-control">
+                                         <input type="text" name="Fname" required id="inputFirstname" class="form-control">
                                      </div>
                                      <div class="form-group">
                                          <label for="inputLastname">Last name</label>
-                                         <input type="text" name="Lname" id="inputLastname" class="form-control">
+                                         <input type="text" name="Lname" required id="inputLastname" class="form-control">
                                      </div>
                                      <div class="form-group">
                                          <label for="inputPoliceNo">Police Identification Number</label>
-                                         <input type="text" name="policeNo" id="inputPoliceNo" class="form-control">
+                                         <input type="text" name="policeNo" required id="inputPoliceNo" class="form-control">
                                      </div>
                                      <div class="form-group">
                                          <label for="inputStatus">Rank</label>
-                                         <select id="inputStatus" name="rank" class="form-control custom-select">
-                                             <option selected disabled>Select Rank</option>
-                                             <option>Police Officer</option>
-                                             <option>Head Of Station</option>
+                                         <select id="inputStatus" name="rank" required class="form-control">
+                                             <option selected hidden disabled>Select Rank</option>
+                                             <option value="Police Officer">Police Officer</option>
+                                             <option value="Head Of Station">Head Of Station</option>
                                          </select>
                                      </div>
                                      <div class="form-group">
+                                         <label for="password">Phone Number</label>
+                                         <input type="tel" name="tel_number" id="phone" required class="form-control">
+                                     </div>
+                                     <div class="form-group">
                                          <label for="password">User password</label>
-                                         <input type="password" name="password" id="passowrd" class="form-control">
+                                         <input type="password" name="password" id="passoword" required class="form-control">
                                      </div>
                                      <div class="form-group">
                                          <label for="inputDescription">Short Description </label>
-                                         <textarea id="inputDescription" name="description" class="form-control" rows="4"></textarea>
+                                         <textarea id="inputDescription" name="description" required class="form-control" rows="4"></textarea>
                                      </div>
                                      <div class="row">
                                          <div class="col-12 p-3">
@@ -239,9 +242,9 @@ $('body').delegate('.editUser', 'click', function() {
 });
 $(document).on('submit', '#edituserform', function(event) {
     event.preventDefault();
-    var id = $('#id').data('id');
+    var id = $('#id').val();
     $.ajax({
-        url: '<?php echo base_url('users/edituser'); ?>',
+        url: '<?php echo base_url('users/EditUser'); ?>',
         method: 'POST',
         data: {
             Fname: $('#editFirstName').val(),
@@ -254,7 +257,7 @@ $(document).on('submit', '#edituserform', function(event) {
             id: id
         },
         success: function(data) {
-            alert('ok');
+            alert("user has been updated");
             location.reload();
         }
     });

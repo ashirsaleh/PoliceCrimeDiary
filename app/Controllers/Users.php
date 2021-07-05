@@ -85,6 +85,7 @@ class users extends BaseController {
         $model = new UserModel();
         $model->delete($id);
     }
+
     public function EditUser() {
         if ($this->request->getMethod() === 'post') {
             $rules = [
@@ -99,6 +100,7 @@ class users extends BaseController {
             if (!$this->validate($rules, $errors)) {
                 $data['validation'] = $this->validator;
             } else {
+                $id = $this->request->getVar('id');
                 $user = array(
                     'policeNo' => $this->request->getVar('policeNo'),
                     'Fname' => $this->request->getVar('Fname'),
@@ -108,11 +110,8 @@ class users extends BaseController {
                     'description' => $this->request->getVar('description'),
                     'password' => $this->request->getVar('password'),
                 );
-                $id = $this->request->getVar('id');
                 $model = new UserModel();
                 $model->update($id, $user);
-                // return redirect()->to('users');
-                print_r($id);
             }
         }
     }
@@ -120,7 +119,6 @@ class users extends BaseController {
         $id = $this->request->getVar('id');
         $model = new UserModel();
         $user = $model->find($id);
-
         echo '
             <div class="form-group">
                 <label for="editFirstName">First name</label>
@@ -138,9 +136,9 @@ class users extends BaseController {
             <div class="form-group">
                 <label for="editRank">Rank</label>
                 <select id="editRank" name="rank" value="' . $user['rank'] . '" class="form-control custom-select">
-                    <option selected disabled>Select Rank</option>
-                    <option>Police Officer</option>
-                    <option>Head Of Station</option>
+                    <option selected hidden disabled>Select Rank</option>
+                    <option value="Police officer">Police Officer</option>
+                    <option value="Head of Station">Head Of Station</option>
                 </select>
             </div>
             <div class="form-group">
