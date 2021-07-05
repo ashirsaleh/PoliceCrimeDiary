@@ -53,13 +53,13 @@
 .picture-src {
     width: 100%;
 }
-
 </style>
 <section class="content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3">
-                <form action="<?php echo base_url('userprofile/store'); ?>" name="ajax_form" id="ajax_form" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+                <form action="<?php echo base_url('userprofile/store'); ?>" name="ajax_form" id="ajax_form"
+                    method="post" accept-charset="utf-8" enctype="multipart/form-data">
                     <!-- Profile Image -->
                     <div class="card card-primary card-outline">
                         <div class="card-body box-profile">
@@ -68,7 +68,8 @@
                                     <div class="container">
                                         <div class="picture-container">
                                             <div class="picture">
-                                                <i class="picture-src fa fa-user fa-5x p-1" id="wizardPicturePreview" aria-hidden="true"></i>
+                                                <i class="picture-src fa fa-user fa-5x p-1" id="wizardPicturePreview"
+                                                    aria-hidden="true"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -91,9 +92,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#aboutme" data-toggle="tab">About Me</a>
                             </li>
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <a class="nav-link" href="#settings" data-toggle="tab">Settings</a>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                     <!-- /.card-header -->
@@ -127,18 +128,20 @@
                             </div>
                             <!-- /.tab-pane -->
 
-                            <div class="tab-pane" id="settings">
+                            <!-- <div class="tab-pane hidden" id="settings">
                                 <form class="form-horizontal">
                                     <div class="form-group row">
                                         <label for="inputName" class="col-sm-2 col-form-label">First Name</label>
                                         <div class="col-sm-10">
-                                            <input type="email" class="form-control" id="inputName" placeholder="<?php print_r($_SESSION['Fname']) ?>" disabled />
+                                            <input type="email" class="form-control" id="inputName"
+                                                placeholder="<?php print_r($_SESSION['Fname']) ?>" disabled />
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="inputEmail" class="col-sm-2 col-form-label">Last Name</label>
                                         <div class="col-sm-10">
-                                            <input type="email" class="form-control" id="inputname2" placeholder="<?php print_r($_SESSION['Lname']) ?>" disabled />
+                                            <input type="email" class="form-control" id="inputname2"
+                                                placeholder="<?php print_r($_SESSION['Lname']) ?>" disabled />
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -151,14 +154,16 @@
                                         <label for="inputPassword" class="col-sm-2 col-form-label">New
                                             Password</label>
                                         <div class="col-sm-10">
-                                            <input type="password" class="form-control" id="inputPassword" placeholder="">
+                                            <input type="password" class="form-control" id="inputPassword"
+                                                placeholder="">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="inputSkills" class="col-sm-2 col-form-label">Confirm
                                             Password</label>
                                         <div class="col-sm-10">
-                                            <input type="password" class="form-control" id="confirmPaswword" placeholder="" />
+                                            <input type="password" class="form-control" id="confirmPaswword"
+                                                placeholder="" />
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -167,7 +172,7 @@
                                         </div>
                                     </div>
                                 </form>
-                            </div>
+                            </div> -->
                             <!-- /.tab-pane -->
                         </div>
                         <!-- /.tab-content -->
