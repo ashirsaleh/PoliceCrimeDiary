@@ -58,7 +58,7 @@
                          </div>
                          <br>
                          <div class="card-body">
-                             <p><b>People involved in the action.</b>
+                             <p><b>Witness.</b>
                              <div class="d-flex justify-content-between">
                                  <div class="form-group">
                                      <label for="fullname">Full Name:</label>

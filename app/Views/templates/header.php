@@ -102,7 +102,7 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="<?php echo site_url('complaints') ?>" class="nav-link">
+                                        <a href="<?php echo site_url('AddComplaints') ?>" class="nav-link">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Record Complaints </p>
                                         </a>

@@ -81,10 +81,13 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="viewcard-body">
+                            <div class="viewcard-body" id="recordContent">
 
                             </div>
                             <br>
+                            <div class="container">
+                                <button class="btn btn-success float-right" onClick="printReceipt('recordContent')">Print</button>
+                            </div>
                             <!-- /.card-body -->
                         </div>
                     </div>
@@ -97,6 +100,17 @@
 <script type="text/javascript">
 let link = document.querySelector('.criminals');
 link.classList.add('active');
+
+function printReceipt(el) {
+    var mywindow = window.open('', 'PRINT', 'height=400,width=600');
+    mywindow.document.write('<html><head><title>' + document.title + '</title>');
+    mywindow.document.write('</head><body>');
+    mywindow.document.write('<center><h1>Complaint</h1></center>');
+    mywindow.document.write(document.getElementById(el).innerHTML);
+    mywindow.document.write('</body></html>');
+    mywindow.print();
+    return true;
+}
 
 $(document).ready(function() {
     $(document).on('submit', '#dataform', function(event) {

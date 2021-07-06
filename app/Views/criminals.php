@@ -192,19 +192,23 @@
         event.preventDefault();
         var id = $('#id').val();
         $.ajax({
-            url: '<?php echo base_url('Crime/editDefendant'); ?>',
+            url: '<?php echo base_url('Criminals/editDefendant'); ?>',
             method: 'POST',
             data: {
-                cname: $('#fName').val(),
+                cname: $('#cname').val(),
                 charges: $('#charges').val(),
-                caseNo: $('#getcharges').val(),
-                assigned: $('#assignedTo').val(),
+                caseNo: $('#caseNo').val(),
+                assigned: $('#assign').val(),
                 id: id
             },
             success: function(data) {
-                alert('Case assigned to' + $('#assignedTo').val());
+                alert('Case assigned to ' + $('#assign').val());
                 location.reload();
+            },
+            error: (err) => {
+                console.log(err);
             }
+
         });
     })
     </script>

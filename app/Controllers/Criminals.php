@@ -2,10 +2,11 @@
 
 namespace App\Controllers;
 
-use App\Models\CriminalModel;
 use App\Models\UserModel;
+use App\Models\CasesModel;
+use App\Models\CriminalModel;
 
-class criminals extends BaseController {
+class Criminals extends BaseController {
     public function index() {
         $model = new CriminalModel();
         $data['title'] = 'Criminal';
@@ -49,12 +50,12 @@ class criminals extends BaseController {
         $id = $this->request->getVar('id');
         $criminals = new CriminalModel();
         $officers = new UserModel();
-        $polices = $officers->findAll();
+        $polices = $officers->where(['rank' => 'Police Officer'])->findall();
         $criminal = $criminals->find($id);
         echo '
             <div class="form-group">
-                <label for="fname">Criminal Name</label>
-                <input type="text" disabled name="fName" value="' . $criminal[0]['fName'] . " " . $criminal[0]['fName'] . '" id="fName" class="form-control">
+                <label for="cname">Criminal Name</label>
+                <input type="text" disabled name="cname" value="' . $criminal[0]['fName'] . " " . $criminal[0]['lName'] . '" id="cname" class="form-control">
                 <input type="hidden" value="' . $id . '" id="id">
             </div>
             <div class="form-group">
@@ -66,9 +67,9 @@ class criminals extends BaseController {
                 <input type="text" style="text-transform:uppercase;" placeholder="URP/RB/0000/2021"  required class="form-control" id="caseNo">
             </div>
              <div class="form-group">
-                <label for="FirstLastName">assign to</label>
-                <select name="assignedTo" class="form-control" id="assignedTo">
-                <option value="" disabled selected hidden> - SELECT OFFICER -</option>';
+                <label for="assign">assign to</label>
+                <select name="assign" class="form-control" id="assign">
+                <option disabled selected hidden> - SELECT OFFICER -</option>';
         foreach ($polices as $police) {
             echo "
             <option value='" . $police['Fname'] . " " . $police['Lname'] . "'>" . $police['Fname'] . " " . $police['Lname'] . "</option>";
@@ -77,5 +78,36 @@ class criminals extends BaseController {
         echo '</select></div>
 
         ';
+    }
+    public function editDefendant() {
+        helper('form');
+        if ($this->request->getMethod() === 'post') {
+            $rules = [
+                'cname' => 'required|min_length[3]|max_length[50]',
+                'charges' => 'required|min_length[3]|max_length[50]',
+                'caseNo' => 'required|min_length[4]|max_length[60]',
+                'assigned' => 'required',
+
+            ];
+            $errors = [];
+            if (!$this->validate(
+                $rules,
+                $errors
+            )) {
+                $data['validation'] = $this->validator;
+                echo $data['validation']->listErrors();
+            } else {
+                $case = array(
+                    'criminalName' => $this->request->getVar('cname'),
+                    'charges' => $this->request->getVar('charges'),
+                    'caseNo' => $this->request->getVar('caseNo'),
+                    'assignedTo' => $this->request->getVar('assignedTo'),
+                    'caseStatus' => "NOT SOLVED",
+                );
+                $model = new CasesModel();
+                $model->save($case);
+                // return redirect()->to('criminals');
+            }
+        }
     }
 }
