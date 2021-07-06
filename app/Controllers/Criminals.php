@@ -83,9 +83,9 @@ class Criminals extends BaseController {
         helper('form');
         if ($this->request->getMethod() === 'post') {
             $rules = [
-                'cname' => 'required|min_length[3]|max_length[50]',
-                'charges' => 'required|min_length[3]|max_length[50]',
-                'caseNo' => 'required|min_length[4]|max_length[60]',
+                'cname' => 'required|min_length[3]|max_length[100]',
+                'charges' => 'required|min_length[3]|max_length[100]',
+                'caseNo' => 'required|min_length[4]|max_length[100]',
                 'assigned' => 'required',
 
             ];

@@ -3,6 +3,9 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">List of Defendant</h3>
+                <center>
+                    <input type="text" style="border-radius: 10px; width:30%; margin-left:20px;" name="filter" value="" id="filter" placeholder="Search here..." autocomplete="off" />
+                </center>
                 <div class="float-right">
                     <!--  -->
                 </div>
@@ -15,7 +18,9 @@
                             <th>Full Name</th>
                             <th>Age of a Person</th>
                             <th>All charges</th>
+                            <?php if ($_SESSION['rank'] != "Admin") { ?>
                             <th width="18%">Action</th>
+                            <?php } ?>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,20 +36,32 @@
                             <td><?php echo $criminal['fName'] . ' ' . $criminal['lName']; ?></td>
                             <td><?php echo $criminal['age']; ?></td>
                             <td><?php echo $criminal['charges']; ?></td>
+
+
                             <td class="project-actions text-right d-flex justify-content-between">
+                                <?php if ($_SESSION['rank'] != "Admin") { ?>
+
                                 <a data-id1="<?php echo $criminal['accuserId']; ?>" class="btn btn-primary btn-sm viewDefendant">
                                     <i class="fas fa-folder">
                                     </i>
                                     View
                                 </a>
+                                <?php } ?>
+
+                                <?php if ($_SESSION['rank'] == "Head Of Station") { ?>
                                 <a data-id1="<?php echo $criminal['accuserId']; ?>" class="btn btn-warning btn-sm editDefendant">
                                     <i class="fas fa-tasks">
                                     </i>
                                     Assign Case
                                 </a>
+                                <?php } ?>
+                                <?php if ($_SESSION['rank'] != "Admin") { ?>
+
                                 <a class="btn btn-danger btn-sm deleteDefendant" data-id3="<?php echo $criminal['accuserId']; ?>">
                                     <i class="fas fa-trash"></i> Close
                                 </a>
+                                <?php } ?>
+
                             </td>
                         </tr>
                         <?php
@@ -203,7 +220,7 @@
             },
             success: function(data) {
                 alert('Case assigned to ' + $('#assign').val());
-                location.reload();
+                // location.reload();
             },
             error: (err) => {
                 console.log(err);

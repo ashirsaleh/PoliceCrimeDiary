@@ -85,7 +85,8 @@
                                 </a>
                             </li>
 
-                            <!-- forms -->
+                            <?php if ($_SESSION['rank'] != "Admin") { ?>
+
                             <li class="nav-item">
                                 <a href="#" class="nav-link form">
                                     <i class="nav-icon fas fa-table"></i>
@@ -137,13 +138,17 @@
                                         </a>
                                     </li>
                                 </ul>
+                            </li>
+                            <?php } ?>
+                            <?php if ($_SESSION['rank'] == "Admin") { ?>
                             <li class="nav-item">
                                 <a href="<?php echo site_url('users'); ?>" class="nav-link users">
                                     <i class="nav-icon fa fa-user"></i>
                                     <p>Users</p>
                                 </a>
                             </li>
-                            </li>
+                            <?php } ?>
+
                             <li class="nav-item">
                                 <a href="<?php echo site_url('logout'); ?>" class="nav-link">
                                     <i class="nav-icon fas fa-sign-out-alt"></i>

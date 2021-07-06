@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 06, 2021 at 11:00 AM
+-- Generation Time: Jul 06, 2021 at 01:06 PM
 -- Server version: 10.3.29-MariaDB-0+deb10u1
 -- PHP Version: 7.3.27-1~deb10u1
 
@@ -30,12 +30,20 @@ SET time_zone = "+00:00";
 CREATE TABLE `cases` (
   `caseId` int(11) NOT NULL,
   `caseNo` varchar(100) NOT NULL,
+  `assignedTo` varchar(255) NOT NULL,
   `criminalName` varchar(255) NOT NULL,
   `charges` varchar(255) NOT NULL,
   `conviction` text DEFAULT NULL,
   `conDate` datetime NOT NULL DEFAULT current_timestamp(),
   `caseStatus` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cases`
+--
+
+INSERT INTO `cases` (`caseId`, `caseNo`, `assignedTo`, `criminalName`, `charges`, `conviction`, `conDate`, `caseStatus`) VALUES
+(8, 'urp/rb/3232/2021', '', 'Xenos Todd Katelyn Mcclain', 'Dolorem ex libero ipsum aut mollit adipisicing non ullam saepe proident pariatur Est quasi eius ', NULL, '2021-07-06 13:36:22', 'NOT SOLVED');
 
 -- --------------------------------------------------------
 
@@ -67,7 +75,8 @@ CREATE TABLE `complainers` (
 
 INSERT INTO `complainers` (`complainerId`, `Fname`, `Lname`, `address`, `date`, `natureComplaints`, `phoneNum`, `th_name`, `accusation`, `def_info`, `other_info`, `type`, `p_number`, `color`, `w_statement`) VALUES
 (28, 'Keith Chen', 'Astra Manning', 'Consequuntur ex quisquam voluptatem Ea fuga Voluptatem in ipsam sit mollit delectus', '1975-09-21 11:52:00', 'Delectus occaecat nihil aut id autem ut ex qui ut sit doloremque quos excepteur sunt architecto en', '+255449342767', 'Yoshi Hester', 'Doloribus et in sed blanditiis sed duis ducimus lorem obcaecati molestiae nemo nostrum', 'Adipisicing eum dolor optio corrupti et et aliquid', 'Sunt rerum sunt fuga Eveniet qui ea deleniti aut reprehenderit', '', 466, 'Qui aliqua Omnis con', 'assets/uploads/documents/59-594549_best-spacex.jpg'),
-(29, 'Ivan Willis', 'Bethany Wilson', 'Minus quaerat illum facilis ad voluptatem', '2011-08-20 09:09:00', 'Suscipit dolore sint aperiam sed culpa do magni dolore', '+255605500883', 'Isaac Yang', 'Et culpa laborum Tempora iusto nulla est recusandae Ex molestiae autem libero quo', 'Nisi excepturi omnis quasi quisquam adipisicing placeat irure similique repellendus Quisquam deser', 'Voluptas sint tempora veniam consequat Eius dolore soluta tempor sed voluptatem minima assumenda', '', 451, 'Ex eveniet deserunt ', 'assets/uploads/documents/320453.jpg');
+(29, 'Ivan Willis', 'Bethany Wilson', 'Minus quaerat illum facilis ad voluptatem', '2011-08-20 09:09:00', 'Suscipit dolore sint aperiam sed culpa do magni dolore', '+255605500883', 'Isaac Yang', 'Et culpa laborum Tempora iusto nulla est recusandae Ex molestiae autem libero quo', 'Nisi excepturi omnis quasi quisquam adipisicing placeat irure similique repellendus Quisquam deser', 'Voluptas sint tempora veniam consequat Eius dolore soluta tempor sed voluptatem minima assumenda', '', 451, 'Ex eveniet deserunt ', 'assets/uploads/documents/320453.jpg'),
+(30, 'Tanner Hurst', 'Zachery Medina', 'Impedit magna deserunt numquam voluptate numquam amet quis odio nihil nisi iusto aute veritatis se', '1988-09-15 23:57:00', 'Natus possimus ratione rerum dolor voluptas totam non ut et autem', '+255908293272', 'Wayne Holmes', 'Error et autem mollitia libero sequi ex minim sed', 'Dolorem laborum Consequuntur molestiae quae commodi ut alias nisi ea eiusmod nihil', 'Sint est voluptatum totam aut voluptates qui error nobis numquam eum mollit', '', 301, 'Dolore hic dolore mo', 'assets/uploads/documents/adrien-converse-FWhTeWRCeis-unsplash.jpg');
 
 -- --------------------------------------------------------
 
@@ -124,8 +133,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`policeId`, `policeNo`, `password`, `policepic`, `Fname`, `Lname`, `rank`, `age`, `tel_number`, `role`, `description`, `updated_at`) VALUES
-(24, '00321', '$2y$10$V8z46EaE7nniKADaMxOQFeR/69bhz5NQ4jepc4VVPpy5bEZI3QGgy', '', 'Hashir', 'Saleh', 'Head of Station', 0, '+255754552233', 0, 'hashir saleh papa                ', '2021-07-05 02:37:53'),
-(25, '00654', '$2y$10$cBYTy76GY7/sOMXvYfzbHOjddSLRFhAQ1bf7QD/jTY22yhG9OCmx2', '', 'mohammed', 'issa', 'Police officer', 0, '+255754558899', 0, 'mohammed issa  hamad\n                ', '2021-07-05 02:39:21');
+(24, '00321', '$2y$10$V8z46EaE7nniKADaMxOQFeR/69bhz5NQ4jepc4VVPpy5bEZI3QGgy', '', 'Hashir', 'Saleh', 'Admin', 0, '+255754552233', 0, 'hashir saleh papa                ', '2021-07-05 02:37:53'),
+(25, '00654', '$2y$10$cBYTy76GY7/sOMXvYfzbHOjddSLRFhAQ1bf7QD/jTY22yhG9OCmx2', '', 'mohammed', 'issa', 'Police officer', 0, '+255754558899', 0, 'mohammed issa  hamad\n                ', '2021-07-05 02:39:21'),
+(28, '00123', '$2y$10$g0YEy/9/IKROGQ4pBqMOgONF8TPxzd3UgagzVQUv.e2oKVv8WpgD2', '', 'Noulasco', 'Kapinga', 'Head Of Station', 0, '+255623589856', 0, 'The head of station', '2021-07-06 14:04:09');
 
 --
 -- Indexes for dumped tables
@@ -163,13 +173,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cases`
 --
 ALTER TABLE `cases`
-  MODIFY `caseId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `caseId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `complainers`
 --
 ALTER TABLE `complainers`
-  MODIFY `complainerId` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `complainerId` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `criminals`
@@ -181,7 +191,7 @@ ALTER TABLE `criminals`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `policeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `policeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

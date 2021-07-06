@@ -91,9 +91,6 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#aboutme" data-toggle="tab">About Me</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#settings" data-toggle="tab">Settings</a>
-                            </li>
                         </ul>
                     </div>
                     <!-- /.card-header -->
@@ -125,50 +122,6 @@
                                     <p><?php echo ucfirst($user['description']) ?></p>
                                 </div>
                             </div>
-                            <!-- /.tab-pane -->
-
-                            <div class="tab-pane" id="settings">
-                                <form class="form-horizontal">
-                                    <div class="form-group row">
-                                        <label for="inputName" class="col-sm-2 col-form-label">First Name</label>
-                                        <div class="col-sm-10">
-                                            <input type="email" class="form-control" id="inputName" placeholder="<?php print_r($_SESSION['Fname']) ?>" disabled />
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="inputEmail" class="col-sm-2 col-form-label">Last Name</label>
-                                        <div class="col-sm-10">
-                                            <input type="email" class="form-control" id="inputname2" placeholder="<?php print_r($_SESSION['Lname']) ?>" disabled />
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="inputName2" class="col-sm-2 col-form-label">Old Password</label>
-                                        <div class="col-sm-10">
-                                            <input type="password" class="form-control" id="inputOld" placeholder="" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="inputPassword" class="col-sm-2 col-form-label">New
-                                            Password</label>
-                                        <div class="col-sm-10">
-                                            <input type="password" class="form-control" id="inputPassword" placeholder="">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="inputSkills" class="col-sm-2 col-form-label">Confirm
-                                            Password</label>
-                                        <div class="col-sm-10">
-                                            <input type="password" class="form-control" id="confirmPaswword" placeholder="" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="offset-sm-2 col-sm-10">
-                                            <button type="submit" class="btn btn-primary">Change</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <!-- /.tab-pane -->
                         </div>
                         <!-- /.tab-content -->
                     </div>

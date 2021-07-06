@@ -3,10 +3,15 @@
          <div class="card">
              <div class="card-header">
                  <h3 class="card-title">List of Police Officers</h3>
+                 <center>
+                     <input type="text" style="border-radius: 10px; width:30%; margin-left:20px;" name="filter" value="" id="filter" placeholder="Search here..." autocomplete="off" />
+                 </center>
                  <div class="float-right">
+                     <?php if ($_SESSION['rank'] == "Admin") { ?>
                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-add">
                          Add user
                      </button>
+                     <?php } ?>
                  </div>
              </div>
              <?php if (isset($validation)) : ?>
@@ -28,7 +33,10 @@
                              <th>Rank</th>
                              <th>Telephone Number</th>
                              <th>Description</th>
+                             <?php if ($_SESSION['rank'] == "Admin") { ?>
                              <th width="15%">Action</th>
+                             <?php } ?>
+
                          </tr>
                      </thead>
                      <tbody>
@@ -47,11 +55,12 @@
                              <td><?php echo $users['rank']; ?></td>
                              <td><?php echo $users['tel_number']; ?></td>
                              <td><?php echo $users['description']; ?></td>
-                             <td class="project-actions text-right d-flex justify-content-between"">
+                             <?php if ($_SESSION['rank'] == "Admin") { ?>
+                             <td class="project-actions">
                                  <button data-id1=" <?php echo $users['policeId']; ?>" class="btn btn-primary btn-sm viewUser">
-                                 <i class="fas fa-folder">
-                                 </i>
-                                 View
+                                     <i class="fas fa-folder">
+                                     </i>
+                                     View
                                  </button>
                                  <button data-id2="<?php echo $users['policeId']; ?>" class="btn btn-warning btn-sm editUser">
                                      <i class="fas fa-pencil-alt">
@@ -64,6 +73,8 @@
                                      Delete
                                  </button>
                              </td>
+                             <?php } ?>
+
                          </tr>
                          <?php
                                 }
@@ -99,6 +110,7 @@
                                          <label for="inputStatus">Rank</label>
                                          <select id="inputStatus" name="rank" required class="form-control">
                                              <option selected hidden disabled>Select Rank</option>
+                                             <option value="Admin">Admin</option>
                                              <option value="Police Officer">Police Officer</option>
                                              <option value="Head Of Station">Head Of Station</option>
                                          </select>

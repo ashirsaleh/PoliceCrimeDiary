@@ -3,6 +3,9 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">List of Complainer</h3>
+                <center>
+                    <input type="text" style="border-radius: 10px; width:30%; margin-left:20px;" name="filter" value="" id="filter" placeholder="Search here..." autocomplete="off" />
+                </center>
                 <div class="float-right">
                     <!--  -->
                 </div>
