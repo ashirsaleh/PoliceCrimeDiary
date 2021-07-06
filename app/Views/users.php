@@ -9,11 +9,15 @@
                      </button>
                  </div>
              </div>
-             <?php
-                if (isset($validation)) {
-                    echo $validation->listErrors();
-                }
-                ?>
+             <?php if (isset($validation)) : ?>
+             <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                 <strong>Error! </strong> <?php echo $validation->listErrors(); ?>
+                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                     <span aria-hidden="true">×</span>
+                 </button>
+             </div>
+
+             <?php endif ?>
              <div class="card-body">
                  <table id="example2" class="table table-bordered table-hover">
                      <thead>

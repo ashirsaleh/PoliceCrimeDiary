@@ -17,22 +17,27 @@ class users extends BaseController {
 
     public function AddUser() {
         helper('form');
+        $uu = new UserModel();
+        $data['users'] = $uu->findall();
         if ($this->request->getMethod() === 'post') {
             $rules = [
                 'Fname' => 'required|min_length[2]|max_length[50]',
                 'Lname' => 'required|min_length[2]|max_length[50]',
                 'tel_number' => 'required|min_length[8]|max_length[15]',
                 'password' => 'required|min_length[2]|max_length[255]',
-                'policeNo' => 'required|min_length[2]|max_length[50]',
+                'policeNo' => 'required|min_length[2]|max_length[50]|checkNum[policeNo]',
                 'rank' => 'required',
                 'description' => 'required|min_length[2]|max_length[255]',
             ];
-            $errors = [];
+            $errors = [
+                'policeNo' => [
+                    'checkNum' => 'Police Number is already in use',
+                ],
+            ];
             if (!$this->validate($rules, $errors)) {
                 $data['validation'] = $this->validator;
-                echo $data['validation']->listErrors();
-                // return redirect()->to('/users');
-
+                $data['validation']->listErrors();
+                $this->Render('users', $data);
             } else {
                 $user = array(
                     'policeNo' => $this->request->getVar('policeNo'),
