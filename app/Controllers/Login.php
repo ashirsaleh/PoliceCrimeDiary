@@ -1,15 +1,16 @@
 <?php
 
 namespace App\Controllers;
+
 use App\Models\AuthModel;
 
-Class Login extends BaseController{
-    
-    public function index(){
+class Login extends BaseController {
+
+    public function index() {
         $data = [];
         helper('form');
-        if($this->request->getMethod() === 'post'){
-            $rules = [ 
+        if ($this->request->getMethod() === 'post') {
+            $rules = [
                 'policeNo' => 'required|min_length[3]|max_length[50]',
                 'password' => 'required|min_length[4]|max_length[255]|validateUser[policeNo,password]'
             ];
@@ -20,9 +21,9 @@ Class Login extends BaseController{
                 ],
             ];
 
-            if(!$this->validate($rules, $errors)){
+            if (!$this->validate($rules, $errors)) {
                 $data['validation'] = $this->validator;
-            }else{
+            } else {
                 $model = new AuthModel();
                 $user = $model->where('policeNo', $this->request->getPost('policeNo'))->first();
                 $this->setUserSession($user);
@@ -33,7 +34,7 @@ Class Login extends BaseController{
         echo view('login', $data);
     }
 
-    public function setUserSession($user){
+    public function setUserSession($user) {
         $data = [
             'policeId' => $user['policeId'],
             'policeNo' => $user['policeNo'],
@@ -46,10 +47,8 @@ Class Login extends BaseController{
         return true;
     }
 
-    public function logout(){
+    public function logout() {
         session()->destroy();
         return redirect()->to('login');
     }
 }
-
-?>

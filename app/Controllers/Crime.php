@@ -5,16 +5,15 @@ namespace App\Controllers;
 use App\Models\AuthModel;
 use App\Models\CriminalModel;
 
-class crime extends BaseController{
-    public function index(){
+class Crime extends BaseController {
+    public function index() {
         $data['title'] = 'Recording Crime';
         $data['location'] = 'Case Statements';
         $data['subRoute'] = 'Record Crime';
-        $this->Render('crime',$data);
+        $this->Render('crime', $data);
     }
 
-    public function AddCriminal(){
-    {
+    public function AddCriminal() {
         helper('form');
         if ($this->request->getMethod() === 'post') {
             $rules = [
@@ -28,12 +27,13 @@ class crime extends BaseController{
                 // 'gRelation' => 'required',
                 'circumstance' => 'required|min_length[2]|max_length[255]',
                 'charges' => 'required|min_length[2]|max_length[255]',
-                // 'wstatus' => 'required', 
+                // 'wstatus' => 'required',
                 'bailset' => 'required',
             ];
             $errors = [];
             if (!$this->validate(
-                $rules, $errors
+                $rules,
+                $errors
             )) {
                 $data['validation'] = $this->validator;
                 echo $data['validation']->listErrors();
@@ -58,9 +58,8 @@ class crime extends BaseController{
             }
         }
     }
-    }
-    public function viewDefendant()
-    {
+
+    public function viewDefendant() {
         $id = $this->request->getVar('id');
         $model = new CriminalModel();
         $criminal = $model->find($id);
@@ -80,20 +79,18 @@ class crime extends BaseController{
             </tr>
             <tr>
                 <th>Arrested date, time and location</th>
-                <td>' . $criminal['dateArrested'] . " ". $criminal['locationArrested'].'</td>
+                <td>' . $criminal['dateArrested'] . " " . $criminal['locationArrested'] . '</td>
             </tr>
             <tr>
                 <th>Name of Guardian, Relationship and Contacts Info</th>
-                <td>' . $criminal['guardianName'] . " " . $criminal['gRelation']. " " . $criminal['age'].'</td>
+                <td>' . $criminal['guardianName'] . " " . $criminal['gRelation'] . " " . $criminal['age'] . '</td>
             </tr>
         </table>
         ';
     }
-    public function deleteDefendant()
-    {
+    public function deleteDefendant() {
         $id = $this->request->getVar('id');
         $model = new CriminalModel();
         $model->delete($id);
-        
     }
 }

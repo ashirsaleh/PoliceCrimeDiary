@@ -37,9 +37,6 @@ class Complainer extends BaseController {
                     $data['validation'] = $this->validator;
                 } else {
                     $file = $this->request->getFile('statement');
-                    if (!$file->isValid()) {
-                        return $this->fail($file->getErrorString());
-                    }
                     $file->move(ROOTPATH . 'public/assets/uploads/documents');
                     $url = "assets/uploads/documents/" . $file->getName();
                     $complaint = array(

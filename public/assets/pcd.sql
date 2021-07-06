@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 05, 2021 at 07:05 AM
+-- Generation Time: Jul 06, 2021 at 01:06 PM
 -- Server version: 10.3.29-MariaDB-0+deb10u1
 -- PHP Version: 7.3.27-1~deb10u1
 
@@ -28,21 +28,22 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `cases` (
-  `case_id` int(11) NOT NULL,
-  `case_no` int(11) NOT NULL,
-  `criminal_name` varchar(255) NOT NULL,
-  `action_commited` varchar(255) NOT NULL,
-  `conviction` varchar(255) NOT NULL,
-  `d_conviction` date NOT NULL,
-  `case_status` varchar(20) NOT NULL
+  `caseId` int(11) NOT NULL,
+  `caseNo` varchar(100) NOT NULL,
+  `assignedTo` varchar(255) NOT NULL,
+  `criminalName` varchar(255) NOT NULL,
+  `charges` varchar(255) NOT NULL,
+  `conviction` text DEFAULT NULL,
+  `conDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `caseStatus` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `cases`
 --
 
-INSERT INTO `cases` (`case_id`, `case_no`, `criminal_name`, `action_commited`, `conviction`, `d_conviction`, `case_status`) VALUES
-(1, 690, 'motinho', 'killing', 'sentenced to death', '2021-07-12', 'UNSOLVED CASE');
+INSERT INTO `cases` (`caseId`, `caseNo`, `assignedTo`, `criminalName`, `charges`, `conviction`, `conDate`, `caseStatus`) VALUES
+(8, 'urp/rb/3232/2021', '', 'Xenos Todd Katelyn Mcclain', 'Dolorem ex libero ipsum aut mollit adipisicing non ullam saepe proident pariatur Est quasi eius ', NULL, '2021-07-06 13:36:22', 'NOT SOLVED');
 
 -- --------------------------------------------------------
 
@@ -55,9 +56,9 @@ CREATE TABLE `complainers` (
   `Fname` varchar(255) NOT NULL,
   `Lname` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
-  `date` date NOT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp(),
   `natureComplaints` varchar(255) NOT NULL,
-  `phoneNum` int(50) NOT NULL,
+  `phoneNum` varchar(50) NOT NULL,
   `th_name` varchar(30) NOT NULL,
   `accusation` varchar(255) NOT NULL,
   `def_info` varchar(255) NOT NULL,
@@ -73,10 +74,9 @@ CREATE TABLE `complainers` (
 --
 
 INSERT INTO `complainers` (`complainerId`, `Fname`, `Lname`, `address`, `date`, `natureComplaints`, `phoneNum`, `th_name`, `accusation`, `def_info`, `other_info`, `type`, `p_number`, `color`, `w_statement`) VALUES
-(12, 'Shana Orr', 'Miriam Campos', 'Eum illum veniam q', '1971-10-22', 'Nisi enim non in mag', 0, 'Scott Blackburn', '', 'Inventore est accus', 'Minim sit dolore sun', '', 882, 'Nemo rerum qui id am', ''),
-(13, 'Megan Vaughn', 'Alden Pratt', 'Dolorum sint dolor ', '1981-12-22', 'Sit pariatur Nobis ', 0, 'Denise Todd', 'Fugit fugiat ullam', 'Facere cupiditate co', 'Magnam minim soluta ', '', 74, 'Dolorum est officia ', ''),
-(14, 'Whoopi Rowe', 'Daniel Valentine', 'In blanditiis vel ad', '1980-12-23', 'Aut sint sint harum', 0, 'Mona Mccullough', 'Quia corporis cupidi', 'Adipisci voluptatem ', 'Nostrum ea temporibu', '', 698, 'Velit non explicabo', ''),
-(15, 'MacKensie Chaney', 'Armand Carney', 'Id accusamus rerum s', '1986-10-06', 'Sed exercitationem u', 0, 'Stacy Hoffman', 'Nobis earum omnis vo', 'Dolore nulla explica', 'Repudiandae sit vero', '', 575, 'Elit est quo est s', '');
+(28, 'Keith Chen', 'Astra Manning', 'Consequuntur ex quisquam voluptatem Ea fuga Voluptatem in ipsam sit mollit delectus', '1975-09-21 11:52:00', 'Delectus occaecat nihil aut id autem ut ex qui ut sit doloremque quos excepteur sunt architecto en', '+255449342767', 'Yoshi Hester', 'Doloribus et in sed blanditiis sed duis ducimus lorem obcaecati molestiae nemo nostrum', 'Adipisicing eum dolor optio corrupti et et aliquid', 'Sunt rerum sunt fuga Eveniet qui ea deleniti aut reprehenderit', '', 466, 'Qui aliqua Omnis con', 'assets/uploads/documents/59-594549_best-spacex.jpg'),
+(29, 'Ivan Willis', 'Bethany Wilson', 'Minus quaerat illum facilis ad voluptatem', '2011-08-20 09:09:00', 'Suscipit dolore sint aperiam sed culpa do magni dolore', '+255605500883', 'Isaac Yang', 'Et culpa laborum Tempora iusto nulla est recusandae Ex molestiae autem libero quo', 'Nisi excepturi omnis quasi quisquam adipisicing placeat irure similique repellendus Quisquam deser', 'Voluptas sint tempora veniam consequat Eius dolore soluta tempor sed voluptatem minima assumenda', '', 451, 'Ex eveniet deserunt ', 'assets/uploads/documents/320453.jpg'),
+(30, 'Tanner Hurst', 'Zachery Medina', 'Impedit magna deserunt numquam voluptate numquam amet quis odio nihil nisi iusto aute veritatis se', '1988-09-15 23:57:00', 'Natus possimus ratione rerum dolor voluptas totam non ut et autem', '+255908293272', 'Wayne Holmes', 'Error et autem mollitia libero sequi ex minim sed', 'Dolorem laborum Consequuntur molestiae quae commodi ut alias nisi ea eiusmod nihil', 'Sint est voluptatum totam aut voluptates qui error nobis numquam eum mollit', '', 301, 'Dolore hic dolore mo', 'assets/uploads/documents/adrien-converse-FWhTeWRCeis-unsplash.jpg');
 
 -- --------------------------------------------------------
 
@@ -105,7 +105,7 @@ CREATE TABLE `criminals` (
 --
 
 INSERT INTO `criminals` (`fName`, `accuserId`, `lName`, `age`, `locationArrested`, `guardianName`, `gRelation`, `circumstance`, `bailset`, `charges`, `resident`, `wstatus`, `dateArrested`) VALUES
-('Heidi Guerrero', 46, 'Fulton Garner', 18, 'Assumenda ut quas at', 'Dieter Vega', '', 'Dolorum dolorem lore', 54, 'Ad unde aut placeat', '', '', '2018-10-23 12:28:00');
+('Xenos Todd', 48, 'Katelyn Mcclain', 8, 'Sit qui excepteur id et aut similique perferendis enim ea odit et voluptate quisquam', 'Jennifer Andrews', '', 'Nobis labore duis et exercitationem saepe cillum in irure nulla aperiam exercitation ut voluptatem c', 96, 'Dolorem ex libero ipsum aut mollit adipisicing non ullam saepe proident pariatur Est quasi eius ', '', '', '1976-02-12 19:54:00');
 
 -- --------------------------------------------------------
 
@@ -133,8 +133,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`policeId`, `policeNo`, `password`, `policepic`, `Fname`, `Lname`, `rank`, `age`, `tel_number`, `role`, `description`, `updated_at`) VALUES
-(21, '00321', '$2y$10$7f7IQZ85a9de558z48YVoeI7WJMY5laNO7nUWB97ORmp6Nl8dCShG', '', 'Hashir', 'Sales', 'Head Of Station', 0, '+255754552233', 0, 'The police office of  the stations\n                ', '2021-07-04 23:59:14'),
-(23, '00321', '$2y$10$7f7IQZ85a9de558z48YVoeI7WJMY5laNO7nUWB97ORmp6Nl8dCShG', '', 'Hashir', 'Sales', 'Head Of Station', 0, '+255754552233', 0, 'The police office of  the stations\n                ', '2021-07-04 23:59:14');
+(24, '00321', '$2y$10$V8z46EaE7nniKADaMxOQFeR/69bhz5NQ4jepc4VVPpy5bEZI3QGgy', '', 'Hashir', 'Saleh', 'Admin', 0, '+255754552233', 0, 'hashir saleh papa                ', '2021-07-05 02:37:53'),
+(25, '00654', '$2y$10$cBYTy76GY7/sOMXvYfzbHOjddSLRFhAQ1bf7QD/jTY22yhG9OCmx2', '', 'mohammed', 'issa', 'Police officer', 0, '+255754558899', 0, 'mohammed issa  hamad\n                ', '2021-07-05 02:39:21'),
+(28, '00123', '$2y$10$g0YEy/9/IKROGQ4pBqMOgONF8TPxzd3UgagzVQUv.e2oKVv8WpgD2', '', 'Noulasco', 'Kapinga', 'Head Of Station', 0, '+255623589856', 0, 'The head of station', '2021-07-06 14:04:09');
 
 --
 -- Indexes for dumped tables
@@ -144,7 +145,7 @@ INSERT INTO `users` (`policeId`, `policeNo`, `password`, `policepic`, `Fname`, `
 -- Indexes for table `cases`
 --
 ALTER TABLE `cases`
-  ADD PRIMARY KEY (`case_id`);
+  ADD PRIMARY KEY (`caseId`);
 
 --
 -- Indexes for table `complainers`
@@ -172,25 +173,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cases`
 --
 ALTER TABLE `cases`
-  MODIFY `case_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `caseId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `complainers`
 --
 ALTER TABLE `complainers`
-  MODIFY `complainerId` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `complainerId` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `criminals`
 --
 ALTER TABLE `criminals`
-  MODIFY `accuserId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `accuserId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `policeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `policeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -6,6 +6,9 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Default Cases</h3>
+                        <center>
+                            <input type="text" style="border-radius: 10px; width:30%; margin-left:20px;" name="filter" value="" id="filter" placeholder="Search here..." autocomplete="off" />
+                        </center>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -13,11 +16,9 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Criminal Name</th>
                                     <th>Case No:</th>
-                                    <th>Case Status</th>
-                                    <th>Action Commited</th>
-                                    <th>Conviction</th>
+                                    <th>Criminal Name</th>
+                                    <th>Charges</th>
                                     <th>Date Of Conviction</th>
                                 </tr>
                             </thead>
@@ -31,12 +32,10 @@
                                 ?>
                                 <tr>
                                     <td><?php echo $counter; ?></td>
-                                    <td><?php echo $case['criminal_name']; ?></td>
-                                    <td><?php echo $case['case_no']; ?></td>
-                                    <td><?php echo $case['case_status']; ?></td>
-                                    <td><?php echo $case['action_commited']; ?></td>
-                                    <td><?php echo $case['conviction']; ?></td>
-                                    <td><?php echo $case['d_conviction']; ?></td>
+                                    <td><?php echo $case['caseNo']; ?></td>
+                                    <td><?php echo $case['criminalName']; ?></td>
+                                    <td><?php echo $case['charges']; ?></td>
+                                    <td><?php echo date("d/m/Y H:i", strtotime($case['conDate'])); ?></td>
                                 </tr>
                                 <?php
                                         $counter++;

@@ -1,17 +1,28 @@
-<?php 
+<?php
+
 namespace App\validation;
+
 use App\Models\AuthModel;
 
-class UserRules{
+class UserRules {
 
-    public function validateUser(string $str, string $fields, array $data){
+    public function validateUser(string $str, string $fields, array $data) {
         $model = new AuthModel();
         $user = $model->where('policeNo', $data['policeNo'])->first();
 
-        if(!$user){
+        if (!$user) {
             return false;
         }
         return password_verify($data['password'], $user['password']);
     }
+
+    public function checkNum(string $str, string $fields, array $data) {
+        $model = new AuthModel();
+        $user = $model->where('policeNo', $data['policeNo'])->first();
+        if ($user) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }
-?>
