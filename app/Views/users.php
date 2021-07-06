@@ -24,7 +24,7 @@
                              <th>Rank</th>
                              <th>Telephone Number</th>
                              <th>Description</th>
-                             <th>Action</th>
+                             <th width="15%">Action</th>
                          </tr>
                      </thead>
                      <tbody>
@@ -49,7 +49,7 @@
                                  </i>
                                  View
                                  </button>
-                                 <button data-id2="<?php echo $users['policeId']; ?>" class="btn btn-info btn-sm editUser">
+                                 <button data-id2="<?php echo $users['policeId']; ?>" class="btn btn-warning btn-sm editUser">
                                      <i class="fas fa-pencil-alt">
                                      </i>
                                      Edit

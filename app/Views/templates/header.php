@@ -14,14 +14,14 @@
         var timer = 0;
 
         function set_interval() {
-            timer = setInterval("auto_logout()", 10000); //5 minutes = 5*60 *1000
+            timer = setInterval("auto_logout()", 300000); //5 minutes = 5*60*1000
         }
 
         function reset_interval() {
             if (timer != 0) {
                 clearInterval(timer);
                 timer = 0;
-                timer = setInterval("auto_logout()", 10000);
+                timer = setInterval("auto_logout()", 300000);
             }
         }
 

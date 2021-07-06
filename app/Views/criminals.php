@@ -15,7 +15,7 @@
                             <th>Full Name</th>
                             <th>Age of a Person</th>
                             <th>All charges</th>
-                            <th>Action</th>
+                            <th width="18%">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -192,17 +192,17 @@
         event.preventDefault();
         var id = $('#id').val();
         $.ajax({
-            url: '<?php echo base_url('criminals/editdefendant'); ?>',
+            url: '<?php echo base_url('Crime/editDefendant'); ?>',
             method: 'POST',
             data: {
-                fName: $('#getFirstName').val(),
-                lName: $('#getLastName').val(),
-                charges: $('#getcharges').val(),
+                cname: $('#fName').val(),
+                charges: $('#charges').val(),
+                caseNo: $('#getcharges').val(),
+                assigned: $('#assignedTo').val(),
                 id: id
             },
             success: function(data) {
-
-                alert('ok');
+                alert('Case assigned to' + $('#assignedTo').val());
                 location.reload();
             }
         });

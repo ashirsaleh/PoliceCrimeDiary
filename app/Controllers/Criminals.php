@@ -53,21 +53,21 @@ class criminals extends BaseController {
         $criminal = $criminals->find($id);
         echo '
             <div class="form-group">
-                <label for="criminalname">Criminal Name</label>
+                <label for="fname">Criminal Name</label>
                 <input type="text" disabled name="fName" value="' . $criminal[0]['fName'] . " " . $criminal[0]['fName'] . '" id="fName" class="form-control">
-                <input type="hidden" value="' . $id . '">
+                <input type="hidden" value="' . $id . '" id="id">
             </div>
             <div class="form-group">
-                <label for="getcharges">Action Committed</label>
-                <input type="text" name="charges" required disabled value="' . $criminal[0]['charges'] . '" id="getcharges" class="form-control">
+                <label for="charges">Action Committed</label>
+                <input type="text" name="charges" required disabled value="' . $criminal[0]['charges'] . '" id="charges" class="form-control">
             </div>
              <div class="form-group">
                 <label for="FirstLastName">Case No:</label>
-                <input type="text"  pattern="[A-Za-Z]{3}" required class="form-control">
+                <input type="text" style="text-transform:uppercase;" placeholder="URP/RB/0000/2021"  required class="form-control" id="caseNo">
             </div>
              <div class="form-group">
                 <label for="FirstLastName">assign to</label>
-                <select name="assignedTo" class="form-control">
+                <select name="assignedTo" class="form-control" id="assignedTo">
                 <option value="" disabled selected hidden> - SELECT OFFICER -</option>';
         foreach ($polices as $police) {
             echo "
