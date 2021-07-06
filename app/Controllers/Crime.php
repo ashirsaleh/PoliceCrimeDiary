@@ -59,42 +59,6 @@ class Crime extends BaseController {
         }
     }
 
-    public function editDefendant() {
-        helper('form');
-        if ($this->request->getMethod() === 'post') {
-            $rules = [
-                'cname' => 'required|min_length[3]|max_length[50]',
-                'charges' => 'required|min_length[3]|max_length[50]',
-                'caseNo' => 'required|min_length[4]|max_length[60]',
-                'assignedTo' => 'required',
-
-            ];
-            $errors = [];
-            if (!$this->validate(
-                $rules,
-                $errors
-            )) {
-                $data['validation'] = $this->validator;
-                echo $data['validation']->listErrors();
-            } else {
-                $criminal = array(
-                    'fName' => $this->request->getVar('fName'),
-                    'lName' => $this->request->getVar('lName'),
-                    'age' => $this->request->getVar('age'),
-                    // 'resident' => $this->request->getVar('resident'),
-                    'locationArrested' => $this->request->getVar('locationArrested'),
-                    'dateArrested' => date('Y-m-d H:i:s', strtotime($this->request->getVar('dateArrested'))),
-                    'guardianName' => $this->request->getVar('guardianName'),
-                    'charges' => $this->request->getVar('charges'),
-                    'circumstance' => $this->request->getVar('circumstance'),
-                    'bailset' => $this->request->getVar('bailset'),
-                );
-                $model = new CriminalModel();
-                $model->save($criminal);
-                return redirect()->to('criminals');
-            }
-        }
-    }
     public function viewDefendant() {
         $id = $this->request->getVar('id');
         $model = new CriminalModel();
