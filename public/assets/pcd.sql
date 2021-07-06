@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 05, 2021 at 10:34 AM
+-- Generation Time: Jul 06, 2021 at 08:39 AM
 -- Server version: 10.3.29-MariaDB-0+deb10u1
 -- PHP Version: 7.3.27-1~deb10u1
 
@@ -29,11 +29,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `cases` (
   `case_id` int(11) NOT NULL,
-  `case_no` int(11) NOT NULL,
-  `criminal_name` varchar(255) NOT NULL,
-  `action_commited` varchar(255) NOT NULL,
+  `caseNo` varchar(100) NOT NULL,
+  `criminalName` varchar(255) NOT NULL,
+  `charges` varchar(255) NOT NULL,
   `conviction` varchar(255) NOT NULL,
-  `d_conviction` date NOT NULL,
   `case_status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -41,8 +40,8 @@ CREATE TABLE `cases` (
 -- Dumping data for table `cases`
 --
 
-INSERT INTO `cases` (`case_id`, `case_no`, `criminal_name`, `action_commited`, `conviction`, `d_conviction`, `case_status`) VALUES
-(1, 690, 'motinho', 'killing', 'sentenced to death', '2021-07-12', 'UNSOLVED CASE');
+INSERT INTO `cases` (`case_id`, `caseNo`, `criminalName`, `charges`, `conviction`, `case_status`) VALUES
+(1, '690', 'motinho', 'killing', 'sentenced to death', 'UNSOLVED CASE');
 
 -- --------------------------------------------------------
 
@@ -73,10 +72,7 @@ CREATE TABLE `complainers` (
 --
 
 INSERT INTO `complainers` (`complainerId`, `Fname`, `Lname`, `address`, `date`, `natureComplaints`, `phoneNum`, `th_name`, `accusation`, `def_info`, `other_info`, `type`, `p_number`, `color`, `w_statement`) VALUES
-(20, 'Keaton', 'Galena', 'Modi repudiandae fugiat nulla sunt sunt rem et molestiae quia sit esse', '2021-04-18 14:51:00', 'Aut tempora omnis delectus provident ex', '+255689756325', 'Jada Horton', 'Eum vel ratione proident velit aliqua Incididunt ipsum eos sunt sunt qui ea', 'Impedit est nostrum vitae aut', 'Non delectus magna deserunt nulla cupidatat voluptatem ab sit unde anim quas et quis enim ea eos', '', 363, 'Enim aut perspiciati', 'assets/uploads/documents/Screenshot from 2021-03-01 16-21-50_2.png'),
-(21, 'Abdul', 'Chancellor', 'Occaecat eos expedita eu fuga Fugiat magna ut fugiat ipsa occaecat ea eaque eos excepturi volup', '2021-06-11 17:43:00', 'Autem velit voluptatem reprehenderit minus eos sit vel ea qui delectus', '+255689756325', 'Phoebe Humphrey', 'Eos nulla et voluptatibus eveniet exercitation cumque itaque in labore molestias dolorem sint ali', 'Et aperiam dolor incidunt saepe cum quia do sed qui aliquip possimus minima beatae id', 'Recusandae Ullamco temporibus dolorem maiores velit cupidatat elit', '', 533, 'Sit magni sunt dolor', 'assets/uploads/documents/Screenshot from 2021-03-01 16-23-54.png'),
-(23, 'Omar Mcknight', 'Tasha Walsh', 'Modi inventore aut fugiat expedita et accusantium suscipit sequi et laborum sequi elit corporis se', '2020-01-06 17:43:00', 'Officiis natus aspernatur culpa placeat quis repudiandae animi', '+255689756325', 'Madison Bauer', 'Dolorem Nam in accusamus ipsum et cumque molestiae a ratione quo in do in voluptatem Reprehenderit', 'Natus nobis rerum rem non sit quo molestiae nisi et voluptate ad', 'Quis lorem laboris et commodi ex adipisicing eaque in velit pariatur Sed voluptas sit totam volupta', '', 729, 'Non omnis sint tempo', 'assets/uploads/documents/Screenshot from 2021-03-01 16-21-50_3.png'),
-(25, 'Kiona', 'Matthew', 'Facere officia et dolorem et inventore', '1979-12-18 05:22:00', 'Veritatis est dolor eaque sint cumque ea asperiores aspernatur aut mollit quam', '+255710234191', 'Clementine Reyes', 'Saepe rerum odit labore aliquid et ea ullamco et dolore maiores neque proident vero et sunt', 'Dicta error aut id quo et ut dolore nobis duis voluptatem blanditiis fugiat ut', 'Cupidatat dolorum saepe qui veniam veritatis', '', 887, 'Alias consectetur ma', 'assets/uploads/documents/Screenshot from 2021-03-01 16-23-54_2.png');
+(27, 'Irma Puckett', 'Lesley Bond', 'Dolorum reiciendis sunt qui lorem tempore commodi commodi et dolores et nostrud expedita doloribus ', '1981-11-04 10:01:00', 'In sit officiis voluptas repudiandae sed consectetur quis', '+255739349611', 'Amethyst Alexander', 'Elit in sunt ipsa id architecto rerum ad rerum', 'Nesciunt adipisci commodo minima consequatur ut rerum quia doloremque aliquip dolore', 'Ad est enim esse nisi minim dicta consequatur', '', 613, 'A assumenda velit re', 'assets/uploads/documents/alex-perez-pEgsWN0kwbQ-unsplash.jpg');
 
 -- --------------------------------------------------------
 
@@ -179,7 +175,7 @@ ALTER TABLE `cases`
 -- AUTO_INCREMENT for table `complainers`
 --
 ALTER TABLE `complainers`
-  MODIFY `complainerId` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `complainerId` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `criminals`
