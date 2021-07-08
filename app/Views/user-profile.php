@@ -53,13 +53,13 @@
 .picture-src {
     width: 100%;
 }
-
 </style>
 <section class="content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3">
-                <form action="<?php echo base_url('userprofile/store'); ?>" name="ajax_form" id="ajax_form" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+                <form action="<?php echo base_url('userprofile/store'); ?>" name="ajax_form" id="ajax_form"
+                    method="post" accept-charset="utf-8" enctype="multipart/form-data">
                     <!-- Profile Image -->
                     <div class="card card-primary card-outline">
                         <div class="card-body box-profile">
@@ -68,7 +68,8 @@
                                     <div class="container">
                                         <div class="picture-container">
                                             <div class="picture">
-                                                <i class="picture-src fa fa-user fa-5x p-1" id="wizardPicturePreview" aria-hidden="true"></i>
+                                                <i class="picture-src fa fa-user fa-5x p-1" id="wizardPicturePreview"
+                                                    aria-hidden="true"></i>
                                             </div>
                                         </div>
                                     </div>
