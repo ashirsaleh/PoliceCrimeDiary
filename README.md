@@ -1,6 +1,8 @@
 # PoliceCrimeDiary
-You  need to have phpmyadmin on your computer
-Then run php spark serve - to run the project
+-The project was done using codeigniter (php franework)
+-You need to have phpmyadmin on your computer
+-Create db, or import from the project files
+-Go to the project root,
+-Then run php spark serve - to run the project
 
-Codeigniter 4 was used to the project
  
